@@ -3,11 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package desinfeuilles;
+package desinfeuilles.view;
 
+import static desinfeuilles.StartupConstants.PATH_ICONS;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -22,7 +26,7 @@ public class BuilderView {
     
     ToolBar fileToolbar, styleToolbar;
     
-    Button newB, openB, saveB, saveAsB, exitB;
+    Button newB, openB, saveB, exitB;
     
     public BuilderView() {
         initView();
@@ -47,17 +51,27 @@ public class BuilderView {
     }
     
     public void initFileToolbar() {
-        newB = new Button("New");
-        openB = new Button("Open");
-        saveB = new Button("Save");
-        saveAsB = new Button("Save As");
-        exitB = new Button("Exit");
-        fileToolbar = new ToolBar(newB, openB, saveB, saveAsB, exitB);
+        newB = initButton("New.png", "New", false);
+        openB = initButton("Load.png", "Open", false);
+        saveB = initButton("Save.png", "Save", false);
+        exitB = initButton("Exit.png", "Exit", false);
+        fileToolbar = new ToolBar(newB, openB, saveB, exitB);
         root.setTop(fileToolbar);
     }
     
     public void initStyleToolbar() {
         styleToolbar = new ToolBar();
         root.setLeft(styleToolbar);
+    }
+    
+    public Button initButton(String iconFileName, 
+            String tooltip,
+            boolean disabled) {
+        Button b = new Button();
+        Image bImage = new Image("file:" + PATH_ICONS + iconFileName);
+        b.setGraphic(new ImageView(bImage));
+        b.setTooltip(new Tooltip("tooltip"));
+        b.setDisable(disabled);
+        return b;
     }
 }

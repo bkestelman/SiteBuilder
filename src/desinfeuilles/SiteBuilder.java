@@ -5,6 +5,7 @@
  */
 package desinfeuilles;
 
+import desinfeuilles.view.BuilderView;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,7 +25,7 @@ public class SiteBuilder extends Application {
     public BuilderView view;
     
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage xStage) {
         view = new BuilderView();
         view.show();
     }
