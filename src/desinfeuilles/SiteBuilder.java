@@ -21,27 +21,12 @@ import javafx.stage.Stage;
  */
 public class SiteBuilder extends Application {
     
+    public BuilderView view;
+    
     @Override
     public void start(Stage primaryStage) {
-        BorderPane root = new BorderPane();
-        
-        Button newB = new Button("New");
-        Button openB = new Button("Open");
-        Button saveB = new Button("Save");
-        Button saveAsB = new Button("Save As");
-        Button exitB = new Button("Exit");
-        ToolBar fileToolbar = new ToolBar(newB, openB, saveB, saveAsB, exitB);
-        root.setTop(fileToolbar);
-        
-        ToolBar styleToolbar = new ToolBar();
-        root.setLeft(styleToolbar);
-        
-        Scene scene = new Scene(root);
-        
-        primaryStage.setTitle("DesinFeuilles SiteBuilder");
-        primaryStage.setMaximized(true);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        view = new BuilderView();
+        view.show();
     }
 
     /**
