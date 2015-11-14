@@ -5,6 +5,9 @@
  */
 package desinfeuilles.view;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
+import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
+import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -43,6 +46,7 @@ public class BuilderView {
         
         primaryStage.setTitle("DesinFeuilles SiteBuilder");
         primaryStage.setMaximized(true);
+        scene.getStylesheets().add(CSS_SHEET);
         primaryStage.setScene(scene);
     }
     
@@ -51,11 +55,12 @@ public class BuilderView {
     }
     
     public void initFileToolbar() {
-        newB = initButton("New.png", "New", false);
-        openB = initButton("Load.png", "Open", false);
-        saveB = initButton("Save.png", "Save", false);
-        exitB = initButton("Exit.png", "Exit", false);
+        newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         fileToolbar = new ToolBar(newB, openB, saveB, exitB);
+        fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
         root.setTop(fileToolbar);
     }
     
@@ -66,11 +71,13 @@ public class BuilderView {
     
     public Button initButton(String iconFileName, 
             String tooltip,
+            String cssClass,
             boolean disabled) {
         Button b = new Button();
         Image bImage = new Image("file:" + PATH_ICONS + iconFileName);
         b.setGraphic(new ImageView(bImage));
         b.setTooltip(new Tooltip("tooltip"));
+        b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
         return b;
     }
