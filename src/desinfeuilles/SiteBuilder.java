@@ -7,6 +7,7 @@ package desinfeuilles;
 
 import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
+import desinfeuilles.controller.StyleController;
 import desinfeuilles.view.BuilderView;
 import java.util.Optional;
 import javafx.application.Application;
@@ -30,20 +31,23 @@ public class SiteBuilder extends Application {
     
     public BuilderView view;
     public FileController fileController;
+    public StyleController styleController;
     public Tutorial tutorial;
     
     @Override
     public void start(Stage xStage) {
         fileController = new FileController();
-        view = new BuilderView(fileController);
+        styleController = new StyleController();
+        view = new BuilderView(fileController, styleController);
         Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
         useTutorial.setHeaderText("Tutorial");
+        view.show();
         Optional<ButtonType> result = useTutorial.showAndWait();
         if(result.get() == ButtonType.OK) {
             tutorial = new Tutorial(view);
             tutorial.run();
         }
-        view.show();
+        //view.show();
     }
 
     /**

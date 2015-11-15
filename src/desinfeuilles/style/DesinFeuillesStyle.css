@@ -33,3 +33,7 @@ and open the template in the editor.
 .anim_hbox {
     //-fx-background-color: blueviolet;
 }
+
+.style_controller {
+    -fx-background-color: white;
+}

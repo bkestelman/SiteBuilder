@@ -13,6 +13,7 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.controller.FileController;
+import desinfeuilles.controller.StyleController;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -29,6 +30,7 @@ import javafx.stage.Stage;
  */
 public class BuilderView {
     FileController fileController;
+    StyleController styleController;
     
     Stage primaryStage;
     Scene scene;
@@ -40,8 +42,10 @@ public class BuilderView {
     ToolBar styleToolbar;
     Button templateB;
     
-    public BuilderView(FileController f) {
+    public BuilderView(FileController f, StyleController s) {
         fileController = f;
+        styleController = s;
+        s.setView(this);
         initView();
     }
     
@@ -69,6 +73,9 @@ public class BuilderView {
     public void initEventHandlers() {
         exitB.setOnAction(e -> {
             fileController.handleExitRequest();
+        });
+        templateB.setOnAction(e -> {
+           styleController.openTemplateChooser(); 
         });
     }
     
