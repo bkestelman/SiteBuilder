@@ -9,9 +9,26 @@ and open the template in the editor.
 */
 
 .button_fileToolbar {
-    -fx-background-color: cyan;
+    -fx-background-color: linear-gradient(#660000, #ff1a1a);
+}
+
+.button_fileToolbar_first {
+    -fx-background-color: linear-gradient(#660000, #ff1a1a);
+    -fx-margin-left: 20px;
+}
+
+.button_fileToolbar.hover {
+    -fx-padding: 20px;
+}
+
+.button_styleToolbar {
+    -fx-background-color: #ff4da6;
+}
+
+.styleToolbar {
+    -fx-background-color: linear-gradient(#4d0033, #ff99bb);
 }
 
 .fileToolbar {
-    -fx-background-color: linear-gradient(white, red);
+    -fx-background-color: linear-gradient(#4d0000, #ffcccc);
 }

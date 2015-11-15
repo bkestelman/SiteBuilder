@@ -7,8 +7,13 @@ package desinfeuilles.view;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
+import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST;
+import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR;
+import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
+import desinfeuilles.controller.FileController;
+import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
@@ -23,15 +28,20 @@ import javafx.stage.Stage;
  * @author Benito
  */
 public class BuilderView {
+    FileController fileController;
+    
     Stage primaryStage;
     
     BorderPane root;
     
-    ToolBar fileToolbar, styleToolbar;
-    
+    ToolBar fileToolbar;
     Button newB, openB, saveB, exitB;
     
-    public BuilderView() {
+    ToolBar styleToolbar;
+    Button templateB;
+    
+    public BuilderView(FileController f) {
+        fileController = f;
         initView();
     }
     
@@ -48,14 +58,22 @@ public class BuilderView {
         primaryStage.setMaximized(true);
         scene.getStylesheets().add(CSS_SHEET);
         primaryStage.setScene(scene);
+        
+        initEventHandlers();
     }
     
     public void show() {
         primaryStage.show();
     }
     
+    public void initEventHandlers() {
+        exitB.setOnAction(e -> {
+            fileController.handleExitRequest();
+        });
+    }
+    
     public void initFileToolbar() {
-        newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST, false);
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
@@ -65,7 +83,10 @@ public class BuilderView {
     }
     
     public void initStyleToolbar() {
-        styleToolbar = new ToolBar();
+        templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        styleToolbar = new ToolBar(templateB);
+        styleToolbar.setOrientation(Orientation.VERTICAL);
+        styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         root.setLeft(styleToolbar);
     }
     
@@ -76,7 +97,7 @@ public class BuilderView {
         Button b = new Button();
         Image bImage = new Image("file:" + PATH_ICONS + iconFileName);
         b.setGraphic(new ImageView(bImage));
-        b.setTooltip(new Tooltip("tooltip"));
+        b.setTooltip(new Tooltip(tooltip));
         b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
         return b;

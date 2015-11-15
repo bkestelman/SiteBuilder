@@ -5,6 +5,7 @@
  */
 package desinfeuilles;
 
+import desinfeuilles.controller.FileController;
 import desinfeuilles.view.BuilderView;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -26,7 +27,8 @@ public class SiteBuilder extends Application {
     
     @Override
     public void start(Stage xStage) {
-        view = new BuilderView();
+        FileController fileController = new FileController();
+        view = new BuilderView(fileController);
         view.show();
     }
 
