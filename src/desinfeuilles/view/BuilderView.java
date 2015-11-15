@@ -31,7 +31,7 @@ public class BuilderView {
     FileController fileController;
     
     Stage primaryStage;
-    
+    Scene scene;
     BorderPane root;
     
     ToolBar fileToolbar;
@@ -52,7 +52,7 @@ public class BuilderView {
         initFileToolbar();
         initStyleToolbar();
         
-        Scene scene = new Scene(root);
+        scene = new Scene(root);
         
         primaryStage.setTitle("DesinFeuilles SiteBuilder");
         primaryStage.setMaximized(true);
@@ -101,5 +101,13 @@ public class BuilderView {
         b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
         return b;
+    }
+    
+    public BorderPane getBorderPane() {
+        return root;
+    }
+    
+    public Scene getScene() {
+        return scene;
     }
 }

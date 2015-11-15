@@ -14,11 +14,6 @@ and open the template in the editor.
 
 .button_fileToolbar_first {
     -fx-background-color: linear-gradient(#660000, #ff1a1a);
-    -fx-margin-left: 20px;
-}
-
-.button_fileToolbar.hover {
-    -fx-padding: 20px;
 }
 
 .button_styleToolbar {
@@ -27,8 +22,10 @@ and open the template in the editor.
 
 .styleToolbar {
     -fx-background-color: linear-gradient(#4d0033, #ff99bb);
+    -fx-padding: 20px;
 }
 
 .fileToolbar {
     -fx-background-color: linear-gradient(#4d0000, #ffcccc);
+    -fx-padding: 20px;
 }

@@ -5,6 +5,7 @@
  */
 package desinfeuilles;
 
+import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.view.BuilderView;
 import javafx.application.Application;
@@ -24,11 +25,15 @@ import javafx.stage.Stage;
 public class SiteBuilder extends Application {
     
     public BuilderView view;
+    public FileController fileController;
+    public Tutorial tutorial;
     
     @Override
     public void start(Stage xStage) {
-        FileController fileController = new FileController();
+        fileController = new FileController();
         view = new BuilderView(fileController);
+        tutorial = new Tutorial(view);
+        tutorial.run();
         view.show();
     }
 
