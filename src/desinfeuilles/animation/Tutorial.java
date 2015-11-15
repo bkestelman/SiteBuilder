@@ -74,6 +74,7 @@ public class Tutorial {
     
     public void pointToStyleController() {
         translation.stop();
+        arrow.setRotate(-90);
         double toY = view.getStyleToolbar().getHeight()-view.getStyleController().getHeight()-20;
         translation.setFromY(toY-40);
         translation.setToY(toY);
