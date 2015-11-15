@@ -14,6 +14,8 @@ and open the template in the editor.
 
 .button_fileToolbar_first {
     -fx-background-color: linear-gradient(#660000, #ff1a1a);
+    -fx-position: absolute;
+    -fx-left: 200px;
 }
 
 .button_styleToolbar {
@@ -28,4 +30,8 @@ and open the template in the editor.
 .fileToolbar {
     -fx-background-color: linear-gradient(#4d0000, #ffcccc);
     -fx-padding: 20px;
+}
+
+.anim_hbox {
+    //-fx-background-color: blueviolet;
 }

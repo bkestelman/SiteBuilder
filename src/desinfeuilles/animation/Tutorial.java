@@ -6,6 +6,7 @@
 package desinfeuilles.animation;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
+import static desinfeuilles.StartupConstants.CSS_CLASS_ANIM_HBOX;
 import desinfeuilles.view.BuilderView;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -36,6 +37,7 @@ public class Tutorial {
     public Tutorial(BuilderView v) {
         view = v;
         g = new HBox();
+        g.getStyleClass().add(CSS_CLASS_ANIM_HBOX);
         arrow = new ImageView();
         //g.getChildren().add(arrow);
         view.getBorderPane().setCenter(g);
@@ -55,8 +57,10 @@ public class Tutorial {
         ft.setToValue(1);
         ft.setCycleCount(2);*/
         TranslateTransition tt = new TranslateTransition(Duration.millis(1500), g);
-        tt.setFromX(100);
+        tt.setFromX(80);
         tt.setToX(20);
+        tt.setFromY(25);
+        tt.setToY(25);
         tt.setCycleCount(Timeline.INDEFINITE);
         tt.setAutoReverse(true);
         tt.play();
