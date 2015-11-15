@@ -57,7 +57,7 @@ public class Tutorial {
         ft.setToValue(1);
         ft.setCycleCount(2);*/
         TranslateTransition tt = new TranslateTransition(Duration.millis(1500), g);
-        tt.setFromX(80);
+        tt.setFromX(60);
         tt.setToX(20);
         tt.setFromY(25);
         tt.setToY(25);

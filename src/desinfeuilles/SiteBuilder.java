@@ -8,11 +8,15 @@ package desinfeuilles;
 import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.view.BuilderView;
+import java.util.Optional;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -32,8 +36,13 @@ public class SiteBuilder extends Application {
     public void start(Stage xStage) {
         fileController = new FileController();
         view = new BuilderView(fileController);
-        tutorial = new Tutorial(view);
-        tutorial.run();
+        Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
+        useTutorial.setHeaderText("Tutorial");
+        Optional<ButtonType> result = useTutorial.showAndWait();
+        if(result.get() == ButtonType.OK) {
+            tutorial = new Tutorial(view);
+            tutorial.run();
+        }
         view.show();
     }
 
