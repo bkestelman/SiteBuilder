@@ -7,8 +7,11 @@ package desinfeuilles.controller;
 
 import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
+import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.view.BuilderView;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -18,16 +21,17 @@ import javafx.scene.shape.Rectangle;
  * @author Benito
  */
 public class StyleController {
+    public static final float HEIGHT = 150;
+    public static final int TEMPLATES = 1;
+    
     BuilderView view;
     HBox main;
     SiteBuilder siteBuilder;
-    float height;
     
     public StyleController(SiteBuilder sb) {
         main = new HBox();
         main.getStyleClass().add(CSS_CLASS_STYLE_CONTROLLER);
         siteBuilder = sb;
-        height = 0;
     }
     
     public void setView(BuilderView v) {
@@ -36,15 +40,24 @@ public class StyleController {
     
     public void openTemplateChooser() {
         view.getBorderPane().setBottom(main);
-        Rectangle t1 = new Rectangle();
-        t1.setWidth(75);
-        t1.setHeight(75);
-        t1.setFill(Color.WHITE);
-        t1.setStroke(Color.BLACK);
-        height += 75;
-        main.getChildren().add(t1);
+        Rectangle offset = new Rectangle();
+        offset.setWidth(view.getStyleToolbar().getWidth() + 20);
+        offset.setHeight(HEIGHT);
+        offset.setFill(Color.WHITE);
+        offset.setStroke(Color.WHITE);
+        main.getChildren().add(offset);
+        
+        generateTemplateOptions();
+        
         if(siteBuilder.getTutorial() != null) {
             siteBuilder.getTutorial().pointToStyleController();
+        }
+    }
+    
+    public void generateTemplateOptions() {
+        for(int i = 1; i <= TEMPLATES; i++) {
+            ImageView im = new ImageView(new Image("file:" + PATH_TEMPLATES + "template" + i + ".png"));
+            main.getChildren().add(im);
         }
     }
     
@@ -53,6 +66,6 @@ public class StyleController {
     }
     
     public float getHeight() {
-        return height;
+        return HEIGHT;
     }
 }

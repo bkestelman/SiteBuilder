@@ -12,6 +12,7 @@ package desinfeuilles;
 public class StartupConstants {
     public static String PATH_IMAGES = "./images/";
     public static String PATH_ICONS = PATH_IMAGES + "icons/";
+    public static String PATH_TEMPLATES = PATH_IMAGES + "templates/";
     
     public static String CSS_PATH = "./desinfeuilles/style/";
     public static String CSS_SHEET = CSS_PATH + "DesinFeuillesStyle.css";
