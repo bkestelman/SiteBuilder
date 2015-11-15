@@ -5,13 +5,17 @@
  */
 package desinfeuilles.controller;
 
+import desinfeuilles.SiteBuilder;
+
 /**
  *
  * @author Benito
  */
 public class FileController {
-    public FileController() {
-        
+    public SiteBuilder siteBuilder;
+    
+    public FileController(SiteBuilder sb) {
+        siteBuilder = sb;
     }
     
     public void handleExitRequest() {

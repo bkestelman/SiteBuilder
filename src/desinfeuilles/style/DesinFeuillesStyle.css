@@ -31,7 +31,7 @@ and open the template in the editor.
 }
 
 .anim_hbox {
-    //-fx-background-color: blueviolet;
+    //-fx-background-image: url("yellow-background2.jpg");
 }
 
 .style_controller {

@@ -68,6 +68,7 @@ public class BuilderView {
     
     public void show() {
         primaryStage.show();
+        System.out.println("Stage height: " + primaryStage.getHeight());
     }
     
     public void initEventHandlers() {
@@ -116,5 +117,13 @@ public class BuilderView {
     
     public Scene getScene() {
         return scene;
+    }
+    
+    public ToolBar getStyleToolbar() {
+        return styleToolbar;
+    }
+    
+    public StyleController getStyleController() {
+        return styleController;
     }
 }

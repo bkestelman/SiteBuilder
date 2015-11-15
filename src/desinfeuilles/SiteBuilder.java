@@ -35,9 +35,9 @@ public class SiteBuilder extends Application {
     public Tutorial tutorial;
     
     @Override
-    public void start(Stage xStage) {
-        fileController = new FileController();
-        styleController = new StyleController();
+    public void start(Stage stage) {
+        fileController = new FileController(this);
+        styleController = new StyleController(this);
         view = new BuilderView(fileController, styleController);
         Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
         useTutorial.setHeaderText("Tutorial");
@@ -48,6 +48,10 @@ public class SiteBuilder extends Application {
             tutorial.run();
         }
         //view.show();
+    }
+    
+    public Tutorial getTutorial() {
+        return tutorial;
     }
 
     /**

@@ -5,8 +5,10 @@
  */
 package desinfeuilles.controller;
 
+import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
 import desinfeuilles.view.BuilderView;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -18,10 +20,14 @@ import javafx.scene.shape.Rectangle;
 public class StyleController {
     BuilderView view;
     HBox main;
+    SiteBuilder siteBuilder;
+    float height;
     
-    public StyleController() {
+    public StyleController(SiteBuilder sb) {
         main = new HBox();
         main.getStyleClass().add(CSS_CLASS_STYLE_CONTROLLER);
+        siteBuilder = sb;
+        height = 0;
     }
     
     public void setView(BuilderView v) {
@@ -35,6 +41,18 @@ public class StyleController {
         t1.setHeight(75);
         t1.setFill(Color.WHITE);
         t1.setStroke(Color.BLACK);
+        height += 75;
         main.getChildren().add(t1);
+        if(siteBuilder.getTutorial() != null) {
+            siteBuilder.getTutorial().pointToStyleController();
+        }
+    }
+    
+    public HBox getMain() {
+        return main;
+    }
+    
+    public float getHeight() {
+        return height;
     }
 }

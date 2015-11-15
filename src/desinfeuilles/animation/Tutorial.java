@@ -34,6 +34,8 @@ public class Tutorial {
     HBox bot;
     ImageView arrow;
     
+    TranslateTransition translation;
+    
     public Tutorial(BuilderView v) {
         view = v;
         g = new HBox();
@@ -56,17 +58,27 @@ public class Tutorial {
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(2);*/
-        TranslateTransition tt = new TranslateTransition(Duration.millis(1500), g);
-        tt.setFromX(60);
-        tt.setToX(20);
-        tt.setFromY(25);
-        tt.setToY(25);
-        tt.setCycleCount(Timeline.INDEFINITE);
-        tt.setAutoReverse(true);
-        tt.play();
+        translation = new TranslateTransition(Duration.millis(1500), arrow);
+        translation.setFromX(60);
+        translation.setToX(20);
+        translation.setFromY(25);
+        translation.setToY(25);
+        translation.setCycleCount(Timeline.INDEFINITE);
+        translation.setAutoReverse(true);
+        translation.play();
         /*ParallelTransition pt = new ParallelTransition();
         pt.getChildren().addAll(ft, tt);
         pt.setCycleCount(2);
         pt.play();*/
+    }
+    
+    public void pointToStyleController() {
+        translation.stop();
+        double toY = view.getStyleToolbar().getHeight()-view.getStyleController().getHeight()-20;
+        translation.setFromY(toY-40);
+        translation.setToY(toY);
+        translation.setFromX(40);
+        translation.setToX(40);
+        translation.play();
     }
 }
