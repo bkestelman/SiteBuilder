@@ -24,4 +24,5 @@ public class StartupConstants {
     public static String CSS_CLASS_STYLE_TOOLBAR_BUTTON = "button_styleToolbar";
     public static String CSS_CLASS_ANIM_HBOX = "anim_hbox";
     public static String CSS_CLASS_STYLE_CONTROLLER = "style_controller";
+    public static String CSS_CLASS_HBANNER = "hbanner";
 }

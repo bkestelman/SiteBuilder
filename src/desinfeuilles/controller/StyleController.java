@@ -9,6 +9,7 @@ import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.view.BuilderView;
+import java.util.ArrayList;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -27,6 +28,9 @@ public class StyleController {
     BuilderView view;
     HBox main;
     SiteBuilder siteBuilder;
+    
+    ArrayList<ImageView> imgs;
+    int selectedTemplate;
     
     public StyleController(SiteBuilder sb) {
         main = new HBox();
@@ -55,10 +59,21 @@ public class StyleController {
     }
     
     public void generateTemplateOptions() {
+        imgs = new ArrayList<ImageView>();
         for(int i = 1; i <= TEMPLATES; i++) {
             ImageView im = new ImageView(new Image("file:" + PATH_TEMPLATES + "template" + i + ".png"));
+            imgs.add(im);
             main.getChildren().add(im);
         }
+        for(ImageView img : imgs) {
+            img.setOnMouseClicked(e -> {
+                view.setTemplate();
+            });
+        }
+    }
+    
+    public int getSelectedTemplate() {
+        return selectedTemplate;
     }
     
     public HBox getMain() {

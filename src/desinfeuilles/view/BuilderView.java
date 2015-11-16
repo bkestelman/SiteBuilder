@@ -5,9 +5,11 @@
  */
 package desinfeuilles.view;
 
+import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST;
+import static desinfeuilles.StartupConstants.CSS_CLASS_HBANNER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
@@ -17,11 +19,16 @@ import desinfeuilles.controller.StyleController;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 /**
@@ -29,6 +36,7 @@ import javafx.stage.Stage;
  * @author Benito
  */
 public class BuilderView {
+    SiteBuilder siteBuilder;
     FileController fileController;
     StyleController styleController;
     
@@ -42,7 +50,13 @@ public class BuilderView {
     ToolBar styleToolbar;
     Button templateB;
     
-    public BuilderView(FileController f, StyleController s) {
+    //site divs
+    VBox vmain, vnav, vbanner, vcontent;
+    HBox hmain, hnav, hbanner, hcontent;
+    TilePane nav;
+    
+    public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
+        siteBuilder = sb;
         fileController = f;
         styleController = s;
         s.setView(this);
@@ -108,6 +122,20 @@ public class BuilderView {
         b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
         return b;
+    }
+    
+    public void setTemplate() {
+        /*if(styleController.getSelectedTemplate() == 1) {
+            vmain = new VBox();
+            root.setCenter(vmain);
+            hbanner = new HBox();
+            hbanner.getStyleClass().add(CSS_CLASS_HBANNER);
+            Label bannerLabel = new Label("This is some sweet banner dam");
+            hbanner.getChildren().add(bannerLabel);
+            nav = new TilePane();
+            vcontent = new VBox();
+            vmain.getChildren().addAll(hbanner, nav, vcontent);
+        }*/
     }
     
     public BorderPane getBorderPane() {

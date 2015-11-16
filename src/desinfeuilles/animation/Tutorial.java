@@ -82,4 +82,8 @@ public class Tutorial {
         translation.setToX(40);
         translation.play();
     }
+    
+    public void pointToBannerImage() {
+        
+    }
 }

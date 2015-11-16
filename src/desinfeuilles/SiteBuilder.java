@@ -38,7 +38,7 @@ public class SiteBuilder extends Application {
     public void start(Stage stage) {
         fileController = new FileController(this);
         styleController = new StyleController(this);
-        view = new BuilderView(fileController, styleController);
+        view = new BuilderView(this, fileController, styleController);
         Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
         useTutorial.setHeaderText("Tutorial");
         view.show();
