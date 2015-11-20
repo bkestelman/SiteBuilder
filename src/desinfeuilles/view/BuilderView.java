@@ -16,6 +16,7 @@ import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
+import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -45,13 +46,13 @@ public class BuilderView {
     Scene scene;
     BorderPane root;
     
-    ToolBar fileToolbar;
     Button newB, openB, saveB, exitB;
     
-    ToolBar styleToolbar;
     Button templateB;
     
-    HBox toolbars;
+    TilePane styleToolbar;
+    TilePane fileToolbar;
+    TilePane toolbars;
 
     public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
         siteBuilder = sb;
@@ -64,8 +65,16 @@ public class BuilderView {
     public void initView() {
         primaryStage = new Stage();
         root = new BorderPane();
-        toolbars = new HBox();
+        toolbars = new TilePane();
         root.setTop(toolbars);
+        
+        fileToolbar = new TilePane();
+        fileToolbar.setPadding(new Insets(10));
+        styleToolbar = new TilePane();
+        styleToolbar.setPadding(new Insets(10));
+        
+        toolbars.getChildren().add(fileToolbar);
+        toolbars.getChildren().add(styleToolbar);
         
         initFileToolbar();
         initStyleToolbar();
@@ -98,18 +107,17 @@ public class BuilderView {
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
-        fileToolbar = new ToolBar(newB, openB, saveB, exitB);
+        fileToolbar.getChildren().addAll(newB, openB, saveB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
-        HBox.setHgrow(fileToolbar, Priority.ALWAYS);
-        toolbars.getChildren().add(fileToolbar);
+        //HBox.setHgrow(fileToolbar, Priority.ALWAYS);
+        //HBox.setVgrow(fileToolbar, Priority.ALWAYS);
     }
     
     public void initStyleToolbar() {
         templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar = new ToolBar(templateB);
+        styleToolbar.getChildren().add(templateB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
-        HBox.setHgrow(styleToolbar, Priority.ALWAYS);
-        toolbars.getChildren().add(styleToolbar);
+        //HBox.setHgrow(styleToolbar, Priority.ALWAYS);
     }
     
     public Button initButton(String iconFileName, 
@@ -122,6 +130,9 @@ public class BuilderView {
         b.setTooltip(new Tooltip(tooltip));
         b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
+        b.setMaxWidth(Double.MAX_VALUE);
+        b.setMaxHeight(Double.MAX_VALUE);
+        b.resize(24, 24);
         return b;
     }
     
@@ -147,11 +158,11 @@ public class BuilderView {
         return scene;
     }
     
-    public ToolBar getStyleToolbar() {
+    public TilePane getStyleToolbar() {
         return styleToolbar;
     }
     
-    public ToolBar getFileToolbar() {
+    public TilePane getFileToolbar() {
         return fileToolbar;
     }
     
