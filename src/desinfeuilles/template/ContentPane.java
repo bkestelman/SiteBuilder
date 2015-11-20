@@ -5,18 +5,20 @@
  */
 package desinfeuilles.template;
 
-import javafx.scene.layout.Pane;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author bkestelman
  */
-public interface Template {
+public class ContentPane {
+    public ObservableList<ContentComponent> content;
+            
+    public ContentPane() {
+        
+    }
     
-    public MainPane getMainPane();
-    public ContentPane getContentPane();
-    public NavBar getNavBar();
-    public Banner getBanner();
-    public Footer getFooter();
-    public Pane getSelectedPane();
+    public void addContent(ContentComponent component) {
+        
+    }
 }

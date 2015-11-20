@@ -5,19 +5,14 @@
  */
 package desinfeuilles.template;
 
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
 /**
  *
  * @author bkestelman
  */
-public class Banner extends HBox {
-    public Label bannerLabel;
-    public ImageView bannerImage;
-    
-    public Banner(String bannerHeader) {
-        bannerLabel = new Label(bannerHeader);
+public class Footer extends HBox {
+    public Footer() {
+        
     }
 }
