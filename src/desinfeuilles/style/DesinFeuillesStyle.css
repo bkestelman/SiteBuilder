@@ -10,14 +10,17 @@ and open the template in the editor.
 
 .button_fileToolbar {
     -fx-background-color: linear-gradient(#660000, #ff1a1a);
+   // -fx-background-size: 30px;
 }
 
 .button_fileToolbar_first {
     -fx-background-color: linear-gradient(#660000, #ff1a1a);
+    //-fx-background-size: 30px;
 }
 
 .button_styleToolbar {
     -fx-background-color: #ff4da6;
+    //-fx-background-size: 30px;
 }
 
 .styleToolbar {

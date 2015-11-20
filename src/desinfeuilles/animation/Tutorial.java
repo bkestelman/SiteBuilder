@@ -58,11 +58,12 @@ public class Tutorial {
         ft.setFromValue(0);
         ft.setToValue(1);
         ft.setCycleCount(2);*/
+        arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
-        translation.setFromX(60);
-        translation.setToX(20);
-        translation.setFromY(25);
-        translation.setToY(25);
+        translation.setFromX(view.getFileToolbar().getWidth() + 30);
+        translation.setToX(view.getFileToolbar().getWidth() + 30);
+        translation.setFromY(view.getFileToolbar().getHeight() + 40);
+        translation.setToY(view.getFileToolbar().getHeight() - 20);
         translation.setCycleCount(Timeline.INDEFINITE);
         translation.setAutoReverse(true);
         translation.play();

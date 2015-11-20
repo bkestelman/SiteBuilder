@@ -26,6 +26,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -50,11 +51,8 @@ public class BuilderView {
     ToolBar styleToolbar;
     Button templateB;
     
-    //site divs
-    VBox vmain, vnav, vbanner, vcontent;
-    HBox hmain, hnav, hbanner, hcontent;
-    TilePane nav;
-    
+    HBox toolbars;
+
     public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
         siteBuilder = sb;
         fileController = f;
@@ -66,6 +64,8 @@ public class BuilderView {
     public void initView() {
         primaryStage = new Stage();
         root = new BorderPane();
+        toolbars = new HBox();
+        root.setTop(toolbars);
         
         initFileToolbar();
         initStyleToolbar();
@@ -100,15 +100,16 @@ public class BuilderView {
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         fileToolbar = new ToolBar(newB, openB, saveB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
-        root.setTop(fileToolbar);
+        HBox.setHgrow(fileToolbar, Priority.ALWAYS);
+        toolbars.getChildren().add(fileToolbar);
     }
     
     public void initStyleToolbar() {
         templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         styleToolbar = new ToolBar(templateB);
-        styleToolbar.setOrientation(Orientation.VERTICAL);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
-        root.setLeft(styleToolbar);
+        HBox.setHgrow(styleToolbar, Priority.ALWAYS);
+        toolbars.getChildren().add(styleToolbar);
     }
     
     public Button initButton(String iconFileName, 
@@ -148,6 +149,10 @@ public class BuilderView {
     
     public ToolBar getStyleToolbar() {
         return styleToolbar;
+    }
+    
+    public ToolBar getFileToolbar() {
+        return fileToolbar;
     }
     
     public StyleController getStyleController() {
