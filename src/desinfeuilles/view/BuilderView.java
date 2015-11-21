@@ -126,7 +126,10 @@ public class BuilderView {
             boolean disabled) {
         Button b = new Button();
         Image bImage = new Image("file:" + PATH_ICONS + iconFileName);
-        b.setGraphic(new ImageView(bImage));
+        ImageView bImageView = new ImageView(bImage);
+        bImageView.setFitHeight(18);
+        bImageView.setPreserveRatio(true);
+        b.setGraphic(bImageView);
         b.setTooltip(new Tooltip(tooltip));
         b.getStyleClass().add(cssClass);
         b.setDisable(disabled);
