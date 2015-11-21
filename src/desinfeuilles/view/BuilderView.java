@@ -50,9 +50,9 @@ public class BuilderView {
     
     Button templateB;
     
-    TilePane styleToolbar;
-    TilePane fileToolbar;
-    TilePane toolbars;
+    ToolBar styleToolbar;
+    ToolBar fileToolbar;
+    HBox toolbars;
 
     public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
         siteBuilder = sb;
@@ -65,19 +65,21 @@ public class BuilderView {
     public void initView() {
         primaryStage = new Stage();
         root = new BorderPane();
-        toolbars = new TilePane();
+        toolbars = new HBox();
         root.setTop(toolbars);
         
-        fileToolbar = new TilePane();
-        fileToolbar.setPadding(new Insets(10));
-        styleToolbar = new TilePane();
-        styleToolbar.setPadding(new Insets(10));
+        //fileToolbar = new ToolBar();
+        //fileToolbar.setPadding(new Insets(10));
+        //styleToolbar = new ToolBar();
+        //styleToolbar.setPadding(new Insets(10));
         
-        toolbars.getChildren().add(fileToolbar);
-        toolbars.getChildren().add(styleToolbar);
+        //toolbars.setMaxWidth(Double.MAX_VALUE);
         
         initFileToolbar();
         initStyleToolbar();
+        
+        toolbars.getChildren().add(fileToolbar);
+        toolbars.getChildren().add(styleToolbar);
         
         scene = new Scene(root);
         
@@ -107,17 +109,19 @@ public class BuilderView {
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
-        fileToolbar.getChildren().addAll(newB, openB, saveB, exitB);
+        fileToolbar = new ToolBar(newB, openB, saveB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
-        //HBox.setHgrow(fileToolbar, Priority.ALWAYS);
+        fileToolbar.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(fileToolbar, Priority.ALWAYS);
         //HBox.setVgrow(fileToolbar, Priority.ALWAYS);
     }
     
     public void initStyleToolbar() {
         templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().add(templateB);
+        styleToolbar = new ToolBar(templateB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
-        //HBox.setHgrow(styleToolbar, Priority.ALWAYS);
+        styleToolbar.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(styleToolbar, Priority.ALWAYS);
     }
     
     public Button initButton(String iconFileName, 
@@ -161,11 +165,11 @@ public class BuilderView {
         return scene;
     }
     
-    public TilePane getStyleToolbar() {
+    public ToolBar getStyleToolbar() {
         return styleToolbar;
     }
     
-    public TilePane getFileToolbar() {
+    public ToolBar getFileToolbar() {
         return fileToolbar;
     }
     
