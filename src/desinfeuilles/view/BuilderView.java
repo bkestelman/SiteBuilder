@@ -18,6 +18,7 @@ import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,8 +51,8 @@ public class BuilderView {
     
     Button templateB;
     
-    ToolBar styleToolbar;
-    ToolBar fileToolbar;
+    TilePane styleToolbar;
+    TilePane fileToolbar;
     HBox toolbars;
 
     public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
@@ -105,11 +106,14 @@ public class BuilderView {
     }
     
     public void initFileToolbar() {
+        fileToolbar = new TilePane();
+        fileToolbar.setHgap(10);
+        //fileToolbar.setAlignment(Pos.CENTER);
         newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST, false);
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
-        fileToolbar = new ToolBar(newB, openB, saveB, exitB);
+        fileToolbar.getChildren().addAll(newB, openB, saveB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
         fileToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(fileToolbar, Priority.ALWAYS);
@@ -117,8 +121,10 @@ public class BuilderView {
     }
     
     public void initStyleToolbar() {
+        styleToolbar = new TilePane();
+        styleToolbar.setHgap(10);
         templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar = new ToolBar(templateB);
+        styleToolbar.getChildren().addAll(templateB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);
@@ -139,7 +145,7 @@ public class BuilderView {
         b.setDisable(disabled);
         b.setMaxWidth(Double.MAX_VALUE);
         b.setMaxHeight(Double.MAX_VALUE);
-        b.resize(24, 24);
+        //b.resize(24, 24);
         return b;
     }
     
@@ -165,11 +171,11 @@ public class BuilderView {
         return scene;
     }
     
-    public ToolBar getStyleToolbar() {
+    public TilePane getStyleToolbar() {
         return styleToolbar;
     }
     
-    public ToolBar getFileToolbar() {
+    public TilePane getFileToolbar() {
         return fileToolbar;
     }
     
