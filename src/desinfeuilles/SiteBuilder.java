@@ -8,7 +8,9 @@ package desinfeuilles;
 import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
+import desinfeuilles.template.CenterLayout;
 import desinfeuilles.view.BuilderView;
+import java.util.ArrayList;
 import java.util.Optional;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -22,6 +24,9 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import desinfeuilles.template.LeftNavLayout;
+import java.util.Iterator;
+import desinfeuilles.template.LayoutTemplate;
 
 /**
  *
@@ -33,9 +38,16 @@ public class SiteBuilder extends Application {
     public FileController fileController;
     public StyleController styleController;
     public Tutorial tutorial;
+    public ArrayList<LayoutTemplate> layouts;
+    public LayoutTemplate l1, l2;
     
     @Override
     public void start(Stage stage) {
+        layouts = new ArrayList<LayoutTemplate>();
+        l1 = new LeftNavLayout();
+        l2 = new CenterLayout();
+        layouts.add(l1);
+        layouts.add(l2);
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
@@ -48,6 +60,10 @@ public class SiteBuilder extends Application {
             tutorial.run();
         }
         //view.show();
+    }
+    
+    public ArrayList<LayoutTemplate> getLayouts() {
+        return layouts;
     }
     
     public Tutorial getTutorial() {

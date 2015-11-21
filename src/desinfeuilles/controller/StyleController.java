@@ -10,12 +10,15 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.view.BuilderView;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import desinfeuilles.template.LayoutTemplate;
+import javafx.scene.control.ChoiceDialog;
 
 /**
  *
@@ -42,17 +45,10 @@ public class StyleController {
         view = v;
     }
     
-    public void openTemplateChooser() {
-        view.getBorderPane().setBottom(main);
-        Rectangle offset = new Rectangle();
-        offset.setWidth(view.getStyleToolbar().getWidth() + 20);
-        offset.setHeight(HEIGHT);
-        offset.setFill(Color.WHITE);
-        offset.setStroke(Color.WHITE);
-        main.getChildren().add(offset);
-        
-        generateTemplateOptions();
-        
+    public void openLayoutChooser() {
+        ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
+        ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(layouts.get(0), layouts);
+        chooser.showAndWait();
         if(siteBuilder.getTutorial() != null) {
             siteBuilder.getTutorial().pointToStyleController();
         }

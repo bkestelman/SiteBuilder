@@ -49,7 +49,7 @@ public class BuilderView {
     
     Button newB, openB, saveB, exitB;
     
-    Button templateB;
+    Button layoutB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -100,8 +100,8 @@ public class BuilderView {
         exitB.setOnAction(e -> {
             fileController.handleExitRequest();
         });
-        templateB.setOnAction(e -> {
-           styleController.openTemplateChooser(); 
+        layoutB.setOnAction(e -> {
+           styleController.openLayoutChooser(); 
         });
     }
     
@@ -123,8 +123,8 @@ public class BuilderView {
     public void initStyleToolbar() {
         styleToolbar = new TilePane();
         styleToolbar.setHgap(10);
-        templateB = initButton("Template.png", "Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().addAll(templateB);
+        layoutB = initButton("Template.png", "Choose Layout", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        styleToolbar.getChildren().addAll(layoutB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);
@@ -183,7 +183,7 @@ public class BuilderView {
         return styleController;
     }
     
-    public Button getTemplateB() {
-        return templateB;
+    public Button getLayoutB() {
+        return layoutB;
     }
 }

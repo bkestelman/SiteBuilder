@@ -11,12 +11,18 @@ import javafx.scene.layout.Pane;
  *
  * @author bkestelman
  */
-public interface Template {
+public interface LayoutTemplate {
+    /*Pane mainPane;
+    NavBar nav;
+    Banner banner;
+    ContentPane content;
+    Footer footer;*/
     
-    public MainPane getMainPane();
+    //public abstract Pane getMainPane();
     public ContentPane getContentPane();
     public NavBar getNavBar();
     public Banner getBanner();
     public Footer getFooter();
     public Pane getSelectedPane();
+    public String toString();
 }

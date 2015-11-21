@@ -60,7 +60,7 @@ public class Tutorial {
         ft.setCycleCount(2);*/
         arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
-        double fromX = view.getFileToolbar().getWidth() + view.getTemplateB().getLayoutX() + view.getTemplateB().getWidth()/4;
+        double fromX = view.getFileToolbar().getWidth() + view.getLayoutB().getLayoutX() + view.getLayoutB().getWidth()/4;
         translation.setFromX(fromX);
         translation.setToX(fromX);
         translation.setFromY(view.getFileToolbar().getHeight() + 20);
@@ -75,14 +75,6 @@ public class Tutorial {
     }
     
     public void pointToStyleController() {
-        translation.stop();
-        arrow.setRotate(-90);
-        double toY = view.getStyleToolbar().getHeight()-view.getStyleController().getHeight()-25;
-        translation.setFromY(toY-40);
-        translation.setToY(toY);
-        translation.setFromX(40);
-        translation.setToX(40);
-        translation.play();
     }
     
     public void pointToBannerImage() {
