@@ -60,10 +60,11 @@ public class Tutorial {
         ft.setCycleCount(2);*/
         arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
-        translation.setFromX(view.getFileToolbar().getWidth() + 30);
-        translation.setToX(view.getFileToolbar().getWidth() + 30);
-        translation.setFromY(view.getFileToolbar().getHeight() + 40);
-        translation.setToY(view.getFileToolbar().getHeight() - 20);
+        double fromX = view.getFileToolbar().getWidth() + view.getTemplateB().getLayoutX() + view.getTemplateB().getWidth()/4;
+        translation.setFromX(fromX);
+        translation.setToX(fromX);
+        translation.setFromY(view.getFileToolbar().getHeight() + 20);
+        translation.setToY(view.getFileToolbar().getHeight() - 30);
         translation.setCycleCount(Timeline.INDEFINITE);
         translation.setAutoReverse(true);
         translation.play();

@@ -182,4 +182,8 @@ public class BuilderView {
     public StyleController getStyleController() {
         return styleController;
     }
+    
+    public Button getTemplateB() {
+        return templateB;
+    }
 }
