@@ -52,7 +52,7 @@ public class BuilderView {
     
     Button newB, openB, saveB, exportB, exitB;
     
-    Button layoutB;
+    Button layoutB, addPageB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -128,7 +128,8 @@ public class BuilderView {
         styleToolbar = new TilePane();
         styleToolbar.setHgap(10);
         layoutB = initButton("Template.png", "Choose Layout", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().addAll(layoutB);
+        addPageB = initButton("Add.png", "Add Page", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        styleToolbar.getChildren().addAll(layoutB, addPageB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);

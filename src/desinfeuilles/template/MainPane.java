@@ -10,7 +10,7 @@ package desinfeuilles.template;
  * @author bkestelman
  */
 public class MainPane {
-    public NavBar navBar;
+    public NavBarModel navBar;
     public Banner banner;
     public ContentPane content;
     public Footer footer; 

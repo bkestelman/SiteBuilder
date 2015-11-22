@@ -24,7 +24,7 @@ public class CenterLayout implements LayoutTemplate {
         main = new VBox();
         banner = new Banner("Benito Kestelman");
         nav = new NavBarH();
-        main.getChildren().addAll(banner, nav.getNavBar());
+        main.getChildren().addAll(banner, nav.getNavBarPane());
         main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
     }
     
@@ -36,11 +36,6 @@ public class CenterLayout implements LayoutTemplate {
     @Override
     public ContentPane getContentPane() {
         return contentPane;
-    }
-
-    @Override
-    public NavBarH getNavBar() {
-        return nav;
     }
 
     @Override
@@ -61,5 +56,10 @@ public class CenterLayout implements LayoutTemplate {
     @Override
     public String toString() {
         return "CenterLayout";
+    }
+
+    @Override
+    public NavBarView getNavBar() {
+        return nav;
     }
 }

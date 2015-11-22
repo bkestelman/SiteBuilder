@@ -20,7 +20,7 @@ public interface LayoutTemplate {
     
     public Pane getMainPane();
     public ContentPane getContentPane();
-    public NavBar getNavBar();
+    public NavBarView getNavBar();
     public Banner getBanner();
     public Footer getFooter();
     public Pane getSelectedPane();

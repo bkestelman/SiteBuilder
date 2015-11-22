@@ -9,22 +9,19 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_NAV_SIMPLE;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 
 /**
  *
  * @author bkestelman
  */
-public class NavBarH extends NavBar {
+public class NavBarH extends NavBarView {
     HBox navBar;
     
     public NavBarH() {
         super();
         navBar = new HBox();
         navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
-    }
-    
-    public HBox getNavBar() {
-        return navBar;
     }
 
     @Override
@@ -35,8 +32,14 @@ public class NavBarH extends NavBar {
     }
 
     @Override
-    public void addToNavBar(Label pageLabel) {
+    public void addPage(String pageName, String pageLink) {
+        Label pageLabel = new Label(pageName);
         navBar.getChildren().add(pageLabel);
         initPageClickHandler(pageLabel);
+    }
+
+    @Override
+    public HBox getNavBarPane() {
+        return navBar;
     }
 }
