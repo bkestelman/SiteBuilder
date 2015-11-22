@@ -27,4 +27,5 @@ public class StartupConstants {
     public static String CSS_CLASS_HBANNER = "hbanner";
     public static String CSS_CLASS_CENTER_LAYOUT = "center_layout";
     public static String CSS_CLASS_NAV_SIMPLE = "nav_simple";
+    public static String CSS_CLASS_BANNER = "banner";
 }

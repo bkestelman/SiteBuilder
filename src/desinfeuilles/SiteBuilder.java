@@ -43,7 +43,7 @@ public class SiteBuilder extends Application {
     
     @Override
     public void start(Stage stage) {
-        layouts = new ArrayList<LayoutTemplate>();
+        layouts = new ArrayList<>();
         l1 = new LeftNavLayout();
         l2 = new CenterLayout();
         layouts.add(l1);

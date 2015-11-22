@@ -21,7 +21,6 @@ public class NavBarH extends NavBar {
         super();
         navBar = new HBox();
         navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
-        navBar.getChildren().add(new Button("hello"));
     }
     
     public HBox getNavBar() {

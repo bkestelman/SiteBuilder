@@ -16,12 +16,15 @@ import javafx.scene.layout.VBox;
  */
 public class CenterLayout implements LayoutTemplate {
     VBox main;
+    Banner banner;
     NavBarH nav;
+    ContentPane contentPane;
     
     public CenterLayout() {
         main = new VBox();
+        banner = new Banner("Benito Kestelman");
         nav = new NavBarH();
-        main.getChildren().add(nav.getNavBar());
+        main.getChildren().addAll(banner, nav.getNavBar());
         main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
     }
     
@@ -32,11 +35,11 @@ public class CenterLayout implements LayoutTemplate {
 
     @Override
     public ContentPane getContentPane() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return contentPane;
     }
 
     @Override
-    public NavBar getNavBar() {
+    public NavBarH getNavBar() {
         return nav;
     }
 
