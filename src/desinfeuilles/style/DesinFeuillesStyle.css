@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : Benito
 */
 
+.root {
+    -fx-background-image: url("file:images/templates/water.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+}
+
 .button_fileToolbar {
     -fx-background-color: linear-gradient(#660000, #ff1a1a);
 }

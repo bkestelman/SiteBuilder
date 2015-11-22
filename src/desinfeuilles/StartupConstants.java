@@ -17,6 +17,7 @@ public class StartupConstants {
     public static String CSS_PATH = "./desinfeuilles/style/";
     public static String CSS_SHEET = CSS_PATH + "DesinFeuillesStyle.css";
     
+    public static String CSS_CLASS_ROOT = "root";
     public static String CSS_CLASS_FILE_TOOLBAR = "fileToolbar";
     public static String CSS_CLASS_FILE_TOOLBAR_BUTTON = "button_fileToolbar";
     public static String CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST = "button_fileToolbar_first";

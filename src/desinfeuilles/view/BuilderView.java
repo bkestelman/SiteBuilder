@@ -10,6 +10,7 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST;
 import static desinfeuilles.StartupConstants.CSS_CLASS_HBANNER;
+import static desinfeuilles.StartupConstants.CSS_CLASS_ROOT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
@@ -69,6 +70,7 @@ public class BuilderView {
     public void initView() {
         primaryStage = new Stage();
         root = new BorderPane();
+        root.getStyleClass().add(CSS_CLASS_ROOT);
         toolbars = new HBox();
         root.setTop(toolbars);
         
