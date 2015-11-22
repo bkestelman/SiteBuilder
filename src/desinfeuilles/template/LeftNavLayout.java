@@ -14,6 +14,7 @@ import javafx.scene.layout.Pane;
  */
 public class LeftNavLayout implements LayoutTemplate {
     BorderPane main;
+    NavBar nav;
     
     @Override
     public BorderPane getMainPane() {
@@ -27,7 +28,7 @@ public class LeftNavLayout implements LayoutTemplate {
 
     @Override
     public NavBar getNavBar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nav;
     }
 
     @Override

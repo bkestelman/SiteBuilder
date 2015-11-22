@@ -14,6 +14,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -33,21 +34,25 @@ public class Tutorial {
     VBox left;
     HBox bot;
     ImageView arrow;
+    Label tip;
     
     TranslateTransition translation;
+    TranslateTransition tipPos;
     
     public Tutorial(BuilderView v) {
         view = v;
         g = new HBox();
         g.getStyleClass().add(CSS_CLASS_ANIM_HBOX);
         arrow = new ImageView();
+        tip = new Label();
         //g.getChildren().add(arrow);
         view.getBorderPane().setCenter(g);
     }
     
     public void run() {
         arrow.setImage(new Image("file:" + PATH_ICONS + "Previous.png"));
-        g.getChildren().add(arrow);
+        tip.setText("Click here to choose your site layout");
+        g.getChildren().addAll(arrow, tip);
         /*Rectangle rect = new Rectangle();
         rect.setWidth(100);
         rect.setHeight(50);
@@ -68,6 +73,10 @@ public class Tutorial {
         translation.setCycleCount(Timeline.INDEFINITE);
         translation.setAutoReverse(true);
         translation.play();
+        tipPos = new TranslateTransition(Duration.millis(1000), tip);
+        tipPos.setFromX(fromX);
+        tipPos.setCycleCount(Timeline.INDEFINITE);
+        tipPos.play();
         /*ParallelTransition pt = new ParallelTransition();
         pt.getChildren().addAll(ft, tt);
         pt.setCycleCount(2);
