@@ -5,7 +5,9 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_NAV_SIMPLE;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -17,21 +19,27 @@ public class NavBarV extends NavBarView{
     VBox navBar;
     
     public NavBarV() {
+        super();
         navBar = new VBox();
-    }
-
-    @Override
-    public void addPage(String pageName, String pageLink) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
     }
 
     @Override
     public void initPageClickHandler(Label pageLabel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        pageLabel.setOnMouseClicked(e -> {
+            
+        });
     }
 
     @Override
-    public Pane getNavBarPane() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void addPage(String pageName, String pageLink) {
+        Label pageLabel = new Label(pageName);
+        navBar.getChildren().add(pageLabel);
+        initPageClickHandler(pageLabel);
+    }
+
+    @Override
+    public VBox getNavBarPane() {
+        return navBar;
     }
 }

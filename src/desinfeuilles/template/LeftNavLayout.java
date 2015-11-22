@@ -5,8 +5,10 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -14,7 +16,18 @@ import javafx.scene.layout.Pane;
  */
 public class LeftNavLayout implements LayoutTemplate {
     BorderPane main;
+    Banner banner;
     NavBarV nav;
+    ContentPane contentPane;
+    
+    public LeftNavLayout() {
+        main = new BorderPane();
+        banner = new Banner("Benito Kestelman");
+        nav = new NavBarV();
+        main.setTop(banner);
+        main.setLeft(nav.getNavBarPane());
+        main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
+    }
     
     @Override
     public BorderPane getMainPane() {
@@ -47,6 +60,6 @@ public class LeftNavLayout implements LayoutTemplate {
 
     @Override
     public NavBarView getNavBar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nav;
     }
 }
