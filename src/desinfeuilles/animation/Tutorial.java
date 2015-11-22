@@ -72,7 +72,7 @@ public class Tutorial {
         double fromX = view.getFileToolbar().getWidth() + view.getLayoutB().getLayoutX() + view.getLayoutB().getWidth()/4;
         translation.setFromX(fromX - arrow.getFitWidth()/2);
         translation.setFromY(view.getFileToolbar().getHeight() + 20);
-        translation.setToY(view.getFileToolbar().getHeight() - 30);
+        translation.setToY(view.getFileToolbar().getHeight() - 15);
         translation.setCycleCount(Timeline.INDEFINITE);
         translation.setAutoReverse(true);
         translation.play();

@@ -64,4 +64,5 @@ and open the template in the editor.
 
 .tutorial_tip {
     -fx-font-family: 'Chewy', cursive;
+    -fx-font-size: 20px;
 }
