@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.StyleTemplate;
 import java.util.Optional;
 import javafx.scene.control.ChoiceDialog;
 
@@ -44,6 +45,16 @@ public class StyleController {
     
     public void setView(BuilderView v) {
         view = v;
+    }
+    
+    public void openStyleChooser() {
+        ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
+        ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(styles.get(0), styles);
+        chooser.setTitle("Choose a Style Template");
+        Optional<StyleTemplate> selection = chooser.showAndWait();
+        if(selection.isPresent()) {
+            view.setStyleTemplate(selection.get());
+        }
     }
     
     public void openLayoutChooser() {

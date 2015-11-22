@@ -18,7 +18,9 @@ import static desinfeuilles.StartupConstants.PATH_ICONS;
 import static desinfeuilles.StartupConstants.TUTORIAL_FONT;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
+import desinfeuilles.template.EmptyLayout;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.StyleTemplate;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -51,10 +53,11 @@ public class BuilderView {
     BorderPane root;
     
     LayoutTemplate layout;
+    StyleTemplate style;
     
     Button newB, openB, saveB, exportB, exitB;
     
-    Button layoutB, addPageB;
+    Button styleTemplateB, layoutB, addPageB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -74,6 +77,9 @@ public class BuilderView {
         root.getStyleClass().add(CSS_CLASS_ROOT);
         toolbars = new HBox();
         root.setTop(toolbars);
+        
+        layout = new EmptyLayout();
+        root.setCenter(layout.getMainPane());
         
         //fileToolbar = new ToolBar();
         //fileToolbar.setPadding(new Insets(10));
@@ -106,6 +112,9 @@ public class BuilderView {
         exitB.setOnAction(e -> {
             fileController.handleExitRequest();
         });
+        styleTemplateB.setOnAction(e -> {
+            styleController.openStyleChooser();
+        });
         layoutB.setOnAction(e -> {
            styleController.openLayoutChooser(); 
         });
@@ -130,9 +139,10 @@ public class BuilderView {
     public void initStyleToolbar() {
         styleToolbar = new TilePane();
         styleToolbar.setHgap(10);
+        styleTemplateB = initButton("StyleTemplate.png", "Choose Style Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         layoutB = initButton("Template.png", "Choose Layout", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         addPageB = initButton("Add.png", "Add Page", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().addAll(layoutB, addPageB);
+        styleToolbar.getChildren().addAll(styleTemplateB, layoutB, addPageB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);
@@ -163,6 +173,11 @@ public class BuilderView {
         initLayout();
     }
     
+    public void setStyleTemplate(StyleTemplate style) {
+        this.style = style;
+        root.getCenter().setStyle("-fx-background-image: " + style.getMainImagePath());
+    }
+    
     public void initLayout() {
         layout.getNavBar().addPage("Home", "home.html");
     }
@@ -189,5 +204,9 @@ public class BuilderView {
     
     public Button getLayoutB() {
         return layoutB;
+    }
+    
+    public Button getStyleTemplateB() {
+        return styleTemplateB;
     }
 }

@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import desinfeuilles.template.LeftNavLayout;
 import java.util.Iterator;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.StyleTemplate;
 
 /**
  *
@@ -40,6 +41,7 @@ public class SiteBuilder extends Application {
     public Tutorial tutorial;
     public ArrayList<LayoutTemplate> layouts;
     public LayoutTemplate l1, l2;
+    public ArrayList<StyleTemplate> styles;
     
     @Override
     public void start(Stage stage) {
@@ -48,6 +50,9 @@ public class SiteBuilder extends Application {
         l2 = new CenterLayout();
         layouts.add(l1);
         layouts.add(l2);
+        styles = new ArrayList<>();
+        styles.add(new StyleTemplate("Aqua"));
+        initStyle(styles.get(0), "water.png");
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
@@ -60,6 +65,14 @@ public class SiteBuilder extends Application {
             tutorial.run();
         }
         //view.show();
+    }
+    
+    public void initStyle(StyleTemplate style, String mainImagePath) {
+        style.setMainImage(mainImagePath);
+    }
+    
+    public ArrayList<StyleTemplate> getStyles() {
+        return styles;
     }
     
     public ArrayList<LayoutTemplate> getLayouts() {

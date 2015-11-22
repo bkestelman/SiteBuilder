@@ -55,7 +55,7 @@ public class Tutorial {
     
     public void run() {
         arrow.setImage(new Image("file:" + PATH_ICONS + "Previous.png"));
-        tip.setText("Click here to choose your site layout");
+        tip.setText("Click here to choose a style template");
         g.getChildren().addAll(arrow, tip);
         /*Rectangle rect = new Rectangle();
         rect.setWidth(100);
@@ -69,7 +69,7 @@ public class Tutorial {
         ft.setCycleCount(2);*/
         arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
-        double fromX = view.getFileToolbar().getWidth() + view.getLayoutB().getLayoutX() + view.getLayoutB().getWidth()/4;
+        double fromX = view.getFileToolbar().getWidth() + view.getStyleTemplateB().getLayoutX() + view.getStyleTemplateB().getWidth()/4;
         translation.setFromX(fromX - arrow.getFitWidth()/2);
         translation.setFromY(view.getFileToolbar().getHeight() + 20);
         translation.setToY(view.getFileToolbar().getHeight() - 15);

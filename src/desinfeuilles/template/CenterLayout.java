@@ -25,7 +25,7 @@ public class CenterLayout implements LayoutTemplate {
         banner = new Banner("Benito Kestelman");
         nav = new NavBarH();
         main.getChildren().addAll(banner, nav.getNavBarPane());
-        main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
+        //main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
     }
     
     @Override

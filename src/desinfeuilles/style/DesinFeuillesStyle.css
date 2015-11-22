@@ -9,7 +9,6 @@ and open the template in the editor.
 */
 
 .root {
-    -fx-background-image: url("file:images/templates/water.jpg");
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100%;
 }
@@ -65,4 +64,5 @@ and open the template in the editor.
 .tutorial_tip {
     -fx-font-family: 'Chewy', cursive;
     -fx-font-size: 20px;
+    -fx-text-fill: white;
 }
