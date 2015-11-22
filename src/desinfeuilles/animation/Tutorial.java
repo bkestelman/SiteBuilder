@@ -66,15 +66,15 @@ public class Tutorial {
         arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
         double fromX = view.getFileToolbar().getWidth() + view.getLayoutB().getLayoutX() + view.getLayoutB().getWidth()/4;
-        translation.setFromX(fromX);
-        translation.setToX(fromX);
+        translation.setFromX(fromX - arrow.getFitWidth()/2);
         translation.setFromY(view.getFileToolbar().getHeight() + 20);
         translation.setToY(view.getFileToolbar().getHeight() - 30);
         translation.setCycleCount(Timeline.INDEFINITE);
         translation.setAutoReverse(true);
         translation.play();
         tipPos = new TranslateTransition(Duration.millis(1000), tip);
-        tipPos.setFromX(fromX);
+        tip.impl_processCSS(true);
+        tipPos.setFromX(fromX - tip.prefWidth(-1)/2); //derp code lol
         tipPos.setCycleCount(Timeline.INDEFINITE);
         tipPos.play();
         /*ParallelTransition pt = new ParallelTransition();
