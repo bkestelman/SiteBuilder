@@ -29,4 +29,7 @@ public class StartupConstants {
     public static String CSS_CLASS_CENTER_LAYOUT = "center_layout";
     public static String CSS_CLASS_NAV_SIMPLE = "nav_simple";
     public static String CSS_CLASS_BANNER = "banner";
+    public static String CSS_CLASS_TUTORIAL_TIP = "tutorial_tip";
+    
+    public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
 }

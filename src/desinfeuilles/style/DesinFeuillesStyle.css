@@ -61,3 +61,7 @@ and open the template in the editor.
 .banner {
     -fx-background-color: #ffff99;
 }
+
+.tutorial_tip {
+    -fx-font-family: 'Chewy', cursive;
+}

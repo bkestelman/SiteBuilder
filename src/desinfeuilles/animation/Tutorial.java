@@ -7,6 +7,7 @@ package desinfeuilles.animation;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import static desinfeuilles.StartupConstants.CSS_CLASS_ANIM_HBOX;
+import static desinfeuilles.StartupConstants.CSS_CLASS_TUTORIAL_TIP;
 import desinfeuilles.view.BuilderView;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
@@ -47,6 +48,7 @@ public class Tutorial {
         g.getStyleClass().add(CSS_CLASS_ANIM_HBOX);
         arrow = new ImageView();
         tip = new Label();
+        tip.getStyleClass().add(CSS_CLASS_TUTORIAL_TIP);
         //g.getChildren().add(arrow);
         view.getBorderPane().setCenter(g);
     }
