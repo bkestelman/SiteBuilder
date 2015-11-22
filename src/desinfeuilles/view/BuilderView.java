@@ -50,7 +50,7 @@ public class BuilderView {
     
     LayoutTemplate layout;
     
-    Button newB, openB, saveB, exitB;
+    Button newB, openB, saveB, exportB, exitB;
     
     Button layoutB;
     
@@ -115,8 +115,9 @@ public class BuilderView {
         newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST, false);
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        exportB = initButton("Export.png", "Export", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
-        fileToolbar.getChildren().addAll(newB, openB, saveB, exitB);
+        fileToolbar.getChildren().addAll(newB, openB, saveB, exportB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
         fileToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(fileToolbar, Priority.ALWAYS);
