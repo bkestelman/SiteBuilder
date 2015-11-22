@@ -5,6 +5,8 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_NAV_SIMPLE;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 
@@ -18,6 +20,8 @@ public class NavBarH extends NavBar {
     public NavBarH() {
         super();
         navBar = new HBox();
+        navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        navBar.getChildren().add(new Button("hello"));
     }
     
     public HBox getNavBar() {

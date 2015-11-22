@@ -13,7 +13,7 @@ import javafx.scene.layout.HBox;
  *
  * @author bkestelman
  */
-public abstract class NavBar extends HBox {
+public abstract class NavBar {
     HashMap<Label, String> pages; //also contain links
     
     public NavBar() {

@@ -21,7 +21,7 @@ public class CenterLayout implements LayoutTemplate {
     public CenterLayout() {
         main = new VBox();
         nav = new NavBarH();
-        main.getChildren().add(nav);
+        main.getChildren().add(nav.getNavBar());
         main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
     }
     

@@ -46,3 +46,7 @@ and open the template in the editor.
 .center_layout {
     -fx-background-color: white;
 }
+
+.nav_simple {
+    -fx-background-color: #ffd480;
+}
