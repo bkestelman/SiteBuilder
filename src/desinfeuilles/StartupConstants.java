@@ -25,4 +25,5 @@ public class StartupConstants {
     public static String CSS_CLASS_ANIM_HBOX = "anim_hbox";
     public static String CSS_CLASS_STYLE_CONTROLLER = "style_controller";
     public static String CSS_CLASS_HBANNER = "hbanner";
+    public static String CSS_CLASS_CENTER_LAYOUT = "center_layout";
 }

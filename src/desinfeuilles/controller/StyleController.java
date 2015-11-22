@@ -18,6 +18,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
+import java.util.Optional;
 import javafx.scene.control.ChoiceDialog;
 
 /**
@@ -48,9 +49,10 @@ public class StyleController {
     public void openLayoutChooser() {
         ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
         ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(layouts.get(0), layouts);
-        chooser.showAndWait();
-        if(siteBuilder.getTutorial() != null) {
-            siteBuilder.getTutorial().pointToStyleController();
+        chooser.setTitle("Choose a Layout");
+        Optional<LayoutTemplate> selection = chooser.showAndWait();
+        if(selection.isPresent()) {
+            view.setLayout(selection.get());
         }
     }
     
@@ -60,11 +62,6 @@ public class StyleController {
             ImageView im = new ImageView(new Image("file:" + PATH_TEMPLATES + "template" + i + ".png"));
             imgs.add(im);
             main.getChildren().add(im);
-        }
-        for(ImageView img : imgs) {
-            img.setOnMouseClicked(e -> {
-                view.setTemplate();
-            });
         }
     }
     

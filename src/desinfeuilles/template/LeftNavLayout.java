@@ -5,6 +5,7 @@
  */
 package desinfeuilles.template;
 
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 /**
@@ -12,6 +13,12 @@ import javafx.scene.layout.Pane;
  * @author Leora
  */
 public class LeftNavLayout implements LayoutTemplate {
+    BorderPane main;
+    
+    @Override
+    public BorderPane getMainPane() {
+        return main;
+    }
 
     @Override
     public ContentPane getContentPane() {

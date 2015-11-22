@@ -16,7 +16,12 @@ public class NavBarH extends NavBar {
     HBox navBar;
     
     public NavBarH() {
+        super();
         navBar = new HBox();
+    }
+    
+    public HBox getNavBar() {
+        return navBar;
     }
 
     @Override

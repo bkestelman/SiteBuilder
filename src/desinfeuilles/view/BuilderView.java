@@ -16,6 +16,7 @@ import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
+import desinfeuilles.template.LayoutTemplate;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -46,6 +47,8 @@ public class BuilderView {
     Stage primaryStage;
     Scene scene;
     BorderPane root;
+    
+    LayoutTemplate layout;
     
     Button newB, openB, saveB, exitB;
     
@@ -149,18 +152,14 @@ public class BuilderView {
         return b;
     }
     
-    public void setTemplate() {
-        /*if(styleController.getSelectedTemplate() == 1) {
-            vmain = new VBox();
-            root.setCenter(vmain);
-            hbanner = new HBox();
-            hbanner.getStyleClass().add(CSS_CLASS_HBANNER);
-            Label bannerLabel = new Label("This is some sweet banner dam");
-            hbanner.getChildren().add(bannerLabel);
-            nav = new TilePane();
-            vcontent = new VBox();
-            vmain.getChildren().addAll(hbanner, nav, vcontent);
-        }*/
+    public void setLayout(LayoutTemplate l) {
+        layout = l;
+        root.setCenter(layout.getMainPane());
+        initLayout();
+    }
+    
+    public void initLayout() {
+        layout.getNavBar().addPage("Home", "home.html");
     }
     
     public BorderPane getBorderPane() {

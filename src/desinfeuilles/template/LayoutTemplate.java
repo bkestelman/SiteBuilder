@@ -18,7 +18,7 @@ public interface LayoutTemplate {
     ContentPane content;
     Footer footer;*/
     
-    //public abstract Pane getMainPane();
+    public Pane getMainPane();
     public ContentPane getContentPane();
     public NavBar getNavBar();
     public Banner getBanner();

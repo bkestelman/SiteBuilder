@@ -7,13 +7,18 @@ package desinfeuilles.template;
 
 import java.util.HashMap;
 import javafx.scene.control.Label;
+import javafx.scene.layout.HBox;
 
 /**
  *
  * @author bkestelman
  */
-public abstract class NavBar {
+public abstract class NavBar extends HBox {
     HashMap<Label, String> pages; //also contain links
+    
+    public NavBar() {
+        pages = new HashMap<>();
+    }
     
     public void addPage(String pageName, String pageLink) {
         Label pageLabel = new Label(pageName);
@@ -26,5 +31,5 @@ public abstract class NavBar {
     }
     
     public abstract void addToNavBar(Label pageLabel);
-    public abstract void initPageClickHandler(Label pageLabel); //must be called by addToNaveBar()
+    public abstract void initPageClickHandler(Label pageLabel); //must be called by addToNavBar()
 }
