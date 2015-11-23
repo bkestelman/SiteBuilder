@@ -30,9 +30,11 @@ import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -241,6 +243,34 @@ public class StyleController {
     }
 
     private void openImageDialog() {
+        CustomDialog imageDialog = new CustomDialog();
+        Button browse = new Button("Browse");
+        imageDialog.addNode(browse);
+        HBox capH = new HBox();
+        Label l = new Label("Caption: ");
+        TextField cap = new TextField();
+        capH.getChildren().addAll(l, cap);
+        imageDialog.addNode(capH);
+        HBox scale = new HBox();
+        Label w = new Label("Width: ");
+        TextField wi = new TextField();
+        Label h = new Label("Height: ");
+        TextField he = new TextField();
+        scale.getChildren().addAll(w, wi, h, he);
+        imageDialog.addNode(scale);
+        HBox flo = new HBox();
+        Label fl = new Label("Float: ");
+        ToggleGroup group = new ToggleGroup();
+        RadioButton left = new RadioButton("Left");
+        left.setToggleGroup(group);
+        left.setSelected(true);
+        RadioButton right = new RadioButton("Right");
+        right.setToggleGroup(group);
+        RadioButton ne = new RadioButton("Neither");
+        ne.setToggleGroup(group);
+        flo.getChildren().addAll(fl, left, right, ne);
+        imageDialog.prepareToShow();
+        imageDialog.show();
     }
 
     private void openSlideShowDialog() {
