@@ -55,8 +55,8 @@ public class SiteBuilder extends Application {
         styles = new ArrayList<>();
         styles.add(new StyleTemplate("Aqua"));
         styles.add(new StyleTemplate("Yellow Fantasy"));
-        initStyle(styles.get(0), "water.jpg");
-        initStyle(styles.get(1), "yellow.jpg");
+        initStyle(styles.get(0), "Aqua");
+        initStyle(styles.get(1), "Yellow");
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
@@ -71,8 +71,9 @@ public class SiteBuilder extends Application {
         //view.show();
     }
     
-    public void initStyle(StyleTemplate style, String mainImageName) {
-        style.setMainImagePath(PATH_TEMPLATES + mainImageName);
+    public void initStyle(StyleTemplate style, String templateName) {
+        style.setMainImagePath(PATH_TEMPLATES + templateName + "/main.jpg");
+        style.setBannerImagePath(PATH_TEMPLATES + templateName + "/banner.jpg");
     }
     
     public ArrayList<StyleTemplate> getStyles() {

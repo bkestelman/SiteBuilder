@@ -17,20 +17,33 @@ import javafx.scene.layout.Pane;
 public class StyleTemplate {
     //ImageView mainImage, bannerImage;
     //LayoutTemplate layout;
-    String styleName, mainImagePath;
+    String styleName, mainImagePath, bannerImagePath;
     
     public StyleTemplate(String style) {
         styleName = style;
+    }
+    
+    public void applyFullStyle(LayoutTemplate layout) {
+        applyMainStyle(layout);
+        applyBannerStyle(layout);
     }
     
     public void applyMainStyle(LayoutTemplate layout) {
         layout.getMainPane().setStyle("-fx-background-image: url(file:" + mainImagePath + ");");
     }
     
+    public void applyBannerStyle(LayoutTemplate layout) {
+        layout.getBanner().setStyle("-fx-background-image: url(file:" + bannerImagePath + ");");
+    }
+    
     public void setMainImagePath(String imagePath) {
         //main = new ImageView(new Image(PATH_IMAGES + imagePath));
         //layout.getMainPane().setStyle("-fx-background-image: " + PATH_IMAGES + imagePath);
         mainImagePath = imagePath;
+    }
+    
+    public void setBannerImagePath(String imagePath) {
+        bannerImagePath = imagePath;
     }
     
     public String getMainImagePath() {

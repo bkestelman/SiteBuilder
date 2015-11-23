@@ -41,7 +41,7 @@ public class CenterLayout extends LayoutTemplate {
 
     @Override
     public Banner getBanner() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return banner;
     }
 
     @Override
@@ -67,6 +67,6 @@ public class CenterLayout extends LayoutTemplate {
     @Override
     public void applyStyle(StyleTemplate style) {
         this.style = style;
-        style.applyMainStyle(this);
+        style.applyFullStyle(this);
     }
 }
