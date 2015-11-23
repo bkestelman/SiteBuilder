@@ -54,7 +54,9 @@ public class SiteBuilder extends Application {
         layouts.add(l2);
         styles = new ArrayList<>();
         styles.add(new StyleTemplate("Aqua"));
+        styles.add(new StyleTemplate("Yellow Fantasy"));
         initStyle(styles.get(0), "water.jpg");
+        initStyle(styles.get(1), "yellow.jpg");
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
