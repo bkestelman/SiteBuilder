@@ -55,6 +55,18 @@ public class CustomDialog extends Stage {
         });
     }
     
+    public void addHeight(double h) {
+        setHeight(getHeight() + h);
+    }
+    
+    public void addConfirm() {
+        addNode(confirm);
+    }
+    
+    public VBox getRoot() {
+        return root;
+    }
+    
     public void addNode(Node n) {
         root.getChildren().add(n);
     }

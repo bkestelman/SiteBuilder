@@ -51,6 +51,8 @@ public class StyleController {
     ArrayList<ImageView> imgs;
     int selectedTemplate;
     
+    private static int listElements = 0;
+    
     public StyleController(SiteBuilder sb) {
         main = new HBox();
         main.getStyleClass().add(CSS_CLASS_STYLE_CONTROLLER);
@@ -204,11 +206,41 @@ public class StyleController {
     }
 
     private void openListDialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listElements = 1;
+        
+        CustomDialog lDialog = new CustomDialog();
+        HBox element1 = new HBox();
+        Label l1 = new Label("Element 1: ");
+        TextField t1 = new TextField();
+        element1.getChildren().addAll(l1, t1);
+        lDialog.addNode(element1);
+        
+        Button add = new Button("Add Element");
+        lDialog.addNode(add);
+        
+        ArrayList<HBox> elements = new ArrayList<>();
+        elements.add(element1);
+        
+        add.setOnAction(e -> {
+           Label l = new Label("Element " + (++listElements) + ": ");
+           TextField t = new TextField();
+           HBox el = new HBox();
+           el.getChildren().addAll(l, t);
+           elements.add(el);
+           lDialog.getRoot().getChildren().clear();
+           for(HBox h : elements) {
+               lDialog.addNode(h);
+           }
+           lDialog.addNode(add);
+           lDialog.addConfirm();
+           t1.impl_processCSS(true);
+           lDialog.addHeight(t1.getHeight());
+        });
+        lDialog.prepareToShow();
+        lDialog.show();
     }
 
     private void openImageDialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void openSlideShowDialog() {
