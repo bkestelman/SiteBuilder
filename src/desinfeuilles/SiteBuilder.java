@@ -5,6 +5,8 @@
  */
 package desinfeuilles;
 
+import static desinfeuilles.StartupConstants.PATH_IMAGES;
+import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
@@ -52,7 +54,7 @@ public class SiteBuilder extends Application {
         layouts.add(l2);
         styles = new ArrayList<>();
         styles.add(new StyleTemplate("Aqua"));
-        initStyle(styles.get(0), "water.png");
+        initStyle(styles.get(0), "water.jpg");
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
@@ -67,8 +69,8 @@ public class SiteBuilder extends Application {
         //view.show();
     }
     
-    public void initStyle(StyleTemplate style, String mainImagePath) {
-        style.setMainImage(mainImagePath);
+    public void initStyle(StyleTemplate style, String mainImageName) {
+        style.setMainImage(PATH_TEMPLATES + mainImageName);
     }
     
     public ArrayList<StyleTemplate> getStyles() {

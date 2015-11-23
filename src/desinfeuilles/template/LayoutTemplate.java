@@ -24,5 +24,7 @@ public interface LayoutTemplate {
     public Banner getBanner();
     public Footer getFooter();
     public Pane getSelectedPane();
+    public void applyStyle(StyleTemplate style);
+    @Override
     public String toString();
 }

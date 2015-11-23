@@ -8,14 +8,15 @@ package desinfeuilles.template;
 import static desinfeuilles.StartupConstants.PATH_IMAGES;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 
 /**
  *
  * @author Leora
  */
 public class StyleTemplate {
-    //ImageView main, banner;
-    LayoutTemplate layout;
+    //ImageView mainImage, bannerImage;
+    //LayoutTemplate layout;
     String styleName, mainImagePath;
     
     public StyleTemplate(String style) {
@@ -24,7 +25,7 @@ public class StyleTemplate {
     
     public void setMainImage(String imagePath) {
         //main = new ImageView(new Image(PATH_IMAGES + imagePath));
-        layout.getMainPane().setStyle("-fx-background-image: " + PATH_IMAGES + imagePath);
+        //layout.getMainPane().setStyle("-fx-background-image: " + PATH_IMAGES + imagePath);
         mainImagePath = imagePath;
     }
     

@@ -6,6 +6,7 @@
 package desinfeuilles.view;
 
 import desinfeuilles.SiteBuilder;
+import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST;
@@ -80,6 +81,7 @@ public class BuilderView {
         
         layout = new EmptyLayout();
         root.setCenter(layout.getMainPane());
+        layout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         
         //fileToolbar = new ToolBar();
         //fileToolbar.setPadding(new Insets(10));
@@ -175,7 +177,7 @@ public class BuilderView {
     
     public void setStyleTemplate(StyleTemplate style) {
         this.style = style;
-        root.getCenter().setStyle("-fx-background-image: " + style.getMainImagePath());
+        layout.applyStyle(style);
     }
     
     public void initLayout() {

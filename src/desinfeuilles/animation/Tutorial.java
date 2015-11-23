@@ -44,19 +44,20 @@ public class Tutorial {
     
     public Tutorial(BuilderView v) {
         view = v;
-        g = new HBox();
-        g.getStyleClass().add(CSS_CLASS_ANIM_HBOX);
+        //g = new HBox();
+        //g.getStyleClass().add(CSS_CLASS_ANIM_HBOX);
+        animationPane = (Pane) view.getBorderPane().getCenter();
         arrow = new ImageView();
         tip = new Label();
         tip.getStyleClass().add(CSS_CLASS_TUTORIAL_TIP);
         //g.getChildren().add(arrow);
-        view.getBorderPane().setCenter(g);
+        //view.getBorderPane().setCenter(g);
     }
     
     public void run() {
         arrow.setImage(new Image("file:" + PATH_ICONS + "Previous.png"));
         tip.setText("Click here to choose a style template");
-        g.getChildren().addAll(arrow, tip);
+        animationPane.getChildren().addAll(arrow, tip);
         /*Rectangle rect = new Rectangle();
         rect.setWidth(100);
         rect.setHeight(50);

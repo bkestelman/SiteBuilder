@@ -62,4 +62,9 @@ public class CenterLayout implements LayoutTemplate {
     public NavBarView getNavBar() {
         return nav;
     }
+
+    @Override
+    public void applyStyle(StyleTemplate style) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

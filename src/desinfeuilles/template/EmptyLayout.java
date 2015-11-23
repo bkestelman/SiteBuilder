@@ -13,6 +13,7 @@ import javafx.scene.layout.Pane;
  */
 public class EmptyLayout implements LayoutTemplate {
     Pane main;
+    StyleTemplate style;
     
     public EmptyLayout() {
         main = new Pane();
@@ -48,6 +49,13 @@ public class EmptyLayout implements LayoutTemplate {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public void applyStyle(StyleTemplate style) {
+        this.style = style;
+        main.setStyle("-fx-background-image: url(file:" + style.getMainImagePath() + ")");
+        //main.setStyle("-fx-background-color: blue;");
+    }
+    
+    @Override
     public String toString() {
         return "Empty";
     }

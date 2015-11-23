@@ -10,7 +10,7 @@ package desinfeuilles;
  * @author Benito
  */
 public class StartupConstants {
-    public static String PATH_IMAGES = "./images/";
+    public static String PATH_IMAGES = "images/";
     public static String PATH_ICONS = PATH_IMAGES + "icons/";
     public static String PATH_TEMPLATES = PATH_IMAGES + "templates/";
     
@@ -30,6 +30,7 @@ public class StartupConstants {
     public static String CSS_CLASS_NAV_SIMPLE = "nav_simple";
     public static String CSS_CLASS_BANNER = "banner";
     public static String CSS_CLASS_TUTORIAL_TIP = "tutorial_tip";
+    public static String CSS_CLASS_EMPTY_LAYOUT = "empty_layout";
     
     public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
 }
