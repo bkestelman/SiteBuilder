@@ -11,7 +11,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Leora
  */
-public class EmptyLayout implements LayoutTemplate {
+public class EmptyLayout extends LayoutTemplate {
     Pane main;
     StyleTemplate style;
     

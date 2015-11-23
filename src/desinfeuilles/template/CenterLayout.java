@@ -15,12 +15,11 @@ import javafx.scene.layout.VBox;
  *
  * @author Leora
  */
-public class CenterLayout implements LayoutTemplate {
+public class CenterLayout extends LayoutTemplate {
     VBox main;
     Banner banner;
     NavBarH nav;
     ContentPane contentPane;
-    private StyleTemplate style;
     
     public CenterLayout() {
         main = new VBox();

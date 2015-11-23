@@ -11,20 +11,21 @@ import javafx.scene.layout.Pane;
  *
  * @author bkestelman
  */
-public interface LayoutTemplate {
+public abstract class LayoutTemplate {
     /*Pane mainPane;
     NavBar nav;
     Banner banner;
     ContentPane content;
     Footer footer;*/
+    StyleTemplate style;
     
-    public Pane getMainPane();
-    public ContentPane getContentPane();
-    public NavBarView getNavBar();
-    public Banner getBanner();
-    public Footer getFooter();
-    public Pane getSelectedPane();
-    public void applyStyle(StyleTemplate style);
+    public abstract Pane getMainPane();
+    public abstract ContentPane getContentPane();
+    public abstract NavBarView getNavBar();
+    public abstract Banner getBanner();
+    public abstract Footer getFooter();
+    public abstract Pane getSelectedPane();
+    public abstract void applyStyle(StyleTemplate style);
     @Override
-    public String toString();
+    public abstract String toString();
 }

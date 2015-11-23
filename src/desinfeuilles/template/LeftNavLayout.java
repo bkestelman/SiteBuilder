@@ -15,12 +15,11 @@ import javafx.scene.layout.VBox;
  *
  * @author Leora
  */
-public class LeftNavLayout implements LayoutTemplate {
+public class LeftNavLayout extends LayoutTemplate {
     BorderPane main;
     Banner banner;
     NavBarV nav;
     ContentPane contentPane;
-    private StyleTemplate style;
     
     public LeftNavLayout() {
         main = new BorderPane();

@@ -58,7 +58,7 @@ public class BuilderView {
     
     Button newB, openB, saveB, exportB, exitB;
     
-    Button styleTemplateB, layoutB, addPageB;
+    Button styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -143,8 +143,13 @@ public class BuilderView {
         styleToolbar.setHgap(10);
         styleTemplateB = initButton("StyleTemplate.png", "Choose Style Template", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         layoutB = initButton("Template.png", "Choose Layout", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        addPageB = initButton("Add.png", "Add Page", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().addAll(styleTemplateB, layoutB, addPageB);
+        editTextB = initButton("Edit.png", "Edit Text", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        backgroundImageB = initButton("Background.png", "Select Background Image", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        colorB = initButton("Paint.png", "Select Color", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        fontB = initButton("Font.png", "Select Font", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        addContentB = initButton("Add.png", "Add Content", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        addPageB = initButton("AddPage.png", "Add Page", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        styleToolbar.getChildren().addAll(styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);
