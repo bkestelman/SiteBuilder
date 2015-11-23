@@ -55,6 +55,8 @@ public class StyleController {
         if(selection.isPresent()) {
             view.setStyleTemplate(selection.get());
         }
+        siteBuilder.getTutorial().stopAnimations();
+        siteBuilder.getTutorial().pointToStyleToolbar(view.getLayoutB(), "You are genuine artiste. Now choose a layout.");
     }
     
     public void openLayoutChooser() {

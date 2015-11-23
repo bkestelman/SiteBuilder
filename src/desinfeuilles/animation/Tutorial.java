@@ -15,6 +15,7 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -56,21 +57,15 @@ public class Tutorial {
     
     public void run() {
         arrow.setImage(new Image("file:" + PATH_ICONS + "Previous.png"));
-        tip.setText("Click here to choose a style template");
         animationPane.getChildren().addAll(arrow, tip);
-        /*Rectangle rect = new Rectangle();
-        rect.setWidth(100);
-        rect.setHeight(50);
-        rect.setX(50);
-        rect.setFill(Color.RED);
-        g.getChildren().add(rect);*/
-        /*FadeTransition ft = new FadeTransition(Duration.millis(1500), arrow);
-        ft.setFromValue(0);
-        ft.setToValue(1);
-        ft.setCycleCount(2);*/
+        pointToStyleToolbar(view.getStyleTemplateB(), "Click here to choose a style template");
+    }
+    
+    public void pointToStyleToolbar(Button b, String tipMsg) {
+        tip.setText(tipMsg);
         arrow.setRotate(90);
         translation = new TranslateTransition(Duration.millis(1500), arrow);
-        double fromX = view.getFileToolbar().getWidth() + view.getStyleTemplateB().getLayoutX() + view.getStyleTemplateB().getWidth()/4;
+        double fromX = view.getFileToolbar().getWidth() + b.getLayoutX() + b.getWidth()/4;
         translation.setFromX(fromX - arrow.getFitWidth()/2);
         translation.setFromY(view.getFileToolbar().getHeight() + 20);
         translation.setToY(view.getFileToolbar().getHeight() - 15);
@@ -86,6 +81,11 @@ public class Tutorial {
         pt.getChildren().addAll(ft, tt);
         pt.setCycleCount(2);
         pt.play();*/
+    }
+    
+    public void stopAnimations() {
+        translation.stop();
+        tipPos.stop();
     }
     
     public void pointToStyleController() {
