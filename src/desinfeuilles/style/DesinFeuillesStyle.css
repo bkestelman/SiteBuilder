@@ -58,7 +58,10 @@ and open the template in the editor.
 }
 
 .banner {
-    -fx-background-color: #ffff99;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-border-color: black;
+    -fx-border-width: 0 10 10 10;
 }
 
 .tutorial_tip {
@@ -75,6 +78,10 @@ and open the template in the editor.
 
 .selected {
     -fx-background-color: #ff99bb;
+    -fx-border-color: #ff4da6;
+}
+
+.selected_image {
 }
 
 .color_picker {

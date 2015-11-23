@@ -6,8 +6,11 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_BANNER;
+import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED_IMAGE;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 
@@ -24,6 +27,7 @@ public class Banner extends HBox {
         this.getChildren().add(bannerHeader);
         this.getStyleClass().add(CSS_CLASS_BANNER);
         initSelectEventHandlers();
+        setPrefHeight(210);
     }
 
     Banner() {
@@ -41,6 +45,9 @@ public class Banner extends HBox {
     public void initSelectEventHandlers() {
         bannerHeader.setOnMouseClicked(e -> {
             bannerHeader.getStyleClass().add(CSS_CLASS_SELECTED);
+        });
+        this.setOnMouseClicked(e -> {
+            getStyleClass().add(CSS_CLASS_SELECTED);
         });
     }
 }
