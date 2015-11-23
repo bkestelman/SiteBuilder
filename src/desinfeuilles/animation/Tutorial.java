@@ -83,6 +83,22 @@ public class Tutorial {
         pt.play();*/
     }
     
+    public void pointToBannerHeader(String msg) {
+        animationPane = view.getLayout().getBanner();
+        animationPane.getChildren().addAll(arrow, tip);
+        tip.setText(msg);
+        arrow.setRotate(0);
+        double toX = view.getLayout().getBanner().getHeader().getLayoutX();
+        translation.setFromX(toX + 30);
+        translation.setToX(toX);
+        translation.setFromY(0);
+        translation.setToY(0);
+        translation.play();
+        tipPos.setFromX(toX + 30 + 20);
+        tipPos.setFromY(0);
+        tipPos.play();
+    }
+    
     public void stopAnimations() {
         translation.stop();
         tipPos.stop();

@@ -55,8 +55,10 @@ public class StyleController {
         if(selection.isPresent()) {
             view.setStyleTemplate(selection.get());
         }
-        siteBuilder.getTutorial().stopAnimations();
-        siteBuilder.getTutorial().pointToStyleToolbar(view.getLayoutB(), "You are genuine artiste. Now choose a layout.");
+        if(siteBuilder.getTutorial() != null) {
+            siteBuilder.getTutorial().stopAnimations();
+            siteBuilder.getTutorial().pointToStyleToolbar(view.getLayoutB(), "You are genuine artiste. Now choose a layout.");
+        }
     }
     
     public void openLayoutChooser() {
@@ -66,6 +68,10 @@ public class StyleController {
         Optional<LayoutTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
             view.setLayout(selection.get());
+        }
+        if(siteBuilder.getTutorial() != null) {
+            siteBuilder.getTutorial().stopAnimations();
+            siteBuilder.getTutorial().pointToBannerHeader("Click the banner header to select it.");
         }
     }
     

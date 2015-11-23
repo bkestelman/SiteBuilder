@@ -31,4 +31,8 @@ public class Banner extends HBox {
     public void setBannerImage(ImageView imv) {
         bannerImage = imv;
     }
+    
+    public Label getHeader() {
+        return bannerHeader;
+    }
 }

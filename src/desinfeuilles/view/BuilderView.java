@@ -190,6 +190,10 @@ public class BuilderView {
         layout.applyStyle(style);
     }
     
+    public LayoutTemplate getLayout() {
+        return layout;
+    }
+    
     public BorderPane getBorderPane() {
         return root;
     }
