@@ -79,3 +79,7 @@ and open the template in the editor.
 
 .color_picker {
 }
+
+.dialog {
+    -fx-background-color: yellow;
+}

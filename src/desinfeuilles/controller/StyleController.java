@@ -6,6 +6,7 @@
 package desinfeuilles.controller;
 
 import desinfeuilles.SiteBuilder;
+import static desinfeuilles.StartupConstants.CSS_CLASS_DIALOG;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.view.BuilderView;
@@ -19,6 +20,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
+import desinfeuilles.view.CustomDialog;
 import java.util.Optional;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,6 +28,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -57,6 +62,7 @@ public class StyleController {
     public void openStyleChooser() {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
         ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(styles.get(0), styles);
+        chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
         chooser.setTitle("Choose a Style Template");
         Optional<StyleTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
@@ -166,6 +172,8 @@ public class StyleController {
                     openSlideShowDialog();
                 case "Video": 
                     openVideoDialog();
+                default:
+                    break;
             }
         }
     }
@@ -175,7 +183,14 @@ public class StyleController {
     }
 
     private void openParagraphDialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CustomDialog pDialog = new CustomDialog();
+        TextArea pText = new TextArea();
+        pText.setPrefColumnCount(25);
+        pText.setPrefRowCount(30);
+        pDialog.addNode(pText);
+        pDialog.setTitle("Edit Paragraph");
+        pDialog.prepareToShow();
+        pDialog.show();
     }
 
     private void openListDialog() {

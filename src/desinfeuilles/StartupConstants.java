@@ -33,6 +33,7 @@ public class StartupConstants {
     public static String CSS_CLASS_EMPTY_LAYOUT = "empty_layout";
     public static String CSS_CLASS_SELECTED = "selected";
     public static String CSS_CLASS_COLOR_PICKER = "color_picker";
+    public static String CSS_CLASS_DIALOG = "dialog";
     
     public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
 }
