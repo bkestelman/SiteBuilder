@@ -144,9 +144,53 @@ public class StyleController {
     public void openAddContentDialog() {
         //content type selection (dropdown?)
         //text, list, image, video, slideshow -> open editor for selection
+        ArrayList<String> contentTypes = new ArrayList<>();
+        contentTypes.add("Paragraph");
+        contentTypes.add("List");
+        contentTypes.add("Image");
+        contentTypes.add("Slide Show");
+        contentTypes.add("Video");
+        ChoiceDialog<String> chooser = new ChoiceDialog<>(contentTypes.get(0), contentTypes);
+        chooser.setTitle("Add Content");
+        Optional<String> selection = chooser.showAndWait();
+        if(selection.isPresent()) {
+            String contentType = selection.get();
+            switch(contentType) {
+                case "Paragraph": 
+                    openParagraphDialog();
+                case "List": 
+                    openListDialog();
+                case "Image":
+                    openImageDialog();
+                case "Slide Show":
+                    openSlideShowDialog();
+                case "Video": 
+                    openVideoDialog();
+            }
+        }
     }
 
     public void openAddPageDialog() {
         //page name
+    }
+
+    private void openParagraphDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void openListDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void openImageDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void openSlideShowDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void openVideoDialog() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
