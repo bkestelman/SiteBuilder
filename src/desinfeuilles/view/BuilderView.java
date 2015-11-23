@@ -60,7 +60,7 @@ public class BuilderView {
     
     Button newB, openB, saveB, saveAsB, exportB, exitB;
     
-    Button styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB;
+    Button styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB, removeB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -140,6 +140,9 @@ public class BuilderView {
         addPageB.setOnAction(e -> {
             styleController.openAddPageDialog();
         });
+        removeB.setOnAction(e -> {
+            styleController.openRemoveDialog();
+        });
     }
     
     public void initFileToolbar() {
@@ -170,7 +173,8 @@ public class BuilderView {
         fontB = initButton("Font.png", "Select Font", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         addContentB = initButton("Add.png", "Add Content", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
         addPageB = initButton("AddPage.png", "Add Page", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
-        styleToolbar.getChildren().addAll(styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB);
+        removeB = initButton("DeleteScheduleItem.png", "Remove Component", CSS_CLASS_STYLE_TOOLBAR_BUTTON, false);
+        styleToolbar.getChildren().addAll(styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB, removeB);
         styleToolbar.getStyleClass().add(CSS_CLASS_STYLE_TOOLBAR);
         styleToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(styleToolbar, Priority.ALWAYS);

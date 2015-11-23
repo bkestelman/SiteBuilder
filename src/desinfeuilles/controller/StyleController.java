@@ -25,9 +25,11 @@ import java.util.Optional;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -180,6 +182,14 @@ public class StyleController {
 
     public void openAddPageDialog() {
         //page name
+        CustomDialog pageDialog = new CustomDialog();
+        HBox nameSet = new HBox();
+        Label l = new Label("Page Name: ");
+        TextField name = new TextField();
+        nameSet.getChildren().addAll(l,  name);
+        pageDialog.addNode(nameSet);
+        pageDialog.prepareToShow();
+        pageDialog.show();
     }
 
     private void openParagraphDialog() {
@@ -207,5 +217,17 @@ public class StyleController {
 
     private void openVideoDialog() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void removeComponent() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void openRemoveDialog() {
+        Alert removeAlert = new Alert(AlertType.CONFIRMATION);
+        removeAlert.setTitle("Remove Content");
+        removeAlert.setHeaderText("Really Remove Content?");
+        removeAlert.setContentText("This cannot be undone");
+        Optional<ButtonType> response = removeAlert.showAndWait();
     }
 }
