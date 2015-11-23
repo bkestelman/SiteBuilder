@@ -70,5 +70,5 @@ and open the template in the editor.
 .empty_layout {
     -fx-background-repeat: no-repeat;
     -fx-background-size: 100%;
-    -fx-background-color: linear-gradient(#4d0033, #ff99bb);
+    -fx-background-color: linear-gradient(to bottom right, #4d0033, #ff99bb);
 }
