@@ -72,3 +72,7 @@ and open the template in the editor.
     -fx-background-size: 100%;
     -fx-background-color: linear-gradient(to bottom right, #4d0033, #ff99bb);
 }
+
+.selected {
+    -fx-background-color: #ff99bb;
+}

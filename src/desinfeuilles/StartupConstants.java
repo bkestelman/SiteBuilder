@@ -31,6 +31,7 @@ public class StartupConstants {
     public static String CSS_CLASS_BANNER = "banner";
     public static String CSS_CLASS_TUTORIAL_TIP = "tutorial_tip";
     public static String CSS_CLASS_EMPTY_LAYOUT = "empty_layout";
+    public static String CSS_CLASS_SELECTED = "selected";
     
     public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
 }
