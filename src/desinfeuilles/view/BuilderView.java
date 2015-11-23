@@ -6,6 +6,7 @@
 package desinfeuilles.view;
 
 import desinfeuilles.SiteBuilder;
+import static desinfeuilles.StartupConstants.CSS_CLASS_COLOR_PICKER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
@@ -27,6 +28,7 @@ import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
@@ -56,7 +58,7 @@ public class BuilderView {
     LayoutTemplate layout;
     StyleTemplate style;
     
-    Button newB, openB, saveB, exportB, exitB;
+    Button newB, openB, saveB, saveAsB, exportB, exitB;
     
     Button styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB;
     
@@ -120,6 +122,24 @@ public class BuilderView {
         layoutB.setOnAction(e -> {
            styleController.openLayoutChooser(); 
         });
+        editTextB.setOnAction(e -> {
+            styleController.openTextEditor();
+        });
+        backgroundImageB.setOnAction(e -> {
+            styleController.openBackgroundImageChooser();
+        });
+        colorB.setOnAction(e -> {
+            styleController.openColorChooser();
+        });
+        fontB.setOnAction(e -> {
+            styleController.openFontChooser();
+        });
+        addContentB.setOnAction(e -> {
+            styleController.openAddContentDialog();
+        });
+        addPageB.setOnAction(e -> {
+            styleController.openAddPageDialog();
+        });
     }
     
     public void initFileToolbar() {
@@ -129,9 +149,10 @@ public class BuilderView {
         newB = initButton("New.png", "New", CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST, false);
         openB = initButton("Load.png", "Open", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         saveB = initButton("Save.png", "Save", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
+        saveAsB = initButton("SaveAs.png", "Save As", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exportB = initButton("Export.png", "Export", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
         exitB = initButton("Exit.png", "Exit", CSS_CLASS_FILE_TOOLBAR_BUTTON, false);
-        fileToolbar.getChildren().addAll(newB, openB, saveB, exportB, exitB);
+        fileToolbar.getChildren().addAll(newB, openB, saveB, saveAsB, exportB, exitB);
         fileToolbar.getStyleClass().add(CSS_CLASS_FILE_TOOLBAR);
         fileToolbar.setMaxWidth(Double.MAX_VALUE);
         HBox.setHgrow(fileToolbar, Priority.ALWAYS);

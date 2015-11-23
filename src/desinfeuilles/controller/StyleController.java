@@ -20,7 +20,14 @@ import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
 import java.util.Optional;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ChoiceDialog;
+import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Dialog;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *
@@ -94,5 +101,52 @@ public class StyleController {
     
     public float getHeight() {
         return HEIGHT;
+    }
+
+    public void openTextEditor() {
+        //dialog with text area
+    }
+
+    public void openBackgroundImageChooser() {
+        //dialog with browse button and options (repeat, 100%)
+    }
+
+    public void openColorChooser() {
+        Stage colorStage = new Stage();
+        VBox root = new VBox();
+        ColorPicker palette = new ColorPicker();
+        root.getChildren().add(palette);
+        HBox confirm = new HBox();
+        Button ok = new Button("Ok");
+        Button cancel = new Button("Cancel");
+        confirm.getChildren().addAll(ok, cancel);
+        root.getChildren().add(confirm);
+        confirm.setAlignment(Pos.CENTER);
+        Scene s = new Scene(root);
+        colorStage.setScene(s);
+        colorStage.show();
+        /*Alert colorDialog = new Alert(AlertType.CONFIRMATION);
+        colorDialog.setHeaderText("Choose a color");
+        colorDialog.setTitle("Color Picker");
+        final ColorPicker palette = new ColorPicker();
+        //palette.setPromptText("Color:");
+        colorDialog.getDialogPane().getChildren().add(palette);
+        palette.setLayoutY(100);
+        palette.setMinWidth(100);
+        palette.setMaxWidth(Double.MAX_VALUE);
+        colorDialog.showAndWait();*/
+    }
+
+    public void openFontChooser() {
+        //fonts in list, preview label in font
+    }
+
+    public void openAddContentDialog() {
+        //content type selection (dropdown?)
+        //text, list, image, video, slideshow -> open editor for selection
+    }
+
+    public void openAddPageDialog() {
+        //page name
     }
 }
