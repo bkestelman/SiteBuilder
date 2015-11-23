@@ -182,6 +182,7 @@ public class BuilderView {
     
     public void initLayout() {
         layout.getNavBar().addPage("Home", "home.html");
+        layout.applyStyle(style);
     }
     
     public BorderPane getBorderPane() {

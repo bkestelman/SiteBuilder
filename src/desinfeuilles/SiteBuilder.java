@@ -72,7 +72,7 @@ public class SiteBuilder extends Application {
     }
     
     public void initStyle(StyleTemplate style, String mainImageName) {
-        style.setMainImage(PATH_TEMPLATES + mainImageName);
+        style.setMainImagePath(PATH_TEMPLATES + mainImageName);
     }
     
     public ArrayList<StyleTemplate> getStyles() {

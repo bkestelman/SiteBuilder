@@ -6,6 +6,7 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
+import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,7 @@ public class LeftNavLayout implements LayoutTemplate {
     Banner banner;
     NavBarV nav;
     ContentPane contentPane;
+    private StyleTemplate style;
     
     public LeftNavLayout() {
         main = new BorderPane();
@@ -26,7 +28,7 @@ public class LeftNavLayout implements LayoutTemplate {
         nav = new NavBarV();
         main.setTop(banner);
         main.setLeft(nav.getNavBarPane());
-        //main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
+        main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
     
     @Override
@@ -65,6 +67,7 @@ public class LeftNavLayout implements LayoutTemplate {
 
     @Override
     public void applyStyle(StyleTemplate style) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.style = style;
+        style.applyMainStyle(this);
     }
 }

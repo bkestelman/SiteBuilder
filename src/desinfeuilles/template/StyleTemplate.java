@@ -23,7 +23,11 @@ public class StyleTemplate {
         styleName = style;
     }
     
-    public void setMainImage(String imagePath) {
+    public void applyMainStyle(LayoutTemplate layout) {
+        layout.getMainPane().setStyle("-fx-background-image: url(file:" + mainImagePath + ");");
+    }
+    
+    public void setMainImagePath(String imagePath) {
         //main = new ImageView(new Image(PATH_IMAGES + imagePath));
         //layout.getMainPane().setStyle("-fx-background-image: " + PATH_IMAGES + imagePath);
         mainImagePath = imagePath;

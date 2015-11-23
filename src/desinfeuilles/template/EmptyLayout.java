@@ -51,7 +51,8 @@ public class EmptyLayout implements LayoutTemplate {
     
     public void applyStyle(StyleTemplate style) {
         this.style = style;
-        main.setStyle("-fx-background-image: url(file:" + style.getMainImagePath() + ")");
+        style.applyMainStyle(this);
+        //main.setStyle("-fx-background-image: url(file:" + style.getMainImagePath() + ")");
         //main.setStyle("-fx-background-color: blue;");
     }
     

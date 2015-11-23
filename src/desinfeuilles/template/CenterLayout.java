@@ -6,6 +6,7 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
+import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -19,13 +20,14 @@ public class CenterLayout implements LayoutTemplate {
     Banner banner;
     NavBarH nav;
     ContentPane contentPane;
+    private StyleTemplate style;
     
     public CenterLayout() {
         main = new VBox();
         banner = new Banner("Benito Kestelman");
         nav = new NavBarH();
         main.getChildren().addAll(banner, nav.getNavBarPane());
-        //main.getStyleClass().add(CSS_CLASS_CENTER_LAYOUT);
+        main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
     
     @Override
@@ -65,6 +67,7 @@ public class CenterLayout implements LayoutTemplate {
 
     @Override
     public void applyStyle(StyleTemplate style) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.style = style;
+        style.applyMainStyle(this);
     }
 }
