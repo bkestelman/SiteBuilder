@@ -170,14 +170,19 @@ public class StyleController {
             switch(contentType) {
                 case "Paragraph": 
                     openParagraphDialog();
+                    break;
                 case "List": 
                     openListDialog();
+                    break;
                 case "Image":
                     openImageDialog();
+                    break;
                 case "Slide Show":
                     openSlideShowDialog();
+                    break;
                 case "Video": 
                     openVideoDialog();
+                    break;
                 default:
                     break;
             }
@@ -277,7 +282,41 @@ public class StyleController {
     }
 
     private void openSlideShowDialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        listElements = 1; 
+        
+        CustomDialog ssDialog = new CustomDialog();
+        
+        HBox element1 = new HBox();
+        Label l1 = new Label("Slide 1 Caption: ");
+        TextField t1 = new TextField();
+        Button b1 = new Button("Browse Image");
+        element1.getChildren().addAll(l1, t1, b1);
+        ssDialog.addNode(element1);
+        
+        Button add = new Button("Add Element");
+        ssDialog.addNode(add);
+        
+        ArrayList<HBox> elements = new ArrayList<>();
+        elements.add(element1);
+        
+        add.setOnAction(e -> {
+           Label l = new Label("Slide " + (++listElements) + " Caption: ");
+           TextField t = new TextField();
+           Button b = new Button("Browse Image");
+           HBox el = new HBox();
+           el.getChildren().addAll(l, t, b);
+           elements.add(el);
+           ssDialog.getRoot().getChildren().clear();
+           for(HBox h : elements) {
+               ssDialog.addNode(h);
+           }
+           ssDialog.addNode(add);
+           ssDialog.addConfirm();
+           t1.impl_processCSS(true);
+           ssDialog.addHeight(t1.getHeight());
+        });
+        ssDialog.prepareToShow();
+        ssDialog.show();
     }
 
     private void openVideoDialog() {
