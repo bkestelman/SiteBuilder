@@ -254,8 +254,10 @@ public class StyleController {
         HBox scale = new HBox();
         Label w = new Label("Width: ");
         TextField wi = new TextField();
+        wi.setMaxWidth(50);
         Label h = new Label("Height: ");
         TextField he = new TextField();
+        he.setMaxWidth(50);
         scale.getChildren().addAll(w, wi, h, he);
         imageDialog.addNode(scale);
         HBox flo = new HBox();
@@ -269,6 +271,7 @@ public class StyleController {
         RadioButton ne = new RadioButton("Neither");
         ne.setToggleGroup(group);
         flo.getChildren().addAll(fl, left, right, ne);
+        imageDialog.addNode(flo);
         imageDialog.prepareToShow();
         imageDialog.show();
     }
@@ -278,7 +281,25 @@ public class StyleController {
     }
 
     private void openVideoDialog() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        CustomDialog videoDialog = new CustomDialog();
+        Button browse = new Button("Browse");
+        videoDialog.addNode(browse);
+        HBox capH = new HBox();
+        Label l = new Label("Caption: ");
+        TextField cap = new TextField();
+        capH.getChildren().addAll(l, cap);
+        videoDialog.addNode(capH);
+        HBox scale = new HBox();
+        Label w = new Label("Width: ");
+        TextField wi = new TextField();
+        wi.setMaxWidth(50);
+        Label h = new Label("Height: ");
+        TextField he = new TextField();
+        he.setMaxWidth(50);
+        scale.getChildren().addAll(w, wi, h, he);
+        videoDialog.addNode(scale);
+        videoDialog.prepareToShow();
+        videoDialog.show();
     }
 
     public void removeComponent() {
