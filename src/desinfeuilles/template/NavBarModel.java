@@ -5,6 +5,7 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
 import java.util.HashMap;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -16,21 +17,33 @@ import javafx.scene.layout.Pane;
  * @author bkestelman
  */
 public class NavBarModel {
-    HashMap<Label, String> pages; //also contain links
+    HashMap<PageLabel, String> pages; //also contain links
     
     public NavBarModel() {
         pages = new HashMap<>();
     }
     
     public void addPage(String pageName, String pageLink) {
-        Label pageLabel = new Label(pageName);
+        PageLabel pageLabel = new PageLabel(pageName);
         pages.put(pageLabel, pageLink);
+        initPageClickHandler(pageLabel);
     }
     
-    public HashMap<Label, String> getPages() {
+    public void addPage(PageLabel pageLabel) {
+        pages.put(pageLabel, "bluh.html");
+        initPageClickHandler(pageLabel);
+    }
+    
+    public HashMap<PageLabel, String> getPages() {
         return pages;
     }
     
     //public abstract void addToNavBar(Label pageLabel);
-    //public abstract void initPageClickHandler(Label pageLabel); //must be called by addToNavBar()
+    public void initPageClickHandler(PageLabel pageLabel) {
+        pageLabel.setOnMouseClicked(e -> {
+            pageLabel.invertSelected();
+            if(pageLabel.isSelected()) pageLabel.getStyleClass().add(CSS_CLASS_SELECTED);
+            else pageLabel.getStyleClass().clear();
+        });
+    }
 }

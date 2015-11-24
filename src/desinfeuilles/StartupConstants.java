@@ -13,6 +13,7 @@ public class StartupConstants {
     public static String PATH_IMAGES = "images/";
     public static String PATH_ICONS = PATH_IMAGES + "icons/";
     public static String PATH_TEMPLATES = PATH_IMAGES + "templates/";
+    public static String PATH_SLIDESHOW_IMAGES = PATH_IMAGES + "slide_show_images/";
     
     public static String CSS_PATH = "./desinfeuilles/style/";
     public static String CSS_SHEET = CSS_PATH + "DesinFeuillesStyle.css";
@@ -29,12 +30,17 @@ public class StartupConstants {
     public static String CSS_CLASS_CENTER_LAYOUT = "center_layout";
     public static String CSS_CLASS_NAV_SIMPLE = "nav_simple";
     public static String CSS_CLASS_BANNER = "banner";
+    public static String CSS_CLASS_CONFIRM_BUTTON = "confirm_button";
     public static String CSS_CLASS_TUTORIAL_TIP = "tutorial_tip";
     public static String CSS_CLASS_EMPTY_LAYOUT = "empty_layout";
     public static String CSS_CLASS_SELECTED = "selected";
     public static String CSS_CLASS_COLOR_PICKER = "color_picker";
     public static String CSS_CLASS_DIALOG = "dialog";
     public static String CSS_CLASS_SELECTED_IMAGE = "selected_image";
+    public static String CSS_CLASS_SPECIAL_BUTTON = "special_button";
+    public static String CSS_CLASS_BANNER_HEADER = "banner_header";
+    public static String CSS_CLASS_AQUA_FOOTER = "aqua_footer";
+    public static String CSS_CLASS_FOOTER_TEXT = "footer_text";
     
     public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
 }

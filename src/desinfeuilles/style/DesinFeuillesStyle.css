@@ -81,6 +81,26 @@ and open the template in the editor.
     -fx-border-color: #ff4da6;
 }
 
+.footer_text {
+    -fx-text-fill: yellow;
+}
+
+.confirm_button {
+    -fx-padding: 10px;
+}
+
+.aqua_footer {
+    -fx-background-color: #000099;
+}
+
+.special_button {
+    -fx-background-color: linear-gradient(#b34800, #ff99bb);
+}
+
+.banner_header {
+    -fx-font-size: 25px;
+}
+
 .selected_image {
 }
 

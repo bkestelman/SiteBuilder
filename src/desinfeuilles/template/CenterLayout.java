@@ -8,6 +8,7 @@ package desinfeuilles.template;
 import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -16,21 +17,27 @@ import javafx.scene.layout.VBox;
  * @author Leora
  */
 public class CenterLayout extends LayoutTemplate {
-    VBox main;
+    BorderPane main;
     Banner banner;
     NavBarH nav;
     ContentPane contentPane;
+    Footer footer;
+    VBox top;
     
     public CenterLayout() {
-        main = new VBox();
-        banner = new Banner("Benito Kestelman");
+        main = new BorderPane();
+        top = new VBox();
+        banner = new Banner("Original Website");
         nav = new NavBarH();
-        main.getChildren().addAll(banner, nav.getNavBarPane());
+        top.getChildren().addAll(banner, nav.getNavBarPane());
+        main.setTop(top);
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
+        footer = new Footer("This is a footer");
+        main.setBottom(footer);
     }
     
     @Override
-    public VBox getMainPane() {
+    public BorderPane getMainPane() {
         return main;
     }
 
@@ -46,7 +53,7 @@ public class CenterLayout extends LayoutTemplate {
 
     @Override
     public Footer getFooter() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return footer;
     }
 
     @Override

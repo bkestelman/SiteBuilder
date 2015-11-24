@@ -22,20 +22,14 @@ public class NavBarH extends NavBarView {
         super();
         navBar = new HBox();
         navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        navM = new NavBarModel();
     }
-
-    @Override
-    public void initPageClickHandler(Label pageLabel) {
-        pageLabel.setOnMouseClicked(e -> {
-            
-        });
-    }
-
+    
     @Override
     public void addPage(String pageName, String pageLink) {
-        Label pageLabel = new Label(pageName);
+        PageLabel pageLabel = new PageLabel(pageName);
         navBar.getChildren().add(pageLabel);
-        initPageClickHandler(pageLabel);
+        getNavBarModel().addPage(pageLabel);
     }
 
     @Override

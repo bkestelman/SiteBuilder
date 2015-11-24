@@ -20,14 +20,17 @@ public class LeftNavLayout extends LayoutTemplate {
     Banner banner;
     NavBarV nav;
     ContentPane contentPane;
+    Footer footer;
     
     public LeftNavLayout() {
         main = new BorderPane();
-        banner = new Banner("Benito Kestelman");
+        banner = new Banner("Original Website");
         nav = new NavBarV();
         main.setTop(banner);
         main.setLeft(nav.getNavBarPane());
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
+        footer = new Footer("This is a footer");
+        main.setBottom(footer);
     }
     
     @Override
@@ -47,7 +50,7 @@ public class LeftNavLayout extends LayoutTemplate {
 
     @Override
     public Footer getFooter() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return footer;
     }
 
     @Override

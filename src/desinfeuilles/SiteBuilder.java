@@ -62,6 +62,7 @@ public class SiteBuilder extends Application {
         view = new BuilderView(this, fileController, styleController);
         Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
         useTutorial.setHeaderText("Tutorial");
+        useTutorial.setTitle("Tutorial");
         view.show();
         Optional<ButtonType> result = useTutorial.showAndWait();
         if(result.get() == ButtonType.OK) {

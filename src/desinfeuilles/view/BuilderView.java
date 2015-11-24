@@ -13,6 +13,7 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR_BUTTON_FIRST;
 import static desinfeuilles.StartupConstants.CSS_CLASS_HBANNER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_ROOT;
+import static desinfeuilles.StartupConstants.CSS_CLASS_SPECIAL_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
@@ -41,6 +42,7 @@ import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 /**
  *
@@ -61,6 +63,8 @@ public class BuilderView {
     Button newB, openB, saveB, saveAsB, exportB, exitB;
     
     Button styleTemplateB, layoutB, editTextB, backgroundImageB, colorB, fontB, addContentB, addPageB, removeB;
+    
+    Button viewB;
     
     TilePane styleToolbar;
     TilePane fileToolbar;
@@ -97,6 +101,9 @@ public class BuilderView {
         
         toolbars.getChildren().add(fileToolbar);
         toolbars.getChildren().add(styleToolbar);
+        
+        viewB = initButton("View.png", "View Site", CSS_CLASS_SPECIAL_BUTTON, false);
+        toolbars.getChildren().add(viewB);
         
         scene = new Scene(root);
         
@@ -142,6 +149,9 @@ public class BuilderView {
         });
         removeB.setOnAction(e -> {
             styleController.openRemoveDialog();
+        });
+        viewB.setOnAction(e -> {
+            fileController.viewSite();
         });
     }
     
@@ -245,5 +255,9 @@ public class BuilderView {
     
     public Button getStyleTemplateB() {
         return styleTemplateB;
+    }
+
+    public Window getStage() {
+        return primaryStage;
     }
 }

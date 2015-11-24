@@ -5,8 +5,10 @@
  */
 package desinfeuilles.view;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_CONFIRM_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_DIALOG;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -32,9 +34,11 @@ public class CustomDialog extends Stage {
     public CustomDialog() {
         super();
         root = new VBox();
+        root.setPadding(new Insets(10, 10, 10, 10));
         scene = new Scene(root);
         setScene(scene);
-        confirm = new HBox();
+        confirm = new HBox(10);
+        confirm.setPadding(new Insets(10, 0, 0, 10));
         ok = new Button("Ok");
         cancel = new Button("Cancel");
         confirm.getChildren().addAll(ok, cancel);
@@ -53,6 +57,10 @@ public class CustomDialog extends Stage {
            response = CANCEL;
            close();
         });
+    }
+    
+    public void sizeNice() {
+        setWidth(500);
     }
     
     public void addHeight(double h) {

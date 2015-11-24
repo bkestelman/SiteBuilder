@@ -6,6 +6,7 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_BANNER;
+import static desinfeuilles.StartupConstants.CSS_CLASS_BANNER_HEADER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED_IMAGE;
@@ -21,6 +22,8 @@ import javafx.scene.layout.HBox;
 public class Banner extends HBox {
     public Label bannerHeader;
     public ImageView bannerImage;
+    boolean bannerHeaderSelected;
+    boolean bannerSelected;
     
     public Banner(String bannerH) {
         bannerHeader = new Label(bannerH);
@@ -28,6 +31,7 @@ public class Banner extends HBox {
         this.getStyleClass().add(CSS_CLASS_BANNER);
         initSelectEventHandlers();
         setPrefHeight(210);
+        bannerHeaderSelected = bannerSelected = false;
     }
 
     Banner() {
@@ -44,10 +48,21 @@ public class Banner extends HBox {
     
     public void initSelectEventHandlers() {
         bannerHeader.setOnMouseClicked(e -> {
-            bannerHeader.getStyleClass().add(CSS_CLASS_SELECTED);
+            bannerHeaderSelected = !bannerHeaderSelected;
+            bannerSelected = !bannerSelected;
+            if(bannerHeaderSelected) bannerHeader.getStyleClass().add(CSS_CLASS_SELECTED);
+            else {
+                bannerHeader.getStyleClass().clear();
+                bannerHeader.getStyleClass().add(CSS_CLASS_BANNER_HEADER);
+            }
         });
         this.setOnMouseClicked(e -> {
-            getStyleClass().add(CSS_CLASS_SELECTED);
+            bannerSelected = !bannerSelected;
+            if(bannerSelected) getStyleClass().add(CSS_CLASS_SELECTED);
+            else {
+                getStyleClass().clear();
+                getStyleClass().add(CSS_CLASS_BANNER);
+            }
         });
     }
 }

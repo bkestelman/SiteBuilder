@@ -8,6 +8,8 @@ package desinfeuilles.controller;
 import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_DIALOG;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
+import static desinfeuilles.StartupConstants.PATH_ICONS;
+import static desinfeuilles.StartupConstants.PATH_SLIDESHOW_IMAGES;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.view.BuilderView;
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceDialog;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -35,7 +38,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -69,7 +74,8 @@ public class StyleController {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
         ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(styles.get(0), styles);
         chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
-        chooser.setTitle("Choose a Style Template");
+        chooser.setTitle("Style Selector");
+        chooser.setHeaderText("Choose a Style Template");
         Optional<StyleTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
             view.setStyleTemplate(selection.get());
@@ -83,7 +89,8 @@ public class StyleController {
     public void openLayoutChooser() {
         ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
         ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(layouts.get(0), layouts);
-        chooser.setTitle("Choose a Layout");
+        chooser.setTitle("Layout Chooser");
+        chooser.setHeaderText("Choose a Layout Template");
         Optional<LayoutTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
             view.setLayout(selection.get());
@@ -117,26 +124,34 @@ public class StyleController {
 
     public void openTextEditor() {
         //dialog with text area
+        CustomDialog editD = new CustomDialog();
+        editD.setTitle("Edit Text");
+        editD.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
+        Label l = new Label("Edit some text here:");
+        TextField t = new TextField();
+        editD.addNode(l);
+        editD.addNode(t);
+        editD.prepareToShow();
+        editD.sizeNice();
+        editD.show();
     }
 
     public void openBackgroundImageChooser() {
         //dialog with browse button and options (repeat, 100%)
+        FileChooser bc = new FileChooser();
+        bc.setTitle("Choose Background Image");
+        bc.showOpenDialog(view.getStage());
     }
 
     public void openColorChooser() {
-        Stage colorStage = new Stage();
-        VBox root = new VBox();
+        CustomDialog colorD = new CustomDialog();
         ColorPicker palette = new ColorPicker();
-        root.getChildren().add(palette);
-        HBox confirm = new HBox();
-        Button ok = new Button("Ok");
-        Button cancel = new Button("Cancel");
-        confirm.getChildren().addAll(ok, cancel);
-        root.getChildren().add(confirm);
-        confirm.setAlignment(Pos.CENTER);
-        Scene s = new Scene(root);
-        colorStage.setScene(s);
-        colorStage.show();
+        colorD.addNode(palette);
+        colorD.prepareToShow();
+        colorD.setTitle("Color Picker");
+        colorD.getIcons().add(new Image("file:" + PATH_ICONS + "Paint.png"));
+        colorD.sizeNice();
+        colorD.show();
         /*Alert colorDialog = new Alert(AlertType.CONFIRMATION);
         colorDialog.setHeaderText("Choose a color");
         colorDialog.setTitle("Color Picker");
@@ -151,6 +166,15 @@ public class StyleController {
 
     public void openFontChooser() {
         //fonts in list, preview label in font
+        CustomDialog fontD = new CustomDialog();
+        fontD.setTitle("Choose Font");
+        fontD.getIcons().add(new Image("file:" + PATH_ICONS + "Font.png"));
+        ComboBox<String> cb = new ComboBox<>();
+        cb.getItems().addAll("This is a real font", "So is this");
+        fontD.addNode(cb);
+        fontD.prepareToShow();
+        fontD.sizeNice();
+        fontD.show();
     }
 
     public void openAddContentDialog() {
@@ -192,21 +216,39 @@ public class StyleController {
     public void openAddPageDialog() {
         //page name
         CustomDialog pageDialog = new CustomDialog();
+        pageDialog.setTitle("Add Page");
         HBox nameSet = new HBox();
+        pageDialog.getIcons().add(new Image("file:" + PATH_ICONS + "AddPage.png"));
         Label l = new Label("Page Name: ");
         TextField name = new TextField();
         nameSet.getChildren().addAll(l,  name);
         pageDialog.addNode(nameSet);
         pageDialog.prepareToShow();
+        pageDialog.sizeNice();
         pageDialog.show();
     }
 
     private void openParagraphDialog() {
         CustomDialog pDialog = new CustomDialog();
+        pDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
         TextArea pText = new TextArea();
         pText.setPrefColumnCount(25);
         pText.setPrefRowCount(30);
         pDialog.addNode(pText);
+        Button hyperlink = new Button("Make selected text hyperlink");
+        pDialog.addNode(hyperlink);
+        hyperlink.setOnAction(e -> {
+            CustomDialog linkD = new CustomDialog();
+            Label sel = new Label("Selected text: " + pText.getSelectedText());
+            HBox urlH = new HBox();
+            Label enterUrl = new Label("URL: ");
+            TextField url = new TextField();
+            urlH.getChildren().addAll(enterUrl, url);
+            linkD.addNode(sel);
+            linkD.addNode(urlH);
+            linkD.prepareToShow();
+            linkD.show();
+        });
         pDialog.setTitle("Edit Paragraph");
         pDialog.prepareToShow();
         pDialog.show();
@@ -216,6 +258,7 @@ public class StyleController {
         listElements = 1;
         
         CustomDialog lDialog = new CustomDialog();
+        lDialog.getIcons().add(new Image("file:" + PATH_ICONS + "List.png"));
         HBox element1 = new HBox();
         Label l1 = new Label("Element 1: ");
         TextField t1 = new TextField();
@@ -244,28 +287,33 @@ public class StyleController {
            lDialog.addHeight(t1.getHeight());
         });
         lDialog.prepareToShow();
+        lDialog.sizeNice();
+        lDialog.setTitle("List Editor");
         lDialog.show();
     }
 
     private void openImageDialog() {
         CustomDialog imageDialog = new CustomDialog();
-        Button browse = new Button("Browse");
-        imageDialog.addNode(browse);
-        HBox capH = new HBox();
+        imageDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Background.png"));
+        GridPane g = new GridPane();
+        g.setHgap(10);
+        g.setVgap(10);
+        Button browse = new Button("Browse Image");
+        GridPane.setConstraints(browse, 0, 0);
         Label l = new Label("Caption: ");
         TextField cap = new TextField();
-        capH.getChildren().addAll(l, cap);
-        imageDialog.addNode(capH);
-        HBox scale = new HBox();
+        GridPane.setConstraints(cap, 1, 1);
+        GridPane.setConstraints(l, 0, 1);
         Label w = new Label("Width: ");
         TextField wi = new TextField();
         wi.setMaxWidth(50);
         Label h = new Label("Height: ");
         TextField he = new TextField();
         he.setMaxWidth(50);
-        scale.getChildren().addAll(w, wi, h, he);
-        imageDialog.addNode(scale);
-        HBox flo = new HBox();
+        GridPane.setConstraints(w, 0, 2);
+        GridPane.setConstraints(wi, 1, 2);
+        GridPane.setConstraints(h, 2, 2);
+        GridPane.setConstraints(he, 3, 2);
         Label fl = new Label("Float: ");
         ToggleGroup group = new ToggleGroup();
         RadioButton left = new RadioButton("Left");
@@ -275,8 +323,12 @@ public class StyleController {
         right.setToggleGroup(group);
         RadioButton ne = new RadioButton("Neither");
         ne.setToggleGroup(group);
-        flo.getChildren().addAll(fl, left, right, ne);
-        imageDialog.addNode(flo);
+        GridPane.setConstraints(fl, 0, 3);
+        GridPane.setConstraints(left, 2, 3);
+        GridPane.setConstraints(right, 3, 3);
+        GridPane.setConstraints(ne, 1, 3);
+        g.getChildren().addAll(browse, l, cap, w, wi, h, he, fl, left, right, ne);
+        imageDialog.addNode(g);
         imageDialog.prepareToShow();
         imageDialog.show();
     }
@@ -285,15 +337,17 @@ public class StyleController {
         listElements = 1; 
         
         CustomDialog ssDialog = new CustomDialog();
+        ssDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Slides.png"));
         
         HBox element1 = new HBox();
         Label l1 = new Label("Slide 1 Caption: ");
         TextField t1 = new TextField();
         Button b1 = new Button("Browse Image");
-        element1.getChildren().addAll(l1, t1, b1);
+        ImageView im1 = new ImageView(new Image("file:" + PATH_SLIDESHOW_IMAGES + "DefaultStartSlide.png"));
+        element1.getChildren().addAll(l1, t1, b1, im1);
         ssDialog.addNode(element1);
         
-        Button add = new Button("Add Element");
+        Button add = new Button("Add Slide");
         ssDialog.addNode(add);
         
         ArrayList<HBox> elements = new ArrayList<>();
@@ -303,8 +357,9 @@ public class StyleController {
            Label l = new Label("Slide " + (++listElements) + " Caption: ");
            TextField t = new TextField();
            Button b = new Button("Browse Image");
+           ImageView im = new ImageView(new Image("file:" + PATH_SLIDESHOW_IMAGES + "DefaultStartSlide.png"));
            HBox el = new HBox();
-           el.getChildren().addAll(l, t, b);
+           el.getChildren().addAll(l, t, b, im);
            elements.add(el);
            ssDialog.getRoot().getChildren().clear();
            for(HBox h : elements) {
@@ -312,8 +367,8 @@ public class StyleController {
            }
            ssDialog.addNode(add);
            ssDialog.addConfirm();
-           t1.impl_processCSS(true);
-           ssDialog.addHeight(t1.getHeight());
+           element1.impl_processCSS(true);
+           ssDialog.addHeight(element1.getHeight());
         });
         ssDialog.prepareToShow();
         ssDialog.show();
@@ -321,28 +376,43 @@ public class StyleController {
 
     private void openVideoDialog() {
         CustomDialog videoDialog = new CustomDialog();
-        Button browse = new Button("Browse");
-        videoDialog.addNode(browse);
-        HBox capH = new HBox();
+        videoDialog.getIcons().add(new Image("file:" + PATH_ICONS + "videoplay2.png"));
+        GridPane g = new GridPane();
+        g.setHgap(10);
+        g.setVgap(10);
+        Button browse = new Button("Browse Video");
+        GridPane.setConstraints(browse, 0, 0);
         Label l = new Label("Caption: ");
         TextField cap = new TextField();
-        capH.getChildren().addAll(l, cap);
-        videoDialog.addNode(capH);
-        HBox scale = new HBox();
+        GridPane.setConstraints(cap, 1, 1);
+        GridPane.setConstraints(l, 0, 1);
         Label w = new Label("Width: ");
         TextField wi = new TextField();
         wi.setMaxWidth(50);
         Label h = new Label("Height: ");
         TextField he = new TextField();
         he.setMaxWidth(50);
-        scale.getChildren().addAll(w, wi, h, he);
-        videoDialog.addNode(scale);
+        GridPane.setConstraints(w, 0, 2);
+        GridPane.setConstraints(wi, 1, 2);
+        GridPane.setConstraints(h, 2, 2);
+        GridPane.setConstraints(he, 3, 2);
+        /*Label fl = new Label("Float: ");
+        ToggleGroup group = new ToggleGroup();
+        RadioButton left = new RadioButton("Left");
+        left.setToggleGroup(group);
+        left.setSelected(true);
+        RadioButton right = new RadioButton("Right");
+        right.setToggleGroup(group);
+        RadioButton ne = new RadioButton("Neither");
+        ne.setToggleGroup(group);
+        GridPane.setConstraints(fl, 0, 3);
+        GridPane.setConstraints(left, 1, 3);
+        GridPane.setConstraints(right, 2, 3);
+        GridPane.setConstraints(ne, 3, 3);*/
+        g.getChildren().addAll(browse, l, cap, w, wi, h, he);
+        videoDialog.addNode(g);
         videoDialog.prepareToShow();
         videoDialog.show();
-    }
-
-    public void removeComponent() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void openRemoveDialog() {

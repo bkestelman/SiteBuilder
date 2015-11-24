@@ -5,6 +5,7 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_BANNER_HEADER;
 import static desinfeuilles.StartupConstants.PATH_IMAGES;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -34,6 +35,7 @@ public class StyleTemplate {
     
     public void applyBannerStyle(LayoutTemplate layout) {
         layout.getBanner().setStyle("-fx-background-image: url(file:" + bannerImagePath + ");");
+        layout.getBanner().getHeader().getStyleClass().add(CSS_CLASS_BANNER_HEADER);
     }
     
     public void setMainImagePath(String imagePath) {
