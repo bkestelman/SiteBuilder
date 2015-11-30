@@ -84,11 +84,11 @@ public class Tutorial {
     }
     
     public void pointToBannerHeader(String msg) {
-        animationPane = view.getLayout().getBanner();
+        animationPane = (Pane)view.getLayout().getBanner().getComponent();
         animationPane.getChildren().addAll(arrow, tip);
         tip.setText(msg);
         arrow.setRotate(0);
-        double toX = view.getLayout().getBanner().getHeader().getLayoutX();
+        double toX = view.getLayout().getBanner().getHeader().getComponent().getLayoutX();
         translation.setFromX(toX + 30);
         translation.setToX(toX);
         translation.setFromY(0);

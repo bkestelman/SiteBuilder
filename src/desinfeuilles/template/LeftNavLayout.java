@@ -24,13 +24,13 @@ public class LeftNavLayout extends LayoutTemplate {
     
     public LeftNavLayout() {
         main = new BorderPane();
-        banner = new Banner("Original Website");
+        banner = new Banner("My Website");
         nav = new NavBarV();
-        main.setTop(banner);
+        main.setTop(banner.getComponent());
         main.setLeft(nav.getNavBarPane());
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         footer = new Footer("This is a footer");
-        main.setBottom(footer);
+        main.setBottom(footer.getComponent());
     }
     
     @Override
@@ -63,7 +63,7 @@ public class LeftNavLayout extends LayoutTemplate {
     }
 
     @Override
-    public NavBarView getNavBar() {
+    public NavBar getNavBar() {
         return nav;
     }
 
@@ -71,5 +71,40 @@ public class LeftNavLayout extends LayoutTemplate {
     public void applyStyle(StyleTemplate style) {
         this.style = style;
         style.applyFullStyle(this);
+    }
+
+    @Override
+    public void addPage(String pageName, String pageLink) {
+        nav.getNavBarModel().addPage(pageName, pageLink);
+    }
+
+    @Override
+    public void addBanner(Banner banner) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addNav(NavBar nav) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addFooter(Footer footer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addContentPane(ContentPane cpane) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addParagraph(String p) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void addHeader(String h) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

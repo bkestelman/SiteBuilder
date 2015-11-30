@@ -5,29 +5,32 @@
  */
 package desinfeuilles.template;
 
+import com.sun.javafx.geom.BaseBounds;
+import com.sun.javafx.geom.transform.BaseTransform;
+import com.sun.javafx.jmx.MXNodeAlgorithm;
+import com.sun.javafx.jmx.MXNodeAlgorithmContext;
+import com.sun.javafx.sg.prism.NGNode;
+import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
 import javafx.scene.control.Label;
 
 /**
  *
  * @author Benito
  */
-public class PageLabel extends Label {
-    boolean selected;
+public class PageLabel extends LayoutComponent {
     
-    public PageLabel(String l) {
-        super(l);
-        selected = false;
+    public PageLabel(String label) {
+        isSelected = false;
+        component = new Label(label);
+        initComponent();
     }
     
     public PageLabel() {
         
     }
     
-    public void invertSelected() {
-        selected = !selected;
-    }
-    
     public boolean isSelected() {
-        return selected;
+        return isSelected;
     }
+
 }

@@ -14,13 +14,20 @@ import javafx.scene.layout.HBox;
  *
  * @author bkestelman
  */
-public class Footer extends HBox {
-    Label footerLabel; 
+public class Footer extends LayoutComponent {
+    Header footerHeader; 
+    
     public Footer(String footerText) {
-        footerLabel = new Label(footerText); 
-        getChildren().add(footerLabel);
-        footerLabel.getStyleClass().add(CSS_CLASS_FOOTER_TEXT);
-        getStyleClass().add(CSS_CLASS_AQUA_FOOTER);
-        setMinHeight(50);
+        component = new HBox();
+        initComponent();
+        addHeader(footerText);
+        component.getStyleClass().add(CSS_CLASS_AQUA_FOOTER);
+        ((HBox)component).setMinHeight(50);
+    }
+    
+    public void addHeader(String headerText) {
+        footerHeader = new Header(headerText); 
+        ((HBox)component).getChildren().add(footerHeader.getComponent());
+        (footerHeader.getComponent()).getStyleClass().add(CSS_CLASS_FOOTER_TEXT);
     }
 }

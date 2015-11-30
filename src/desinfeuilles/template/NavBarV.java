@@ -15,25 +15,25 @@ import javafx.scene.layout.VBox;
  *
  * @author Leora
  */
-public class NavBarV extends NavBarView{
-    VBox navBar;
+public class NavBarV extends NavBar{
     
     public NavBarV() {
         super();
-        navBar = new VBox();
-        navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        component = new VBox();
+        initComponent();
+        component.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
         navM = new NavBarModel();
     }
 
     @Override
     public void addPage(String pageName, String pageLink) {
         PageLabel pageLabel = new PageLabel(pageName);
-        navBar.getChildren().add(pageLabel);
+        ((VBox)component).getChildren().add(pageLabel.getComponent());
         getNavBarModel().addPage(pageLabel);
     }
 
     @Override
     public VBox getNavBarPane() {
-        return navBar;
+        return (VBox)component;
     }
 }

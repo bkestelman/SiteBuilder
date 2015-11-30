@@ -19,18 +19,18 @@ import javafx.scene.layout.HBox;
  *
  * @author bkestelman
  */
-public class Banner extends HBox {
-    public Label bannerHeader;
+public class Banner extends LayoutComponent {
+    Header bannerHeader;
     public ImageView bannerImage;
     boolean bannerHeaderSelected;
     boolean bannerSelected;
     
     public Banner(String bannerH) {
-        bannerHeader = new Label(bannerH);
-        this.getChildren().add(bannerHeader);
-        this.getStyleClass().add(CSS_CLASS_BANNER);
-        initSelectEventHandlers();
-        setPrefHeight(210);
+        component = new HBox();
+        initComponent();
+        setHeader(bannerH);
+        component.getStyleClass().add(CSS_CLASS_BANNER);
+        ((HBox)component).setPrefHeight(210);
         bannerHeaderSelected = bannerSelected = false;
     }
 
@@ -42,27 +42,13 @@ public class Banner extends HBox {
         bannerImage = imv;
     }
     
-    public Label getHeader() {
-        return bannerHeader;
+    public void setHeader(String bannerH) {
+        bannerHeader = new Header(bannerH);
+        ((HBox)component).getChildren().add(bannerHeader.getComponent());
     }
     
-    public void initSelectEventHandlers() {
-        bannerHeader.setOnMouseClicked(e -> {
-            bannerHeaderSelected = !bannerHeaderSelected;
-            bannerSelected = !bannerSelected;
-            if(bannerHeaderSelected) bannerHeader.getStyleClass().add(CSS_CLASS_SELECTED);
-            else {
-                bannerHeader.getStyleClass().clear();
-                bannerHeader.getStyleClass().add(CSS_CLASS_BANNER_HEADER);
-            }
-        });
-        this.setOnMouseClicked(e -> {
-            bannerSelected = !bannerSelected;
-            if(bannerSelected) getStyleClass().add(CSS_CLASS_SELECTED);
-            else {
-                getStyleClass().clear();
-                getStyleClass().add(CSS_CLASS_BANNER);
-            }
-        });
+    public Header getHeader() {
+        return bannerHeader;
     }
+
 }

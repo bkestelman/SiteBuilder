@@ -15,25 +15,24 @@ import javafx.scene.layout.Pane;
  *
  * @author bkestelman
  */
-public class NavBarH extends NavBarView {
-    HBox navBar;
-    
+public class NavBarH extends NavBar {
     public NavBarH() {
         super();
-        navBar = new HBox();
-        navBar.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        component = new HBox();
+        initComponent();
+        component.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
         navM = new NavBarModel();
     }
     
     @Override
     public void addPage(String pageName, String pageLink) {
         PageLabel pageLabel = new PageLabel(pageName);
-        navBar.getChildren().add(pageLabel);
+        ((HBox)component).getChildren().add(pageLabel.getComponent());
         getNavBarModel().addPage(pageLabel);
     }
 
     @Override
     public HBox getNavBarPane() {
-        return navBar;
+        return (HBox)component;
     }
 }

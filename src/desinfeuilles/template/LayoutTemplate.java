@@ -5,6 +5,7 @@
  */
 package desinfeuilles.template;
 
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
 
@@ -27,9 +28,16 @@ public abstract class LayoutTemplate {
     public static Node getSelectedNode() {
         return selectedNode;
     }
+    public abstract void addPage(String pageName, String pageLink);
+    public abstract void addBanner(Banner banner);
+    public abstract void addNav(NavBar nav);
+    public abstract void addFooter(Footer footer);
+    public abstract void addContentPane(ContentPane cpane);
+    public abstract void addParagraph(String p);
+    public abstract void addHeader(String h);
     public abstract Pane getMainPane();
     public abstract ContentPane getContentPane();
-    public abstract NavBarView getNavBar();
+    public abstract NavBar getNavBar();
     public abstract Banner getBanner();
     public abstract Footer getFooter();
     public abstract Pane getSelectedPane();

@@ -26,24 +26,14 @@ public class NavBarModel {
     public void addPage(String pageName, String pageLink) {
         PageLabel pageLabel = new PageLabel(pageName);
         pages.put(pageLabel, pageLink);
-        initPageClickHandler(pageLabel);
     }
     
     public void addPage(PageLabel pageLabel) {
         pages.put(pageLabel, "bluh.html");
-        initPageClickHandler(pageLabel);
     }
     
     public HashMap<PageLabel, String> getPages() {
         return pages;
     }
-    
-    //public abstract void addToNavBar(Label pageLabel);
-    public void initPageClickHandler(PageLabel pageLabel) {
-        pageLabel.setOnMouseClicked(e -> {
-            pageLabel.invertSelected();
-            if(pageLabel.isSelected()) pageLabel.getStyleClass().add(CSS_CLASS_SELECTED);
-            else pageLabel.getStyleClass().clear();
-        });
-    }
+
 }

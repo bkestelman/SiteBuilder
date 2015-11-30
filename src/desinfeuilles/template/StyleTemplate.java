@@ -34,8 +34,8 @@ public class StyleTemplate {
     }
     
     public void applyBannerStyle(LayoutTemplate layout) {
-        layout.getBanner().setStyle("-fx-background-image: url(file:" + bannerImagePath + ");");
-        layout.getBanner().getHeader().getStyleClass().add(CSS_CLASS_BANNER_HEADER);
+        layout.getBanner().getComponent().setStyle("-fx-background-image: url(file:" + bannerImagePath + ");");
+        layout.getBanner().getHeader().getComponent().getStyleClass().add(CSS_CLASS_BANNER_HEADER);
     }
     
     public void setMainImagePath(String imagePath) {

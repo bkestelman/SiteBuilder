@@ -12,7 +12,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Leora
  */
-public abstract class NavBarView {
+public abstract class NavBar extends LayoutComponent {
     NavBarModel navM;
     
     public NavBarModel getNavBarModel() {
