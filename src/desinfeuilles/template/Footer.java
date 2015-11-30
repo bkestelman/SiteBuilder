@@ -27,6 +27,7 @@ public class Footer extends LayoutComponent {
     
     public void addHeader(String headerText) {
         footerHeader = new Header(headerText); 
+        footerHeader.setParent(this);
         ((HBox)component).getChildren().add(footerHeader.getComponent());
         (footerHeader.getComponent()).getStyleClass().add(CSS_CLASS_FOOTER_TEXT);
     }

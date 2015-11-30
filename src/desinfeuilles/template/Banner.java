@@ -44,6 +44,7 @@ public class Banner extends LayoutComponent {
     
     public void setHeader(String bannerH) {
         bannerHeader = new Header(bannerH);
+        bannerHeader.setParent(this);
         ((HBox)component).getChildren().add(bannerHeader.getComponent());
     }
     

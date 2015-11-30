@@ -17,6 +17,7 @@ import javafx.scene.Node;
 public class LayoutComponent {
     boolean isSelected;
     Node component; //not all layout components will use this field (for instance, NavBars have their own HBox or VBox component)
+    LayoutComponent parent;
     
     public void initComponent() {
         isSelected = false;
@@ -36,10 +37,17 @@ public class LayoutComponent {
     public void initClickListener()  {
         component.setOnMouseClicked(e -> {
            invertSelected(); 
+           if(parent != null) {
+               parent.invertSelected();
+           }
         });
     }
 
     public Node getComponent() {
         return component;
+    }
+    
+    public void setParent(LayoutComponent parent) {
+        this.parent = parent;
     }
 }

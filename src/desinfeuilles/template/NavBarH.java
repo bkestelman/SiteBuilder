@@ -27,6 +27,7 @@ public class NavBarH extends NavBar {
     @Override
     public void addPage(String pageName, String pageLink) {
         PageLabel pageLabel = new PageLabel(pageName);
+        pageLabel.setParent(this);
         ((HBox)component).getChildren().add(pageLabel.getComponent());
         getNavBarModel().addPage(pageLabel);
     }
