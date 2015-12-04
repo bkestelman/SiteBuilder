@@ -18,10 +18,12 @@ public class LayoutComponent {
     boolean isSelected;
     Node component; //not all layout components will use this field (for instance, NavBars have their own HBox or VBox component)
     LayoutComponent parent;
+    LayoutTemplate template;
     
     public void initComponent() {
         isSelected = false;
         initClickListener();
+        //this.template = template;
     }
     
     public void invertSelected() {
@@ -49,5 +51,13 @@ public class LayoutComponent {
     
     public void setParent(LayoutComponent parent) {
         this.parent = parent;
+    }
+    
+    public LayoutTemplate getTemplate() {
+        return template;
+    }
+    
+    public void setTemplate(LayoutTemplate template) {
+        this.template = template;
     }
 }

@@ -153,6 +153,9 @@ public class BuilderView {
         viewB.setOnAction(e -> {
             fileController.viewSite();
         });
+        saveAsB.setOnAction(e -> {
+            fileController.handleSaveAsRequest();
+        });
     }
     
     public void initFileToolbar() {

@@ -6,10 +6,12 @@
 package desinfeuilles.controller;
 
 import desinfeuilles.SiteBuilder;
+import java.io.IOException;
 import javafx.scene.Scene;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.json.simple.JSONObject;
 
 /**
  *
@@ -34,5 +36,9 @@ public class FileController {
         Scene scene = new Scene(browser);
         viewStage.setScene(scene);
         viewStage.show();
+    }
+    
+    public void handleSaveAsRequest() {
+        siteBuilder.getFileManager().saveJSON();
     }
 }

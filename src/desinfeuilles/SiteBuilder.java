@@ -30,6 +30,7 @@ import desinfeuilles.template.LeftNavLayout;
 import java.util.Iterator;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
+import file.FileManager;
 
 /**
  *
@@ -44,6 +45,7 @@ public class SiteBuilder extends Application {
     public ArrayList<LayoutTemplate> layouts;
     public LayoutTemplate l1, l2;
     public ArrayList<StyleTemplate> styles;
+    public FileManager fileManager;
     
     @Override
     public void start(Stage stage) {
@@ -57,6 +59,7 @@ public class SiteBuilder extends Application {
         styles.add(new StyleTemplate("Yellow Fantasy"));
         initStyle(styles.get(0), "Aqua");
         initStyle(styles.get(1), "Yellow");
+        fileManager = new FileManager();
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController);
@@ -88,6 +91,10 @@ public class SiteBuilder extends Application {
     public Tutorial getTutorial() {
         return tutorial;
     }
+    
+    public FileManager getFileManager() {
+        return fileManager;
+    }
 
     /**
      * @param args the command line arguments
@@ -95,5 +102,5 @@ public class SiteBuilder extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }
