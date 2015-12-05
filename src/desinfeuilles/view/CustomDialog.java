@@ -46,7 +46,7 @@ public class CustomDialog extends Stage {
         cancel = new Button("Cancel");
         confirm.getChildren().addAll(ok, cancel);
         confirm.setAlignment(Pos.CENTER_RIGHT);
-        initEventHandlers();
+        //initEventHandlers();
         scene.getStylesheets().add(CSS_SHEET);
         root.getStyleClass().add(CSS_CLASS_DIALOG);
     }
@@ -94,5 +94,6 @@ public class CustomDialog extends Stage {
     
     public void prepareToShow() {
         root.getChildren().add(confirm);
+        initEventHandlers();
     }
 }

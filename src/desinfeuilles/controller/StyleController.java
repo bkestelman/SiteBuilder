@@ -12,6 +12,8 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import static desinfeuilles.StartupConstants.PATH_SLIDESHOW_IMAGES;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
+import desinfeuilles.template.Header;
+import desinfeuilles.template.LayoutComponent;
 import desinfeuilles.view.BuilderView;
 import java.util.ArrayList;
 import javafx.scene.control.Alert;
@@ -24,6 +26,7 @@ import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.CustomDialog;
+import desinfeuilles.view.EditHeaderDialog;
 import java.util.Optional;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -130,17 +133,17 @@ public class StyleController {
 
     public void openTextEditor() {
         //dialog with text area
-        CustomDialog editD = new CustomDialog();
-        editD.setTitle("Edit Text");
+        LayoutComponent selected = view.getLayout().getSelectedComponent();
+        CustomDialog editD;
+        if(selected.getType().equals("h")) {
+            editD = new EditHeaderDialog((Header)selected);
+            editD.setTitle("Edit Text");
+        }
+        else editD = new CustomDialog();
         editD.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
-        Label l = new Label("Edit some text here:");
-        TextField t = new TextField();
-        t.setText(view.getLayout().getSelectedComponent().getText());
-        editD.addNode(l);
-        editD.addNode(t);
         editD.prepareToShow();
         editD.sizeNice();
-        editD.show();
+        editD.showAndWait();
     }
 
     public void openBackgroundImageChooser() {

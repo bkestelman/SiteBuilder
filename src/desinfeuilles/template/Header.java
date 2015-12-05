@@ -18,6 +18,11 @@ public class Header extends LayoutComponent {
         component = new Label(bannerH);
         initComponent(template);
         text = bannerH;
+        type = "h";
     }
     
+    public void setText(String s) {
+        text = s;
+        ((Label)component).setText(s);
+    }
 }

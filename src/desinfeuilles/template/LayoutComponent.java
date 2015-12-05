@@ -20,6 +20,7 @@ public class LayoutComponent {
     LayoutComponent parent;
     LayoutTemplate template;
     String text;
+    String type; //h=header, p=paragraph, l=list, v=video, s=slideshow, b=banner, f=footer
     
     public void initComponent(LayoutTemplate template) {
         isSelected = false;
@@ -82,5 +83,13 @@ public class LayoutComponent {
     
     public String getText() {
         return text;
+    }
+    
+    public void setText(String s) {
+        text = s;
+    }
+    
+    public String getType() {
+        return type;
     }
 }
