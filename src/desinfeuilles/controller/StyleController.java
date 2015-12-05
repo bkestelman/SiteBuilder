@@ -45,6 +45,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -427,10 +428,9 @@ public class StyleController {
         Optional<ButtonType> response = removeAlert.showAndWait();
         if(response.get() == ButtonType.OK) {
             LayoutComponent selected = view.getLayout().getSelectedComponent();
-            if(selected.getType().equals("h")) {
-                
-            }
-            else if(selected.getType().equals("p")) {
+            if(selected.getType().equals("h") || selected.getType().equals("p")) {
+                ((Pane)selected.getParent().getComponent()).getChildren().remove(selected.getComponent());
+                view.getLayout().getComponents().remove(selected);
             }
         }
     }

@@ -73,6 +73,10 @@ public class LayoutComponent {
         this.parent = parent;
     }
     
+    public LayoutComponent getParent() {
+        return parent;
+    }
+    
     public LayoutTemplate getTemplate() {
         return template;
     }
