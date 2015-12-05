@@ -425,5 +425,13 @@ public class StyleController {
         removeAlert.setHeaderText("Really Remove Content?");
         removeAlert.setContentText("This cannot be undone");
         Optional<ButtonType> response = removeAlert.showAndWait();
+        if(response.get() == ButtonType.OK) {
+            LayoutComponent selected = view.getLayout().getSelectedComponent();
+            if(selected.getType().equals("h")) {
+                
+            }
+            else if(selected.getType().equals("p")) {
+            }
+        }
     }
 }

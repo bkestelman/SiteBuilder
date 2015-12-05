@@ -15,8 +15,9 @@ import javafx.scene.layout.VBox;
 public class ContentPane extends LayoutComponent {
     public ObservableList<ContentComponent> content;
             
-    public ContentPane() {
+    public ContentPane(LayoutTemplate template) {
         component = new VBox();
+        initComponent(template);
     }
     
     public void addContent(ContentComponent component) {

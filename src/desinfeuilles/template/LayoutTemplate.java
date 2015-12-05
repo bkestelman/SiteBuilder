@@ -68,12 +68,14 @@ public abstract class LayoutTemplate {
     public void addParagraph(String pText) {
         Paragraph p = new Paragraph(pText, this);
         components.add(p);
+        p.setParent(contentPane);
         ((VBox)(contentPane.getComponent())).getChildren().add(p.getComponent());
     }
     
     public void addHeader(String hText) {
         Header h = new Header(hText, this);
         components.add(h);
+        h.setParent(contentPane);
         ((VBox)(contentPane.getComponent())).getChildren().add(h.getComponent());
     }
 }

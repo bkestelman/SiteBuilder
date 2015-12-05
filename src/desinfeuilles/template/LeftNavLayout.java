@@ -32,7 +32,7 @@ public class LeftNavLayout extends LayoutTemplate {
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         footer = new Footer("This is a footer", this);
         main.setBottom(footer.getComponent());
-        contentPane = new ContentPane();
+        contentPane = new ContentPane(this);
         main.setCenter(contentPane.getComponent());
     }
     
