@@ -203,6 +203,9 @@ public class StyleController {
         if(selection.isPresent()) {
             String contentType = selection.get();
             switch(contentType) {
+                case "Header":
+                    openHeaderDialog();
+                    break;
                 case "Paragraph": 
                     openParagraphDialog();
                     break;
@@ -237,6 +240,12 @@ public class StyleController {
         pageDialog.prepareToShow();
         pageDialog.sizeNice();
         pageDialog.showAndWait();
+    }
+    
+    private void openHeaderDialog() {
+        EditHeaderDialog hDialog = new EditHeaderDialog(view.getLayout());
+        hDialog.prepareToShow();
+        hDialog.showAndWait();
     }
 
     private void openParagraphDialog() {

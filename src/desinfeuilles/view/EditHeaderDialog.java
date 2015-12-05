@@ -7,6 +7,7 @@ package desinfeuilles.view;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.template.Header;
+import desinfeuilles.template.LayoutTemplate;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -19,6 +20,7 @@ public class EditHeaderDialog extends CustomDialog {
     
     TextField t;
     Header h;
+    LayoutTemplate layout;
     
     public EditHeaderDialog(Header h) {
         super();
@@ -31,10 +33,23 @@ public class EditHeaderDialog extends CustomDialog {
         getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
     }
     
+    public EditHeaderDialog(LayoutTemplate layout) {
+        super();
+        this.layout = layout;
+        Label l = new Label("Edit some text here:");
+        t = new TextField();
+        addNode(l);
+        addNode(t);
+        getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
+    }
+    
     public void initEventHandlers() {
         ok.setOnAction(e -> {
             response = OK;
-            h.setText(t.getText());
+            if(layout == null) 
+                h.setText(t.getText());
+            else
+                layout.addHeader(t.getText());
             close();
         });
         cancel.setOnAction(e -> {

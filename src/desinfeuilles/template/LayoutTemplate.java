@@ -41,7 +41,6 @@ public abstract class LayoutTemplate {
     public abstract void addNav(NavBar nav);
     public abstract void addFooter(Footer footer);
     public abstract void addContentPane(ContentPane cpane);
-    public abstract void addHeader(String h);
     public abstract Pane getMainPane();
     public ContentPane getContentPane() {return contentPane;}
     public abstract NavBar getNavBar();
@@ -68,5 +67,9 @@ public abstract class LayoutTemplate {
 
     public void addParagraph(String pText) {
         ((VBox)(contentPane.getComponent())).getChildren().add(new Label(pText));
+    }
+    
+    public void addHeader(String h) {
+        ((VBox)(contentPane.getComponent())).getChildren().add(new Label(h));
     }
 }
