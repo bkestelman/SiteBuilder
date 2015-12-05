@@ -22,14 +22,14 @@ public abstract class LayoutTemplate {
     ContentPane content;
     Footer footer;*/
     StyleTemplate style;
-    static LayoutComponent selectedComponent; 
+    LayoutComponent selectedComponent; 
     ArrayList<LayoutComponent> components = new ArrayList<>();
     public static boolean balls = false;
     
-    public static void setSelectedComponent(LayoutComponent n) {
+    public void setSelectedComponent(LayoutComponent n) {
         selectedComponent = n;
     }
-    public static LayoutComponent getSelectedComponent() {
+    public LayoutComponent getSelectedComponent() {
         return selectedComponent;
     }
     public abstract void addPage(String pageName, String pageLink);

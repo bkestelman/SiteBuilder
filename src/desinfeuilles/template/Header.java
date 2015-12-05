@@ -17,6 +17,7 @@ public class Header extends LayoutComponent {
     Header(String bannerH, LayoutTemplate template) {
         component = new Label(bannerH);
         initComponent(template);
+        text = bannerH;
     }
     
 }

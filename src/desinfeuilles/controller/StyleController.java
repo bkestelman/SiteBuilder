@@ -129,6 +129,7 @@ public class StyleController {
         editD.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
         Label l = new Label("Edit some text here:");
         TextField t = new TextField();
+        t.setText(view.getLayout().getSelectedComponent().getText());
         editD.addNode(l);
         editD.addNode(t);
         editD.prepareToShow();

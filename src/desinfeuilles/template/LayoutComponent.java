@@ -19,6 +19,7 @@ public class LayoutComponent {
     Node component; //not all layout components will use this field (for instance, NavBars have their own HBox or VBox component)
     LayoutComponent parent;
     LayoutTemplate template;
+    String text;
     
     public void initComponent(LayoutTemplate template) {
         isSelected = false;
@@ -77,5 +78,9 @@ public class LayoutComponent {
     
     public void setTemplate(LayoutTemplate template) {
         this.template = template;
+    }
+    
+    public String getText() {
+        return text;
     }
 }
