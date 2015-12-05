@@ -20,7 +20,6 @@ public class LeftNavLayout extends LayoutTemplate {
     BorderPane main;
     Banner banner;
     NavBarV nav;
-    ContentPane contentPane;
     Footer footer;
     
     public LeftNavLayout() {
@@ -33,6 +32,8 @@ public class LeftNavLayout extends LayoutTemplate {
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         footer = new Footer("This is a footer", this);
         main.setBottom(footer.getComponent());
+        contentPane = new ContentPane();
+        main.setCenter(contentPane.getComponent());
     }
     
     @Override
@@ -97,11 +98,6 @@ public class LeftNavLayout extends LayoutTemplate {
 
     @Override
     public void addContentPane(ContentPane cpane) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addParagraph(String p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -9,7 +9,10 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -22,6 +25,7 @@ public abstract class LayoutTemplate {
     ContentPane content;
     Footer footer;*/
     StyleTemplate style;
+    ContentPane contentPane;
     LayoutComponent selectedComponent; 
     ArrayList<LayoutComponent> components = new ArrayList<>();
     public static boolean balls = false;
@@ -37,10 +41,9 @@ public abstract class LayoutTemplate {
     public abstract void addNav(NavBar nav);
     public abstract void addFooter(Footer footer);
     public abstract void addContentPane(ContentPane cpane);
-    public abstract void addParagraph(String p);
     public abstract void addHeader(String h);
     public abstract Pane getMainPane();
-    public abstract ContentPane getContentPane();
+    public ContentPane getContentPane() {return contentPane;}
     public abstract NavBar getNavBar();
     public abstract Banner getBanner();
     public abstract Footer getFooter();
@@ -61,5 +64,9 @@ public abstract class LayoutTemplate {
                 c.getComponent().getStyleClass().remove(CSS_CLASS_SELECTED);
             }
         }
+    }
+
+    public void addParagraph(String pText) {
+        ((VBox)(contentPane.getComponent())).getChildren().add(new Label(pText));
     }
 }

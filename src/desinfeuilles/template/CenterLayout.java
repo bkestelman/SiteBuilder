@@ -21,7 +21,6 @@ public class CenterLayout extends LayoutTemplate {
     BorderPane main;
     Banner banner;
     NavBarH nav;
-    ContentPane contentPane;
     Footer footer;
     VBox top;
     
@@ -36,6 +35,8 @@ public class CenterLayout extends LayoutTemplate {
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         footer = new Footer("This is a footer", this);
         main.setBottom(footer.getComponent());
+        contentPane = new ContentPane();
+        main.setCenter(contentPane.getComponent());
     }
     
     @Override
@@ -101,11 +102,6 @@ public class CenterLayout extends LayoutTemplate {
 
     @Override
     public void addContentPane(ContentPane cpane) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void addParagraph(String p) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

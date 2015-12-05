@@ -5,9 +5,11 @@
  */
 package desinfeuilles.view;
 
+import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.template.Header;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 
 /**
  *
@@ -26,6 +28,7 @@ public class EditHeaderDialog extends CustomDialog {
         t.setText(h.getText());
         addNode(l);
         addNode(t);
+        getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
     }
     
     public void initEventHandlers() {

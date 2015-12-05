@@ -27,6 +27,7 @@ import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
+import desinfeuilles.view.EditParagraphDialog;
 import java.util.Optional;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -140,7 +141,6 @@ public class StyleController {
             editD.setTitle("Edit Text");
         }
         else editD = new CustomDialog();
-        editD.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
         editD.prepareToShow();
         editD.sizeNice();
         editD.showAndWait();
@@ -191,6 +191,7 @@ public class StyleController {
         //content type selection (dropdown?)
         //text, list, image, video, slideshow -> open editor for selection
         ArrayList<String> contentTypes = new ArrayList<>();
+        contentTypes.add("Header");
         contentTypes.add("Paragraph");
         contentTypes.add("List");
         contentTypes.add("Image");
@@ -239,27 +240,7 @@ public class StyleController {
     }
 
     private void openParagraphDialog() {
-        CustomDialog pDialog = new CustomDialog();
-        pDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Edit.png"));
-        TextArea pText = new TextArea();
-        pText.setPrefColumnCount(25);
-        pText.setPrefRowCount(30);
-        pDialog.addNode(pText);
-        Button hyperlink = new Button("Make selected text hyperlink");
-        pDialog.addNode(hyperlink);
-        hyperlink.setOnAction(e -> {
-            CustomDialog linkD = new CustomDialog();
-            Label sel = new Label("Selected text: " + pText.getSelectedText());
-            HBox urlH = new HBox();
-            Label enterUrl = new Label("URL: ");
-            TextField url = new TextField();
-            urlH.getChildren().addAll(enterUrl, url);
-            linkD.addNode(sel);
-            linkD.addNode(urlH);
-            linkD.prepareToShow();
-            linkD.show();
-        });
-        pDialog.setTitle("Edit Paragraph");
+        EditParagraphDialog pDialog = new EditParagraphDialog(view.getLayout());
         pDialog.prepareToShow();
         pDialog.showAndWait();
     }
