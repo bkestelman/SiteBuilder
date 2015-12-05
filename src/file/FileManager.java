@@ -21,6 +21,8 @@ public class FileManager {
     public void saveJSON() {
         JSONObject json = new JSONObject();
         json.put("baby", "come on");
+        json.put("hello", "bitch");
+        json.put("wassup", "nigga");
         try (FileWriter file = new FileWriter("./hello.json")) {
             file.write(json.toJSONString());
         }

@@ -17,17 +17,17 @@ import javafx.scene.layout.VBox;
  */
 public class NavBarV extends NavBar{
     
-    public NavBarV() {
+    public NavBarV(LayoutTemplate template) {
         super();
         component = new VBox();
-        initComponent();
+        initComponent(template);
         component.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
-        navM = new NavBarModel();
+        navM = new NavBarModel(template);
     }
 
     @Override
     public void addPage(String pageName, String pageLink) {
-        PageLabel pageLabel = new PageLabel(pageName);
+        PageLabel pageLabel = new PageLabel(pageName, template);
         pageLabel.setParent(this);
         ((VBox)component).getChildren().add(pageLabel.getComponent());
         getNavBarModel().addPage(pageLabel);

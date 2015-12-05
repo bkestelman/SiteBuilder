@@ -95,6 +95,10 @@ public class SiteBuilder extends Application {
     public FileManager getFileManager() {
         return fileManager;
     }
+    
+    public BuilderView getView() {
+        return view;
+    }
 
     /**
      * @param args the command line arguments

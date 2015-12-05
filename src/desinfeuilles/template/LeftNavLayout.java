@@ -7,6 +7,7 @@ package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
+import java.util.ArrayList;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -23,13 +24,14 @@ public class LeftNavLayout extends LayoutTemplate {
     Footer footer;
     
     public LeftNavLayout() {
+        //components = new ArrayList<>();
         main = new BorderPane();
-        banner = new Banner("My Website");
-        nav = new NavBarV();
+        banner = new Banner("My Website", this);
+        nav = new NavBarV(this);
         main.setTop(banner.getComponent());
         main.setLeft(nav.getNavBarPane());
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
-        footer = new Footer("This is a footer");
+        footer = new Footer("This is a footer", this);
         main.setBottom(footer.getComponent());
     }
     

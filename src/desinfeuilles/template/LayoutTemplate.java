@@ -5,6 +5,8 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.Pane;
@@ -20,13 +22,15 @@ public abstract class LayoutTemplate {
     ContentPane content;
     Footer footer;*/
     StyleTemplate style;
-    static Node selectedNode; 
+    static LayoutComponent selectedComponent; 
+    ArrayList<LayoutComponent> components = new ArrayList<>();
+    public static boolean balls = false;
     
-    public static void setSelectedNode(Node n) {
-        selectedNode = n;
+    public static void setSelectedComponent(LayoutComponent n) {
+        selectedComponent = n;
     }
-    public static Node getSelectedNode() {
-        return selectedNode;
+    public static LayoutComponent getSelectedComponent() {
+        return selectedComponent;
     }
     public abstract void addPage(String pageName, String pageLink);
     public abstract void addBanner(Banner banner);
@@ -44,4 +48,18 @@ public abstract class LayoutTemplate {
     public abstract void applyStyle(StyleTemplate style);
     @Override
     public abstract String toString();
+    public void addComponent(LayoutComponent component) {
+        components.add(component);
+    }
+    public ArrayList<LayoutComponent> getComponents() {
+        return components;
+    }
+    public void unselectStuff() { 
+        for(LayoutComponent c : components) {
+            if(!c.isSelected()) {
+                //c.getComponent().impl_processCSS(true);
+                c.getComponent().getStyleClass().remove(CSS_CLASS_SELECTED);
+            }
+        }
+    }
 }

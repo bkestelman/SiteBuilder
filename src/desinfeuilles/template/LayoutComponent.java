@@ -20,29 +20,47 @@ public class LayoutComponent {
     LayoutComponent parent;
     LayoutTemplate template;
     
-    public void initComponent() {
+    public void initComponent(LayoutTemplate template) {
         isSelected = false;
         initClickListener();
-        //this.template = template;
+        this.template = template;
+        template.addComponent(this);
     }
     
     public void invertSelected() {
         isSelected = !isSelected;
         if(isSelected) {
+            if(!template.balls) {
+            LayoutComponent preSelected = template.getSelectedComponent();
+            if(preSelected != null) preSelected.deselect();
+            template.setSelectedComponent(this);
+            }
             component.getStyleClass().add(CSS_CLASS_SELECTED);
         }
         else {
             component.getStyleClass().remove(CSS_CLASS_SELECTED);
         }
     }
+    
+    public void deselect() {
+        isSelected = false;
+        component.getStyleClass().remove(CSS_CLASS_SELECTED);
+    }
 
     public void initClickListener()  {
         component.setOnMouseClicked(e -> {
-           invertSelected(); 
-           if(parent != null) {
-               parent.invertSelected();
-           }
+            //template.unselectStuff();
+            invertSelected(); 
+            if(parent != null) {
+                template.balls = true;
+                parent.invertSelected();
+                template.balls = false;
+            }
         });
+    }
+    
+    public boolean isSelected() {
+        return isSelected;
     }
 
     public Node getComponent() {

@@ -14,9 +14,9 @@ import javafx.scene.control.Label;
 public class Header extends LayoutComponent {
     
 
-    Header(String bannerH) {
+    Header(String bannerH, LayoutTemplate template) {
         component = new Label(bannerH);
-        initComponent();
+        initComponent(template);
     }
     
 }

@@ -8,6 +8,7 @@ package desinfeuilles.template;
 import static desinfeuilles.StartupConstants.CSS_CLASS_CENTER_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
+import java.util.ArrayList;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -25,14 +26,15 @@ public class CenterLayout extends LayoutTemplate {
     VBox top;
     
     public CenterLayout() {
+        //components = new ArrayList<>();
         main = new BorderPane();
         top = new VBox();
-        banner = new Banner("Original Website");
-        nav = new NavBarH();
+        banner = new Banner("Original Website", this);
+        nav = new NavBarH(this);
         top.getChildren().addAll(banner.getComponent(), nav.getNavBarPane());
         main.setTop(top);
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
-        footer = new Footer("This is a footer");
+        footer = new Footer("This is a footer", this);
         main.setBottom(footer.getComponent());
     }
     

@@ -19,10 +19,10 @@ import javafx.scene.control.Label;
  */
 public class PageLabel extends LayoutComponent {
     
-    public PageLabel(String label) {
+    public PageLabel(String label, LayoutTemplate template) {
         isSelected = false;
         component = new Label(label);
-        initComponent();
+        initComponent(template);
     }
     
     public PageLabel() {

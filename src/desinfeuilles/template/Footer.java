@@ -17,16 +17,16 @@ import javafx.scene.layout.HBox;
 public class Footer extends LayoutComponent {
     Header footerHeader; 
     
-    public Footer(String footerText) {
+    public Footer(String footerText, LayoutTemplate template) {
         component = new HBox();
-        initComponent();
+        initComponent(template);
         addHeader(footerText);
         component.getStyleClass().add(CSS_CLASS_AQUA_FOOTER);
         ((HBox)component).setMinHeight(50);
     }
     
     public void addHeader(String headerText) {
-        footerHeader = new Header(headerText); 
+        footerHeader = new Header(headerText, template); 
         footerHeader.setParent(this);
         ((HBox)component).getChildren().add(footerHeader.getComponent());
         (footerHeader.getComponent()).getStyleClass().add(CSS_CLASS_FOOTER_TEXT);

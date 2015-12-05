@@ -16,15 +16,16 @@ import javafx.scene.layout.Pane;
  *
  * @author bkestelman
  */
-public class NavBarModel {
+public class NavBarModel extends LayoutComponent {
     HashMap<PageLabel, String> pages; //also contain links
     
-    public NavBarModel() {
+    public NavBarModel(LayoutTemplate template) {
         pages = new HashMap<>();
+        this.template = template;
     }
     
     public void addPage(String pageName, String pageLink) {
-        PageLabel pageLabel = new PageLabel(pageName);
+        PageLabel pageLabel = new PageLabel(pageName, template);
         pages.put(pageLabel, pageLink);
     }
     
