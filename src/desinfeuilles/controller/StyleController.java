@@ -60,10 +60,13 @@ public class StyleController {
     
     private static int listElements = 0;
     
+    ArrayList<CustomDialog> dialogs;
+    
     public StyleController(SiteBuilder sb) {
         main = new HBox();
         main.getStyleClass().add(CSS_CLASS_STYLE_CONTROLLER);
         siteBuilder = sb;
+        dialogs = new ArrayList<>();
     }
     
     public void setView(BuilderView v) {
@@ -72,7 +75,7 @@ public class StyleController {
     
     public void openStyleChooser() {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
-        ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(styles.get(0), styles);
+        ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(siteBuilder.getModel().getStyle(), styles);
         chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
         chooser.setTitle("Style Selector");
         chooser.setHeaderText("Choose a Style Template");
@@ -226,7 +229,7 @@ public class StyleController {
         pageDialog.addNode(nameSet);
         pageDialog.prepareToShow();
         pageDialog.sizeNice();
-        pageDialog.show();
+        pageDialog.showAndWait();
     }
 
     private void openParagraphDialog() {
@@ -252,7 +255,7 @@ public class StyleController {
         });
         pDialog.setTitle("Edit Paragraph");
         pDialog.prepareToShow();
-        pDialog.show();
+        pDialog.showAndWait();
     }
 
     private void openListDialog() {

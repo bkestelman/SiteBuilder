@@ -46,9 +46,11 @@ public class SiteBuilder extends Application {
     public LayoutTemplate l1, l2;
     public ArrayList<StyleTemplate> styles;
     public FileManager fileManager;
+    public BuilderModel model;
     
     @Override
     public void start(Stage stage) {
+        model = new BuilderModel(this);
         layouts = new ArrayList<>();
         l1 = new LeftNavLayout();
         l2 = new CenterLayout();
@@ -62,7 +64,7 @@ public class SiteBuilder extends Application {
         fileManager = new FileManager();
         fileController = new FileController(this);
         styleController = new StyleController(this);
-        view = new BuilderView(this, fileController, styleController);
+        view = new BuilderView(this, fileController, styleController, model);
         Alert useTutorial = new Alert(AlertType.CONFIRMATION, "Would you like to go through the tutorial?");
         useTutorial.setHeaderText("Tutorial");
         useTutorial.setTitle("Tutorial");
@@ -98,6 +100,10 @@ public class SiteBuilder extends Application {
     
     public BuilderView getView() {
         return view;
+    }
+    
+    public BuilderModel getModel() {
+        return model;
     }
 
     /**

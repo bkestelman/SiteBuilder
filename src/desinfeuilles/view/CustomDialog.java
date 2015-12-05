@@ -8,6 +8,7 @@ package desinfeuilles.view;
 import static desinfeuilles.StartupConstants.CSS_CLASS_CONFIRM_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_DIALOG;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
+import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -27,6 +28,8 @@ public class CustomDialog extends Stage {
     Button ok, cancel;
     HBox confirm;
     boolean response;
+    String simpleResponse;
+    ArrayList<String> stringResponses;
     
     public static final boolean OK = true;
     public static final boolean CANCEL = false;
@@ -44,6 +47,16 @@ public class CustomDialog extends Stage {
         confirm.getChildren().addAll(ok, cancel);
         confirm.setAlignment(Pos.CENTER_RIGHT);
         initEventHandlers();
+        scene.getStylesheets().add(CSS_SHEET);
+        root.getStyleClass().add(CSS_CLASS_DIALOG);
+    }
+    
+    public CustomDialog(boolean minimalConstructor) { //just call this with any boolean value for a minimal constructor :P 
+        super();
+        root = new VBox();
+        root.setPadding(new Insets(10, 10, 10, 10));
+        scene = new Scene(root);
+        setScene(scene);
         scene.getStylesheets().add(CSS_SHEET);
         root.getStyleClass().add(CSS_CLASS_DIALOG);
     }

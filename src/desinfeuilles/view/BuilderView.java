@@ -5,6 +5,7 @@
  */
 package desinfeuilles.view;
 
+import desinfeuilles.BuilderModel;
 import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_COLOR_PICKER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
@@ -52,6 +53,7 @@ public class BuilderView {
     SiteBuilder siteBuilder;
     FileController fileController;
     StyleController styleController;
+    BuilderModel model;
     
     Stage primaryStage;
     Scene scene;
@@ -70,10 +72,11 @@ public class BuilderView {
     TilePane fileToolbar;
     HBox toolbars;
 
-    public BuilderView(SiteBuilder sb, FileController f, StyleController s) {
+    public BuilderView(SiteBuilder sb, FileController f, StyleController s, BuilderModel model) {
         siteBuilder = sb;
         fileController = f;
         styleController = s;
+        this.model = model;
         s.setView(this);
         initView();
     }
@@ -221,6 +224,7 @@ public class BuilderView {
     public void setStyleTemplate(StyleTemplate style) {
         this.style = style;
         layout.applyStyle(style);
+        model.setStyle(style);
     }
     
     public void initLayout() {
