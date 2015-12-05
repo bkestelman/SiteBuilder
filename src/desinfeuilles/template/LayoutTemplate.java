@@ -66,10 +66,14 @@ public abstract class LayoutTemplate {
     }
 
     public void addParagraph(String pText) {
-        ((VBox)(contentPane.getComponent())).getChildren().add(new Label(pText));
+        Paragraph p = new Paragraph(pText, this);
+        components.add(p);
+        ((VBox)(contentPane.getComponent())).getChildren().add(p.getComponent());
     }
     
-    public void addHeader(String h) {
-        ((VBox)(contentPane.getComponent())).getChildren().add(new Label(h));
+    public void addHeader(String hText) {
+        Header h = new Header(hText, this);
+        components.add(h);
+        ((VBox)(contentPane.getComponent())).getChildren().add(h.getComponent());
     }
 }

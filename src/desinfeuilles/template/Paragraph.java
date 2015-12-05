@@ -11,14 +11,12 @@ import javafx.scene.control.Label;
  *
  * @author Benito
  */
-public class Header extends LayoutComponent {
-    
-
-    public Header(String bannerH, LayoutTemplate template) {
+public class Paragraph extends LayoutComponent {
+    public Paragraph(String bannerH, LayoutTemplate template) {
         component = new Label(bannerH);
         initComponent(template);
         text = bannerH;
-        type = "h";
+        type = "p";
     }
     
     public void setText(String s) {

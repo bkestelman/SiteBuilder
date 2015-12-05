@@ -24,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.Paragraph;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
@@ -138,7 +139,10 @@ public class StyleController {
         CustomDialog editD;
         if(selected.getType().equals("h")) {
             editD = new EditHeaderDialog((Header)selected);
-            editD.setTitle("Edit Text");
+            editD.setTitle("Edit Header");
+        }
+        else if(selected.getType().equals("p")) {
+            editD = new EditParagraphDialog((Paragraph)selected);
         }
         else editD = new CustomDialog();
         editD.prepareToShow();
