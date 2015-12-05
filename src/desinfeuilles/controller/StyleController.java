@@ -29,6 +29,7 @@ import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
 import desinfeuilles.view.EditParagraphDialog;
+import java.io.File;
 import java.util.Optional;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -155,7 +156,9 @@ public class StyleController {
         //dialog with browse button and options (repeat, 100%)
         FileChooser bc = new FileChooser();
         bc.setTitle("Choose Background Image");
-        bc.showOpenDialog(view.getStage());
+        File imgFile = bc.showOpenDialog(view.getStage());
+        String filePath = imgFile.toURI().toString();
+        view.getLayout().getSelectedComponent().getComponent().setStyle("-fx-background-image: url(" + filePath + ");");
     }
 
     public void openColorChooser() {
