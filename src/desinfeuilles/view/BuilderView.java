@@ -22,6 +22,7 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_FONTS;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
 import static desinfeuilles.StartupConstants.INDIE_FLOWER_FONT;
+import static desinfeuilles.StartupConstants.PACIFICO_FONT;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
@@ -115,7 +116,7 @@ public class BuilderView {
         
         primaryStage.setTitle("DesinFeuilles SiteBuilder");
         primaryStage.setMaximized(true);
-        scene.getStylesheets().addAll(CSS_SHEET, CSS_FONTS, CHEWY_FONT, INDIE_FLOWER_FONT, ANTON_FONT);
+        scene.getStylesheets().addAll(CSS_SHEET, CSS_FONTS, CHEWY_FONT, INDIE_FLOWER_FONT, ANTON_FONT, PACIFICO_FONT);
         primaryStage.setScene(scene);
         
         initEventHandlers();

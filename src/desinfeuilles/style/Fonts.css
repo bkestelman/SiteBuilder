@@ -19,3 +19,7 @@ and open the template in the editor.
 .anton {
     -fx-font-family: 'Anton', sans-serif;
 }
+
+.pacifico {
+    -fx-font-family: 'Pacifico', cursive;
+}

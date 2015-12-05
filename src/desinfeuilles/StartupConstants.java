@@ -46,4 +46,5 @@ public class StartupConstants {
     public static String CHEWY_FONT = "https://fonts.googleapis.com/css?family=Chewy";
     public static String INDIE_FLOWER_FONT = "https://fonts.googleapis.com/css?family=Indie+Flower";
     public static String ANTON_FONT = "https://fonts.googleapis.com/css?family=Anton";
+    public static String PACIFICO_FONT = "https://fonts.googleapis.com/css?family=Pacifico";
 }

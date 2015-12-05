@@ -57,6 +57,7 @@ public class SiteBuilder extends Application {
         fonts = new ArrayList<>();
         fonts.add(new MyFont("Anton", "anton"));
         fonts.add(new MyFont("Chewy", "chewy"));
+        fonts.add(new MyFont("Pacifico", "pacifico"));
         //fonts.add(new MyFont("Indie Flower", "indie_flower"));
         layouts = new ArrayList<>();
         l1 = new LeftNavLayout();

@@ -26,8 +26,10 @@ import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.Paragraph;
 import desinfeuilles.template.StyleTemplate;
+import desinfeuilles.view.AddPageDialog;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
+import desinfeuilles.view.EditListDialog;
 import desinfeuilles.view.EditParagraphDialog;
 import desinfeuilles.view.FontChooserDialog;
 import java.io.File;
@@ -235,14 +237,7 @@ public class StyleController {
 
     public void openAddPageDialog() {
         //page name
-        CustomDialog pageDialog = new CustomDialog();
-        pageDialog.setTitle("Add Page");
-        HBox nameSet = new HBox();
-        pageDialog.getIcons().add(new Image("file:" + PATH_ICONS + "AddPage.png"));
-        Label l = new Label("Page Name: ");
-        TextField name = new TextField();
-        nameSet.getChildren().addAll(l,  name);
-        pageDialog.addNode(nameSet);
+        AddPageDialog pageDialog = new AddPageDialog(view.getLayout());
         pageDialog.prepareToShow();
         pageDialog.sizeNice();
         pageDialog.showAndWait();
@@ -263,39 +258,11 @@ public class StyleController {
     private void openListDialog() {
         listElements = 1;
         
-        CustomDialog lDialog = new CustomDialog();
-        lDialog.getIcons().add(new Image("file:" + PATH_ICONS + "List.png"));
-        HBox element1 = new HBox();
-        Label l1 = new Label("Element 1: ");
-        TextField t1 = new TextField();
-        element1.getChildren().addAll(l1, t1);
-        lDialog.addNode(element1);
-        
-        Button add = new Button("Add Element");
-        lDialog.addNode(add);
-        
-        ArrayList<HBox> elements = new ArrayList<>();
-        elements.add(element1);
-        
-        add.setOnAction(e -> {
-           Label l = new Label("Element " + (++listElements) + ": ");
-           TextField t = new TextField();
-           HBox el = new HBox();
-           el.getChildren().addAll(l, t);
-           elements.add(el);
-           lDialog.getRoot().getChildren().clear();
-           for(HBox h : elements) {
-               lDialog.addNode(h);
-           }
-           lDialog.addNode(add);
-           lDialog.addConfirm();
-           t1.impl_processCSS(true);
-           lDialog.addHeight(t1.getHeight());
-        });
+        EditListDialog lDialog = new EditListDialog(view.getLayout());
         lDialog.prepareToShow();
         lDialog.sizeNice();
         lDialog.setTitle("List Editor");
-        lDialog.show();
+        lDialog.showAndWait();
     }
 
     private void openImageDialog() {

@@ -78,4 +78,10 @@ public abstract class LayoutTemplate {
         h.setParent(contentPane);
         ((VBox)(contentPane.getComponent())).getChildren().add(h.getComponent());
     }
+    
+    public void addList(ListComponent list) {
+        components.add(list);
+        list.setParent(contentPane);
+        ((VBox)contentPane.getComponent()).getChildren().add(list.getComponent());
+    }
 }
