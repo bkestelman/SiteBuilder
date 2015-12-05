@@ -5,6 +5,7 @@
  */
 package desinfeuilles;
 
+import model.BuilderModel;
 import static desinfeuilles.StartupConstants.PATH_IMAGES;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.animation.Tutorial;

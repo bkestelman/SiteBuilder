@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package desinfeuilles;
+package model;
 
+import desinfeuilles.SiteBuilder;
+import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
 
 /**
@@ -15,6 +17,7 @@ public class BuilderModel {
     SiteBuilder siteBuilder;
     
     StyleTemplate style;
+    LayoutTemplate layout;
 
     public BuilderModel(SiteBuilder sb) {
         siteBuilder = sb;
@@ -27,5 +30,15 @@ public class BuilderModel {
     public StyleTemplate getStyle() {
         return style;
     }
+
+    public LayoutTemplate getLayout() {
+        return layout;
+    }
+
+    public void setLayout(LayoutTemplate layout) {
+        this.layout = layout;
+    }
+    
+    
     
 }

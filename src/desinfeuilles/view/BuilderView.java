@@ -5,7 +5,7 @@
  */
 package desinfeuilles.view;
 
-import desinfeuilles.BuilderModel;
+import model.BuilderModel;
 import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_COLOR_PICKER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
@@ -219,6 +219,7 @@ public class BuilderView {
         layout = l;
         root.setCenter(layout.getMainPane());
         initLayout();
+        model.setLayout(layout);
     }
     
     public void setStyleTemplate(StyleTemplate style) {

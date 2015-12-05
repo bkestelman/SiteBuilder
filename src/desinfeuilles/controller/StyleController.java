@@ -5,6 +5,7 @@
  */
 package desinfeuilles.controller;
 
+import model.BuilderModel;
 import desinfeuilles.SiteBuilder;
 import static desinfeuilles.StartupConstants.CSS_CLASS_DIALOG;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_CONTROLLER;
@@ -54,6 +55,7 @@ public class StyleController {
     BuilderView view;
     HBox main;
     SiteBuilder siteBuilder;
+    BuilderModel model;
     
     ArrayList<ImageView> imgs;
     int selectedTemplate;
@@ -67,6 +69,7 @@ public class StyleController {
         main.getStyleClass().add(CSS_CLASS_STYLE_CONTROLLER);
         siteBuilder = sb;
         dialogs = new ArrayList<>();
+        model = sb.getModel();
     }
     
     public void setView(BuilderView v) {
@@ -75,7 +78,7 @@ public class StyleController {
     
     public void openStyleChooser() {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
-        ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(siteBuilder.getModel().getStyle(), styles);
+        ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(model.getStyle(), styles);
         chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
         chooser.setTitle("Style Selector");
         chooser.setHeaderText("Choose a Style Template");
@@ -91,7 +94,7 @@ public class StyleController {
     
     public void openLayoutChooser() {
         ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
-        ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(layouts.get(0), layouts);
+        ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(model.getLayout(), layouts);
         chooser.setTitle("Layout Chooser");
         chooser.setHeaderText("Choose a Layout Template");
         Optional<LayoutTemplate> selection = chooser.showAndWait();
