@@ -17,6 +17,7 @@ public class StartupConstants {
     
     public static String CSS_PATH = "./desinfeuilles/style/";
     public static String CSS_SHEET = CSS_PATH + "DesinFeuillesStyle.css";
+    public static String CSS_FONTS = CSS_PATH + "Fonts.css";
     
     public static String CSS_CLASS_ROOT = "root";
     public static String CSS_CLASS_FILE_TOOLBAR = "fileToolbar";
@@ -42,5 +43,7 @@ public class StartupConstants {
     public static String CSS_CLASS_AQUA_FOOTER = "aqua_footer";
     public static String CSS_CLASS_FOOTER_TEXT = "footer_text";
     
-    public static String TUTORIAL_FONT = "https://fonts.googleapis.com/css?family=Chewy";
+    public static String CHEWY_FONT = "https://fonts.googleapis.com/css?family=Chewy";
+    public static String INDIE_FLOWER_FONT = "https://fonts.googleapis.com/css?family=Indie+Flower";
+    public static String ANTON_FONT = "https://fonts.googleapis.com/css?family=Anton";
 }

@@ -29,6 +29,7 @@ import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
 import desinfeuilles.view.EditParagraphDialog;
+import desinfeuilles.view.FontChooserDialog;
 import java.io.File;
 import java.util.Optional;
 import javafx.geometry.Pos;
@@ -184,15 +185,12 @@ public class StyleController {
 
     public void openFontChooser() {
         //fonts in list, preview label in font
-        CustomDialog fontD = new CustomDialog();
-        fontD.setTitle("Choose Font");
-        fontD.getIcons().add(new Image("file:" + PATH_ICONS + "Font.png"));
-        ComboBox<String> cb = new ComboBox<>();
-        cb.getItems().addAll("This is a real font", "So is this");
-        fontD.addNode(cb);
+        LayoutComponent selected = view.getLayout().getSelectedComponent();
+        FontChooserDialog fontD = new FontChooserDialog(selected, siteBuilder.getFonts());
         fontD.prepareToShow();
         fontD.sizeNice();
-        fontD.show();
+        fontD.showAndWait();
+        System.out.println(selected.getComponent().getStyleClass());
     }
 
     public void openAddContentDialog() {

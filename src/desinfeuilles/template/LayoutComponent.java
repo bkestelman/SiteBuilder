@@ -21,6 +21,7 @@ public class LayoutComponent {
     LayoutTemplate template;
     String text;
     String type; //h=header, p=paragraph, l=list, v=video, s=slideshow, b=banner, f=footer
+    String fontStyleClass;
     
     public void initComponent(LayoutTemplate template) {
         isSelected = false;
@@ -96,4 +97,14 @@ public class LayoutComponent {
     public String getType() {
         return type;
     }
+
+    public String getFontStyleClass() {
+        return fontStyleClass;
+    }
+
+    public void setFontStyleClass(String fontStyleClass) {
+        this.fontStyleClass = fontStyleClass;
+    }
+    
+    
 }

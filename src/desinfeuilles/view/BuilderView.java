@@ -7,6 +7,8 @@ package desinfeuilles.view;
 
 import model.BuilderModel;
 import desinfeuilles.SiteBuilder;
+import static desinfeuilles.StartupConstants.ANTON_FONT;
+import static desinfeuilles.StartupConstants.CHEWY_FONT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_COLOR_PICKER;
 import static desinfeuilles.StartupConstants.CSS_CLASS_EMPTY_LAYOUT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_FILE_TOOLBAR;
@@ -17,9 +19,10 @@ import static desinfeuilles.StartupConstants.CSS_CLASS_ROOT;
 import static desinfeuilles.StartupConstants.CSS_CLASS_SPECIAL_BUTTON;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR;
 import static desinfeuilles.StartupConstants.CSS_CLASS_STYLE_TOOLBAR_BUTTON;
+import static desinfeuilles.StartupConstants.CSS_FONTS;
 import static desinfeuilles.StartupConstants.CSS_SHEET;
+import static desinfeuilles.StartupConstants.INDIE_FLOWER_FONT;
 import static desinfeuilles.StartupConstants.PATH_ICONS;
-import static desinfeuilles.StartupConstants.TUTORIAL_FONT;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
 import desinfeuilles.template.EmptyLayout;
@@ -112,7 +115,7 @@ public class BuilderView {
         
         primaryStage.setTitle("DesinFeuilles SiteBuilder");
         primaryStage.setMaximized(true);
-        scene.getStylesheets().addAll(CSS_SHEET, TUTORIAL_FONT);
+        scene.getStylesheets().addAll(CSS_SHEET, CSS_FONTS, CHEWY_FONT, INDIE_FLOWER_FONT, ANTON_FONT);
         primaryStage.setScene(scene);
         
         initEventHandlers();

@@ -11,6 +11,7 @@ import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.animation.Tutorial;
 import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
+import desinfeuilles.style.MyFont;
 import desinfeuilles.template.CenterLayout;
 import desinfeuilles.view.BuilderView;
 import java.util.ArrayList;
@@ -48,10 +49,15 @@ public class SiteBuilder extends Application {
     public ArrayList<StyleTemplate> styles;
     public FileManager fileManager;
     public BuilderModel model;
+    public ArrayList<MyFont> fonts;
     
     @Override
     public void start(Stage stage) {
         model = new BuilderModel(this);
+        fonts = new ArrayList<>();
+        fonts.add(new MyFont("Anton", "anton"));
+        fonts.add(new MyFont("Chewy", "chewy"));
+        //fonts.add(new MyFont("Indie Flower", "indie_flower"));
         layouts = new ArrayList<>();
         l1 = new LeftNavLayout();
         l2 = new CenterLayout();
@@ -106,12 +112,16 @@ public class SiteBuilder extends Application {
     public BuilderModel getModel() {
         return model;
     }
-
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public ArrayList<MyFont> getFonts() {
+        return fonts;
     }
 
 }
