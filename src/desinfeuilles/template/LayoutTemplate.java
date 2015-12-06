@@ -83,6 +83,7 @@ public abstract class LayoutTemplate implements Serializable {
         components.add(p);
         p.setParent(contentPane);
         ((VBox)(contentPane.getComponent())).getChildren().add(p.getComponent());
+        contentPane.getContent().add(p);
     }
     
     public void addHeader(String hText) {
@@ -90,12 +91,14 @@ public abstract class LayoutTemplate implements Serializable {
         components.add(h);
         h.setParent(contentPane);
         ((VBox)(contentPane.getComponent())).getChildren().add(h.getComponent());
+        contentPane.getContent().add(h);
     }
     
     public void addList(ListComponent list) {
         components.add(list);
         list.setParent(contentPane);
         ((VBox)contentPane.getComponent()).getChildren().add(list.getComponent());
+        contentPane.getContent().add(list);
     }
 
     public void revive() {
@@ -117,6 +120,7 @@ public abstract class LayoutTemplate implements Serializable {
         ((Pane)contentPane.getComponent()).getChildren().add(img.getComponent());
         img.setParent(contentPane);
         components.add(img);
+        contentPane.getContent().add(img);
         return img;
     }
 
@@ -125,6 +129,7 @@ public abstract class LayoutTemplate implements Serializable {
         ((Pane)contentPane.getComponent()).getChildren().add(vid.getComponent());
         vid.setParent(contentPane);
         components.add(vid);
+        contentPane.getContent().add(vid);
         return vid;
     }
 }

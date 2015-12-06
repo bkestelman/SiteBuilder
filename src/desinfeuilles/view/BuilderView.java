@@ -29,6 +29,7 @@ import desinfeuilles.controller.StyleController;
 import desinfeuilles.template.EmptyLayout;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.NavBar;
+import desinfeuilles.template.NavBarModel;
 import desinfeuilles.template.PageLabel;
 import desinfeuilles.template.StyleTemplate;
 import java.io.Serializable;
@@ -383,5 +384,15 @@ public class BuilderView implements Serializable {
         openLayout = new EmptyLayout();
         root.setCenter(openLayout.getMainPane());
         openLayout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
+    }
+
+    public void updatePages() {
+        pages.clear();
+        NavBarModel openBarM = openLayout.getNavBar().getNavBarModel();
+        openBarM.getPages().clear();
+        for(PageLabel p : pageLabels) {
+            pages.add(((Label)p.getComponent()).getText());
+            openBarM.getPages().add(p);
+        }
     }
 }

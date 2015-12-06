@@ -14,7 +14,8 @@ import javafx.scene.control.Label;
  * @author Benito
  */
 public class ListComponent extends LayoutComponent {
-    ArrayList<ListElement> elements;
+    transient ArrayList<ListElement> elements;
+    ArrayList<String> stringElements;
     
     public ListComponent(ArrayList<ListElement> elements, LayoutTemplate template) {
         this.elements = elements;

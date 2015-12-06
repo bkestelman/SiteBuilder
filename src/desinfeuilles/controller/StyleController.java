@@ -161,6 +161,12 @@ public class StyleController {
         }
         else if(selected.getType().equals("PageLabel")) {
             editD = new EditHeaderDialog((PageLabel)selected);
+            editD.setTitle("Edit Page Name");
+            editD.prepareToShow();
+            editD.sizeNice();
+            editD.showAndWait();
+            view.updatePages();
+            return;
         }
         else editD = new CustomDialog();
         editD.prepareToShow();

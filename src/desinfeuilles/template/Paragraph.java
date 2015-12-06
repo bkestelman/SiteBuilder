@@ -27,4 +27,10 @@ public class Paragraph extends LayoutComponent {
     public String getHTML() {
         return "<p>" + text + "</p>";
     }
+    
+    public void revive() {
+        super.revive();
+        component = new Label(text);
+        applyCss();
+    }
 }
