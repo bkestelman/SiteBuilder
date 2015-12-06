@@ -245,8 +245,9 @@ public class BuilderView {
             pages.add(newPage);
             layouts.add(openLayout);
             openLayout.applyStyle(openStyle);
+            initLayout();
         }
-        initLayout();
+        //initLayout();
         model.setLayout(openLayout);
         reloadPageLabels();
     }
