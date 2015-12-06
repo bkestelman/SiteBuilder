@@ -6,6 +6,7 @@
 package desinfeuilles.view;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
+import desinfeuilles.template.ImageComponent;
 import desinfeuilles.template.LayoutComponent;
 import desinfeuilles.template.LayoutTemplate;
 import java.io.File;
@@ -24,7 +25,7 @@ import javafx.stage.FileChooser;
  * @author Benito
  */
 public class ImageDialog extends CustomDialog {
-    LayoutComponent imageComponent;
+    ImageComponent imageComponent;
     LayoutTemplate layout;
     Button browse;
     File imgFile;
@@ -69,7 +70,7 @@ public class ImageDialog extends CustomDialog {
         addNode(g);
     }
     
-    public ImageDialog(LayoutComponent l) {
+    public ImageDialog(ImageComponent l) {
         this();
         imageComponent = l;
     }
@@ -90,6 +91,9 @@ public class ImageDialog extends CustomDialog {
             if(layout != null) {
                 ImageView iv = new ImageView(new Image(imgFile.toURI().toString()));
                 layout.addImage(iv);
+            }
+            else {
+                imageComponent.setImage(imgFile.toURI().toString());
             }
             close();
         });

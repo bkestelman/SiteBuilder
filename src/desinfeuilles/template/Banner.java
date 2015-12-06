@@ -35,6 +35,7 @@ public class Banner extends LayoutComponent {
     }
 
     public void setHeader(String bannerH) {
+        text = bannerH;
         bannerHeader = new Header(bannerH, template);
         bannerHeader.setParent(this);
         ((HBox)component).getChildren().add(bannerHeader.getComponent());
@@ -48,7 +49,7 @@ public class Banner extends LayoutComponent {
         super.revive();
         component = new HBox();
         initComponent(template);
-        setHeader(text);
+        bannerHeader.revive();
         component.getStyleClass().add(CSS_CLASS_BANNER);
         ((HBox)component).setPrefHeight(210);
     }

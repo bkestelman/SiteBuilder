@@ -113,3 +113,11 @@ and open the template in the editor.
     -fx-font-size: 20px;
     -fx-padding: 10px;
 }
+
+.img_component {
+    -fx-border-width: 20;
+}
+
+.component {
+    -fx-padding: 5px;
+}

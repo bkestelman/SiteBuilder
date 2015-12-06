@@ -44,6 +44,7 @@ public class StartupConstants {
     public static String CSS_CLASS_AQUA_FOOTER = "aqua_footer";
     public static String CSS_CLASS_FOOTER_TEXT = "footer_text";
     public static String CSS_CLASS_PAGE_LABEL = "page_label";
+    public static String CSS_CLASS_IMG_COMPONENT = "img_component";
     
     public static String CHEWY_FONT = "https://fonts.googleapis.com/css?family=Chewy";
     public static String INDIE_FLOWER_FONT = "https://fonts.googleapis.com/css?family=Indie+Flower";

@@ -5,6 +5,8 @@
  */
 package desinfeuilles.template;
 
+import static desinfeuilles.StartupConstants.CSS_CLASS_IMG_COMPONENT;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 /**
@@ -17,5 +19,11 @@ public class ImageComponent extends LayoutComponent {
         super();
         component = img;
         initComponent(template);
+        img.getStyleClass().add(CSS_CLASS_IMG_COMPONENT);
+        type = "img";
+    }
+    
+    public void setImage(String path) {
+        ((ImageView)component).setImage(new Image(path));
     }
 }

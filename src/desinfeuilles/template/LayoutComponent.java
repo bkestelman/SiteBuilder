@@ -22,7 +22,7 @@ public class LayoutComponent implements Serializable {
     LayoutComponent parent;
     LayoutTemplate template;
     String text;
-    String type; //h=header, p=paragraph, l=list, v=video, s=slideshow, b=banner, f=footer
+    String type; //h=header, p=paragraph, l=list, v=video, s=slideshow, b=banner, f=footer, img=image
     String fontStyleClass;
     ArrayList<String> cssClasses;
     ArrayList<String> styles;
@@ -37,6 +37,7 @@ public class LayoutComponent implements Serializable {
         initClickListener();
         this.template = template;
         template.addComponent(this);
+        component.getStyleClass().add("component");
     }
     
     public void invertSelected() {

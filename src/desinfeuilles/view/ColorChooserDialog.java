@@ -32,7 +32,7 @@ public class ColorChooserDialog extends CustomDialog {
     public void initEventHandlers() {
         ok.setOnAction(e -> {
             response = OK;
-            selected.getComponent().setStyle("-fx-background-color: '" + palette.getValue() + "';");
+            selected.getComponent().setStyle("-fx-font-color: '" + palette.getValue() + "';");
             close();
         });
         cancel.setOnAction(e -> {

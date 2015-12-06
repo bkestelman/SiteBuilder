@@ -13,6 +13,7 @@ import static desinfeuilles.StartupConstants.PATH_ICONS;
 import static desinfeuilles.StartupConstants.PATH_SLIDESHOW_IMAGES;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
 import desinfeuilles.template.Header;
+import desinfeuilles.template.ImageComponent;
 import desinfeuilles.template.LayoutComponent;
 import desinfeuilles.view.BuilderView;
 import java.util.ArrayList;
@@ -163,12 +164,19 @@ public class StyleController {
     }
 
     public void openBackgroundImageChooser() {
+        LayoutComponent selected = view.getLayout().getSelectedComponent();
+        if(selected.getType() != null && selected.getType().equals("img")) {
+            ImageDialog imageD = new ImageDialog((ImageComponent)selected);
+            imageD.prepareToShow();
+            imageD.showAndWait();
+            return;
+        }
         //dialog with browse button and options (repeat, 100%)
         FileChooser bc = new FileChooser();
-        bc.setTitle("Choose Background Image");
+        bc.setTitle("Choose Image");
         File imgFile = bc.showOpenDialog(view.getStage());
         String filePath = imgFile.toURI().toString();
-        view.getLayout().getSelectedComponent().getComponent().setStyle("-fx-background-image: url(" + filePath + ");");
+        selected.getComponent().setStyle("-fx-background-image: url(" + filePath + ");");
     }
 
     public void openColorChooser() {
