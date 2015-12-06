@@ -111,8 +111,8 @@ public abstract class LayoutTemplate implements Serializable {
         style.applyFullStyle(this);
     }
 
-    public ImageComponent addImage(ImageView iv) {
-        ImageComponent img = new ImageComponent(iv, this);
+    public ImageComponent addImage(ImageView iv, String cap) {
+        ImageComponent img = new ImageComponent(iv, cap, this);
         ((Pane)contentPane.getComponent()).getChildren().add(img.getComponent());
         img.setParent(contentPane);
         components.add(img);

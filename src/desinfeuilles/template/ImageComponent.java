@@ -6,18 +6,25 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_IMG_COMPONENT;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 
 /**
  *
  * @author Benito
  */
 public class ImageComponent extends LayoutComponent {
+    Label caption;
+    ImageView img;
     
-    public ImageComponent(ImageView img, LayoutTemplate template) {
+    public ImageComponent(ImageView img, String cap, LayoutTemplate template) {
         super();
-        component = img;
+        this.img = img;
+        this.caption = new Label(cap);
+        component = new VBox();
+        ((VBox)component).getChildren().addAll(img, caption);
         initComponent(template);
         img.getStyleClass().add(CSS_CLASS_IMG_COMPONENT);
         type = "img";
@@ -29,16 +36,16 @@ public class ImageComponent extends LayoutComponent {
     
     public void setWH(String w, String h) {
         if(w != null && h != null) {
-                    ((ImageView)component).setFitWidth(Integer.parseInt(w));
-                    ((ImageView)component).setFitHeight(Integer.parseInt(h));
+                    ((ImageView)img).setFitWidth(Integer.parseInt(w));
+                    ((ImageView)img).setFitHeight(Integer.parseInt(h));
                 }
                 else if(w == null && h != null) {
-                    ((ImageView)component).setFitHeight(Integer.parseInt(h));
-                    ((ImageView)component).setPreserveRatio(true);
+                    ((ImageView)img).setFitHeight(Integer.parseInt(h));
+                    ((ImageView)img).setPreserveRatio(true);
                 }
                 else if(h == null && w != null) {
-                    ((ImageView)component).setFitWidth(Integer.parseInt(w));
-                    ((ImageView)component).setPreserveRatio(true);
+                    ((ImageView)img).setFitWidth(Integer.parseInt(w));
+                    ((ImageView)img).setPreserveRatio(true);
                 }
     }
 }

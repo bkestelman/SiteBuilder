@@ -29,7 +29,7 @@ public class ImageDialog extends CustomDialog {
     LayoutTemplate layout;
     Button browse;
     File imgFile;
-    TextField wi, he;
+    TextField wi, he, cap;
     
     public ImageDialog() {
         super();
@@ -40,7 +40,7 @@ public class ImageDialog extends CustomDialog {
         browse = new Button("Browse Image");
         GridPane.setConstraints(browse, 0, 0);
         Label l = new Label("Caption: ");
-        TextField cap = new TextField();
+        cap = new TextField();
         GridPane.setConstraints(cap, 1, 1);
         GridPane.setConstraints(l, 0, 1);
         Label w = new Label("Width: ");
@@ -90,7 +90,7 @@ public class ImageDialog extends CustomDialog {
             response = OK;
             if(layout != null) {
                 ImageView iv = new ImageView(new Image(imgFile.toURI().toString()));
-                imageComponent = layout.addImage(iv);
+                imageComponent = layout.addImage(iv, cap.getText());
             }
             else {
                 if(imgFile != null) imageComponent.setImage(imgFile.toURI().toString());
