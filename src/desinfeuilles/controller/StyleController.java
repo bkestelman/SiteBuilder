@@ -34,6 +34,7 @@ import desinfeuilles.view.EditHeaderDialog;
 import desinfeuilles.view.EditListDialog;
 import desinfeuilles.view.EditParagraphDialog;
 import desinfeuilles.view.FontChooserDialog;
+import desinfeuilles.view.ImageDialog;
 import java.io.File;
 import java.util.Optional;
 import javafx.geometry.Pos;
@@ -221,7 +222,7 @@ public class StyleController {
                     openListDialog();
                     break;
                 case "Image":
-                    openImageDialog();
+                    openAddImageDialog();
                     break;
                 case "Slide Show":
                     openSlideShowDialog();
@@ -268,45 +269,10 @@ public class StyleController {
         lDialog.showAndWait();
     }
 
-    private void openImageDialog() {
-        CustomDialog imageDialog = new CustomDialog();
-        imageDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Background.png"));
-        GridPane g = new GridPane();
-        g.setHgap(10);
-        g.setVgap(10);
-        Button browse = new Button("Browse Image");
-        GridPane.setConstraints(browse, 0, 0);
-        Label l = new Label("Caption: ");
-        TextField cap = new TextField();
-        GridPane.setConstraints(cap, 1, 1);
-        GridPane.setConstraints(l, 0, 1);
-        Label w = new Label("Width: ");
-        TextField wi = new TextField();
-        wi.setMaxWidth(50);
-        Label h = new Label("Height: ");
-        TextField he = new TextField();
-        he.setMaxWidth(50);
-        GridPane.setConstraints(w, 0, 2);
-        GridPane.setConstraints(wi, 1, 2);
-        GridPane.setConstraints(h, 2, 2);
-        GridPane.setConstraints(he, 3, 2);
-        Label fl = new Label("Float: ");
-        ToggleGroup group = new ToggleGroup();
-        RadioButton left = new RadioButton("Left");
-        left.setToggleGroup(group);
-        left.setSelected(true);
-        RadioButton right = new RadioButton("Right");
-        right.setToggleGroup(group);
-        RadioButton ne = new RadioButton("Neither");
-        ne.setToggleGroup(group);
-        GridPane.setConstraints(fl, 0, 3);
-        GridPane.setConstraints(left, 2, 3);
-        GridPane.setConstraints(right, 3, 3);
-        GridPane.setConstraints(ne, 1, 3);
-        g.getChildren().addAll(browse, l, cap, w, wi, h, he, fl, left, right, ne);
-        imageDialog.addNode(g);
+    private void openAddImageDialog() {
+        ImageDialog imageDialog = new ImageDialog(view.getLayout());
         imageDialog.prepareToShow();
-        imageDialog.show();
+        imageDialog.showAndWait();
     }
 
     private void openSlideShowDialog() {

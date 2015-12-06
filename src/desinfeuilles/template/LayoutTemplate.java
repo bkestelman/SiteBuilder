@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -108,5 +109,10 @@ public abstract class LayoutTemplate implements Serializable {
         main.setBottom(footer.getComponent());
         main.setCenter(contentPane.getComponent());
         style.applyFullStyle(this);
+    }
+
+    public void addImage(ImageView iv) {
+        ImageComponent img = new ImageComponent(iv, this);
+        ((Pane)contentPane.getComponent()).getChildren().add(img.getComponent());
     }
 }
