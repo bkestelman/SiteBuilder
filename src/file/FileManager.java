@@ -35,13 +35,14 @@ public class FileManager {
     public void saveJSON(String name) {
         BuilderView view = siteBuilder.getView();
         JSONObject json = new JSONObject();
-        for(LayoutTemplate layout : view.getLayouts()) {
+        for (LayoutTemplate layout : view.getLayouts()) {
+            int index = view.getLayouts().indexOf(layout);
+            PageLabel p = view.getPageLabels().get(index);
             json.put(layout, layout.getHTML());
-        }
-        try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + name + ".json")) {
-            file.write(json.toJSONString());
-        }
-        catch(IOException e) {
+            try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + p.getText() + ".json")) {
+                file.write(json.toJSONString());
+            } catch (IOException e) {
+            }
         }
     }
     
