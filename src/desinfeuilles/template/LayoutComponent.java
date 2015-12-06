@@ -115,6 +115,7 @@ public class LayoutComponent implements Serializable {
         this.fontStyleClass = fontStyleClass;
     }
     
+    //override
     public void revive() {
         
     }

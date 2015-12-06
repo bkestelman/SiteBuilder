@@ -24,7 +24,6 @@ public abstract class LayoutTemplate implements Serializable {
     transient BorderPane main;
     NavBar nav;
     Banner banner;
-    ContentPane content;
     Footer footer;
     StyleTemplate style;
     ContentPane contentPane;
@@ -103,6 +102,11 @@ public abstract class LayoutTemplate implements Serializable {
             lc.revive();
         }*/
         footer.revive();
+        banner.revive();
+        contentPane.revive();
+        nav.revive();
         main.setBottom(footer.getComponent());
+        main.setCenter(contentPane.getComponent());
+        style.applyFullStyle(this);
     }
 }

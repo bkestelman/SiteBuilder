@@ -37,6 +37,7 @@ public class Footer extends LayoutComponent {
     public void revive() {
         super.revive();
         component = new HBox();
+        initComponent(template);
         addHeader(text);
         ((HBox)component).setMinHeight(50);
         applyCss();

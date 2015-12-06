@@ -146,6 +146,9 @@ public class BuilderView implements Serializable {
     }
     
     public void initEventHandlers() {
+        newB.setOnAction(e -> {
+            fileController.handleNewRequest();
+        });
         exitB.setOnAction(e -> {
             fileController.handleExitRequest();
         });
@@ -369,6 +372,16 @@ public class BuilderView implements Serializable {
             l.revive();
         }
         openLayout = layouts.get(0);
+        reloadPageLabels();
         root.setCenter(openLayout.getMainPane());
+    }
+
+    public void makeNew() {
+        layouts = new ArrayList<>();
+        styles = new ArrayList<>();
+        
+        openLayout = new EmptyLayout();
+        root.setCenter(openLayout.getMainPane());
+        openLayout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
 }

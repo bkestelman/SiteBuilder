@@ -23,6 +23,7 @@ public class PageLabel extends LayoutComponent {
     public PageLabel(String label, LayoutTemplate template) {
         isSelected = false;
         component = new Label(label);
+        text = label;
         initComponent(template);
         component.getStyleClass().add(CSS_CLASS_PAGE_LABEL);
         type = "PageLabel";
@@ -37,4 +38,9 @@ public class PageLabel extends LayoutComponent {
         template.setSelectedComponent(this);
     }
 
+    public void revive() {
+        component = new Label(text);
+        initComponent(template);
+        component.getStyleClass().add(CSS_CLASS_PAGE_LABEL);
+    }
 }

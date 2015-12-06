@@ -36,4 +36,16 @@ public class NavBarH extends NavBar {
     public HBox getNavBarPane() {
         return (HBox)component;
     }
+    
+    public void revive() {
+        super.revive();
+        component = new HBox();
+        initComponent(template); 
+        component.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        for(PageLabel p : navM.getPages()) {
+            p.revive();
+            ((HBox)component).getChildren().add(p.getComponent());
+        }
+        applyCss();
+    }
 }

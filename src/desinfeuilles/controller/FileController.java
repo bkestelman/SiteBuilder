@@ -72,6 +72,10 @@ public class FileController {
         }
     }
     
+    public void handleNewRequest() {
+        siteBuilder.getView().makeNew();
+    }
+    
     public void handleOpenRequest() {
         siteBuilder.loadView();
     }

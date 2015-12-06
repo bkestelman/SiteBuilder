@@ -21,27 +21,19 @@ import javafx.scene.layout.HBox;
  */
 public class Banner extends LayoutComponent {
     Header bannerHeader;
-    transient public ImageView bannerImage;
     boolean bannerHeaderSelected;
     boolean bannerSelected;
     
     public Banner(String bannerH, LayoutTemplate template) {
         component = new HBox();
         initComponent(template);
+        text = bannerH;
         setHeader(bannerH);
         component.getStyleClass().add(CSS_CLASS_BANNER);
         ((HBox)component).setPrefHeight(210);
         bannerHeaderSelected = bannerSelected = false;
     }
 
-    Banner() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    public void setBannerImage(ImageView imv) {
-        bannerImage = imv;
-    }
-    
     public void setHeader(String bannerH) {
         bannerHeader = new Header(bannerH, template);
         bannerHeader.setParent(this);
@@ -52,4 +44,12 @@ public class Banner extends LayoutComponent {
         return bannerHeader;
     }
 
+    public void revive() {
+        super.revive();
+        component = new HBox();
+        initComponent(template);
+        setHeader(text);
+        component.getStyleClass().add(CSS_CLASS_BANNER);
+        ((HBox)component).setPrefHeight(210);
+    }
 }

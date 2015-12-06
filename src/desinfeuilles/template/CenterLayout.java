@@ -106,6 +106,8 @@ public class CenterLayout extends LayoutTemplate {
         super.revive();
         top = new VBox();
         main.setTop(top);
+        top.getChildren().addAll(banner.getComponent(), nav.getComponent());
+        main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
 
 }

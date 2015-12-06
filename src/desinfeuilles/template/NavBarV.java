@@ -37,4 +37,16 @@ public class NavBarV extends NavBar{
     public VBox getNavBarPane() {
         return (VBox)component;
     }
+    
+    public void revive() {
+        super.revive();
+        component = new VBox();
+        initComponent(template); 
+        component.getStyleClass().add(CSS_CLASS_NAV_SIMPLE);
+        for(PageLabel p : navM.getPages()) {
+            p.revive();
+            ((VBox)component).getChildren().add(p.getComponent());
+        }
+        applyCss();
+    }
 }

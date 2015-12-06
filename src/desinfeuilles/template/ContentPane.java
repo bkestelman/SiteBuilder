@@ -13,7 +13,7 @@ import javafx.scene.layout.VBox;
  * @author bkestelman
  */
 public class ContentPane extends LayoutComponent {
-    public ObservableList<ContentComponent> content;
+    //public ObservableList<ContentComponent> content;
             
     public ContentPane(LayoutTemplate template) {
         component = new VBox();
@@ -22,5 +22,10 @@ public class ContentPane extends LayoutComponent {
     
     public void addContent(ContentComponent component) {
         
+    }
+    
+    public void revive() {
+        component = new VBox();
+        initComponent(template);
     }
 }

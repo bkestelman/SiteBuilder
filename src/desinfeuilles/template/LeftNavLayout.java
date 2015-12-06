@@ -99,6 +99,9 @@ public class LeftNavLayout extends LayoutTemplate {
     }
 
     public void revive() {
-        
+        super.revive();
+        main.setLeft(nav.getComponent());
+        main.setTop(banner.getComponent());
+        main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
 }
