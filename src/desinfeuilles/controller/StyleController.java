@@ -87,7 +87,7 @@ public class StyleController {
         view = v;
     }
     
-    public void openStyleChooser() {
+    public void openStyleChooser(String newPage) {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
         ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(model.getStyle(), styles);
         chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
@@ -95,7 +95,7 @@ public class StyleController {
         chooser.setHeaderText("Choose a Style Template");
         Optional<StyleTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
-            view.setStyleTemplate(selection.get());
+            view.setStyleTemplate(selection.get(), newPage);
         }
         if(siteBuilder.getTutorial() != null) {
             siteBuilder.getTutorial().stopAnimations();
@@ -103,14 +103,14 @@ public class StyleController {
         }
     }
     
-    public void openLayoutChooser() {
+    public void openLayoutChooser(String newPage) {
         ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
         ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(model.getLayout(), layouts);
         chooser.setTitle("Layout Chooser");
         chooser.setHeaderText("Choose a Layout Template");
         Optional<LayoutTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
-            view.setLayout(selection.get());
+            view.setLayout(selection.get(), newPage);
         }
         if(siteBuilder.getTutorial() != null) {
             siteBuilder.getTutorial().stopAnimations();
@@ -244,8 +244,9 @@ public class StyleController {
         pageDialog.prepareToShow();
         pageDialog.sizeNice();
         pageDialog.showAndWait();
-        openStyleChooser();
-        openLayoutChooser();
+        String newPage = view.getLayout().getNavBar().getNavBarModel().getNewestPageName();
+        openStyleChooser(newPage);
+        openLayoutChooser(newPage);
     }
     
     private void openHeaderDialog() {

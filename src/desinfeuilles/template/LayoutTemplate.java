@@ -29,6 +29,7 @@ public abstract class LayoutTemplate {
     LayoutComponent selectedComponent; 
     ArrayList<LayoutComponent> components = new ArrayList<>();
     public static boolean balls = false;
+    String newestPage;
     
     public void setSelectedComponent(LayoutComponent n) {
         selectedComponent = n;
@@ -36,7 +37,12 @@ public abstract class LayoutTemplate {
     public LayoutComponent getSelectedComponent() {
         return selectedComponent;
     }
-    public abstract void addPage(String pageName, String pageLink);
+    public void addPage(String pageName, String pageLink) {
+        newestPage = pageName;
+    }
+    public String getNewestPage() {
+        return newestPage;
+    }
     public abstract void addBanner(Banner banner);
     public abstract void addNav(NavBar nav);
     public abstract void addFooter(Footer footer);

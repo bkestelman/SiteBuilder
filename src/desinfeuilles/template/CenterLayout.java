@@ -82,7 +82,8 @@ public class CenterLayout extends LayoutTemplate {
 
     @Override
     public void addPage(String pageName, String pageLink) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.addPage(pageName, pageLink);
+        nav.getNavBarModel().addPage(pageName, pageLink);
     }
 
     @Override

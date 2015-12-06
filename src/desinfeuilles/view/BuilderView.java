@@ -79,7 +79,8 @@ public class BuilderView {
     TilePane fileToolbar;
     HBox toolbars;
     
-    int pages;
+    int pageCount;
+    ArrayList<String> pages;
 
     public BuilderView(SiteBuilder sb, FileController f, StyleController s, BuilderModel model) {
         siteBuilder = sb;
@@ -88,7 +89,9 @@ public class BuilderView {
         this.model = model;
         s.setView(this);
         initView();
-        pages = 1;
+        pageCount = 1;
+        pages = new ArrayList<>();
+        pages.add("Home");
     }
     
     public void initView() {
@@ -142,10 +145,10 @@ public class BuilderView {
             fileController.handleExitRequest();
         });
         styleTemplateB.setOnAction(e -> {
-            styleController.openStyleChooser();
+            styleController.openStyleChooser("");
         });
         layoutB.setOnAction(e -> {
-           styleController.openLayoutChooser(); 
+           styleController.openLayoutChooser(""); 
         });
         editTextB.setOnAction(e -> {
             styleController.openTextEditor();
@@ -230,21 +233,30 @@ public class BuilderView {
         return b;
     }
     
-    public void setLayout(LayoutTemplate l) {
+    public void setLayout(LayoutTemplate l, String newPage) {
+        pages.add(newPage);
         openLayout = l;
         root.setCenter(openLayout.getMainPane());
+        if(!newPage.equals("")) 
+            layouts.add(openLayout);
         initLayout();
         model.setLayout(openLayout);
     }
     
-    public void setStyleTemplate(StyleTemplate style) {
+    public void setStyleTemplate(StyleTemplate style, String newPage) {
+        if(!newPage.equals("")) {
+            openLayout = new EmptyLayout();
+            layouts.add(openLayout);
+        }
         this.openStyle = style;
         openLayout.applyStyle(style);
         model.setStyle(style);
     }
     
     public void initLayout() {
-        openLayout.getNavBar().addPage("Home", "home.html");
+        for(String p : pages) {
+            openLayout.getNavBar().addPage(p, p.replaceAll("\\s", "") + ".html");
+        }
         openLayout.applyStyle(openStyle);
     }
     

@@ -25,10 +25,6 @@ public class PageLabel extends LayoutComponent {
         initComponent(template);
     }
     
-    public PageLabel() {
-        
-    }
-    
     public boolean isSelected() {
         return isSelected;
     }

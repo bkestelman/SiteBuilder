@@ -30,7 +30,7 @@ public class AddPageDialog extends CustomDialog {
         name = new TextField();
         nameSet.getChildren().addAll(l,  name);
         addNode(nameSet);
-    }
+    } 
     
     public void initEventHandlers() {
         ok.setOnAction(e -> {

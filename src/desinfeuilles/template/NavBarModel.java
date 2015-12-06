@@ -18,6 +18,7 @@ import javafx.scene.layout.Pane;
  */
 public class NavBarModel extends LayoutComponent {
     HashMap<PageLabel, String> pages; //also contain links
+    String newestPage;
     
     public NavBarModel(LayoutTemplate template) {
         pages = new HashMap<>();
@@ -25,12 +26,18 @@ public class NavBarModel extends LayoutComponent {
     }
     
     public void addPage(String pageName, String pageLink) {
+        newestPage = pageName;
         PageLabel pageLabel = new PageLabel(pageName, template);
         pages.put(pageLabel, pageLink);
     }
     
+    public String getNewestPageName() {
+        return newestPage;
+    }
+    
     public void addPage(PageLabel pageLabel) {
         pages.put(pageLabel, "bluh.html");
+        newestPage = ((Label)pageLabel.getComponent()).getText();
     }
     
     public HashMap<PageLabel, String> getPages() {

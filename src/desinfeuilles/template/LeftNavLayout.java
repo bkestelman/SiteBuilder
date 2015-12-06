@@ -78,6 +78,7 @@ public class LeftNavLayout extends LayoutTemplate {
 
     @Override
     public void addPage(String pageName, String pageLink) {
+        super.addPage(pageName, pageLink);
         nav.getNavBarModel().addPage(pageName, pageLink);
     }
 
