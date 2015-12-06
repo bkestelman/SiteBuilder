@@ -31,6 +31,10 @@ public abstract class LayoutTemplate {
     public static boolean balls = false;
     String newestPage;
     
+    public void deselect() {
+        if(selectedComponent != null) selectedComponent.invertSelected();
+        selectedComponent = null;
+    }
     public void setSelectedComponent(LayoutComponent n) {
         selectedComponent = n;
     }

@@ -30,5 +30,10 @@ public class PageLabel extends LayoutComponent {
     public boolean isSelected() {
         return isSelected;
     }
+    
+    public void select() {
+        component.getStyleClass().add(CSS_CLASS_SELECTED);
+        template.setSelectedComponent(this);
+    }
 
 }

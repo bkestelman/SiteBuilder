@@ -251,6 +251,7 @@ public class BuilderView {
         initLayout();
         model.setLayout(openLayout);
         reloadPageLabels();
+        if(!newPage.equals("")) pageLabels.get(pageLabels.size() - 1).select();
     }
     
     public void setStyleTemplate(StyleTemplate style) {
@@ -322,7 +323,11 @@ public class BuilderView {
     public void initPageClickHandler(PageLabel pageLabel) {
         pageLabel.getComponent().setOnMouseClicked(e -> {
             String ptxt = ((Label)pageLabel.getComponent()).getText();
-            setLayout(layouts.get(pageLabels.indexOf(pageLabel)),"");
+            int index = pageLabels.indexOf(pageLabel);
+            setLayout(layouts.get(index),"");
+            openLayout.deselect();
+            pageLabels.get(index).select();
+            //LayoutTemplate.balls = true;
         });
     }
 }
