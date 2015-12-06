@@ -84,8 +84,8 @@ public class SiteBuilder extends Application {
     
     public void reloadLayoutSelection() {
         layouts.clear();
-        l1 = new LeftNavLayout();
-        l2 = new CenterLayout();
+        l1 = new CenterLayout();
+        l2 = new LeftNavLayout();
         layouts.add(l1);
         layouts.add(l2);
     }

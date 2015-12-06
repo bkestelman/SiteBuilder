@@ -28,6 +28,8 @@ import desinfeuilles.controller.FileController;
 import desinfeuilles.controller.StyleController;
 import desinfeuilles.template.EmptyLayout;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.NavBar;
+import desinfeuilles.template.PageLabel;
 import desinfeuilles.template.StyleTemplate;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
@@ -81,7 +83,8 @@ public class BuilderView {
     
     int pageCount;
     ArrayList<String> pages;
-
+    ArrayList<PageLabel> pageLabels;
+    
     public BuilderView(SiteBuilder sb, FileController f, StyleController s, BuilderModel model) {
         siteBuilder = sb;
         fileController = f;
@@ -91,7 +94,9 @@ public class BuilderView {
         initView();
         pageCount = 1;
         pages = new ArrayList<>();
-        pages.add("Home");
+        //pages.add("Home");
+        pageLabels = new ArrayList<>();
+        //reloadPageLabels();
     }
     
     public void initView() {
@@ -108,7 +113,7 @@ public class BuilderView {
         root.setCenter(openLayout.getMainPane());
         openLayout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         
-        layouts.add(openLayout);
+        //layouts.add(openLayout);
         
         //fileToolbar = new ToolBar();
         //fileToolbar.setPadding(new Insets(10));
@@ -148,7 +153,7 @@ public class BuilderView {
             styleController.openStyleChooser();
         });
         layoutB.setOnAction(e -> {
-           styleController.openLayoutChooser(""); 
+           styleController.openLayoutChooser("Home"); 
         });
         editTextB.setOnAction(e -> {
             styleController.openTextEditor();
@@ -239,13 +244,18 @@ public class BuilderView {
         if(!newPage.equals("")) {
             pages.add(newPage);
             layouts.add(openLayout);
+            openLayout.applyStyle(openStyle);
         }
         initLayout();
         model.setLayout(openLayout);
+        reloadPageLabels();
     }
     
     public void setStyleTemplate(StyleTemplate style) {
         this.openStyle = style;
+        openLayout = new EmptyLayout();
+        root.setCenter(openLayout.getMainPane());
+        openLayout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
         openLayout.applyStyle(style);
         model.setStyle(style);
     }
@@ -254,7 +264,7 @@ public class BuilderView {
         for(String p : pages) {
             openLayout.getNavBar().addPage(p, p.replaceAll("\\s", "") + ".html");
         }
-        openLayout.applyStyle(openStyle);
+        //openLayout.applyStyle(openStyle);
     }
     
     public LayoutTemplate getLayout() {
@@ -291,5 +301,23 @@ public class BuilderView {
 
     public Window getStage() {
         return primaryStage;
+    }
+    
+    public void reloadPageLabels() {
+        NavBar openBar = openLayout.getNavBar();
+        if(openBar == null) return;
+        //openBar.clear();
+        pageLabels.clear();
+        for(PageLabel pageLabel : openBar.getNavBarModel().getPages()) {
+            pageLabels.add(pageLabel);
+            initPageClickHandler(pageLabel);
+        }
+    }
+    
+    public void initPageClickHandler(PageLabel pageLabel) {
+        pageLabel.getComponent().setOnMouseClicked(e -> {
+            String ptxt = ((Label)pageLabel.getComponent()).getText();
+            setLayout(layouts.get(pageLabels.indexOf(pageLabel)),"");
+        });
     }
 }

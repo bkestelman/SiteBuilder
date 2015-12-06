@@ -6,6 +6,7 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import java.util.ArrayList;
 import java.util.HashMap;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -17,18 +18,18 @@ import javafx.scene.layout.Pane;
  * @author bkestelman
  */
 public class NavBarModel extends LayoutComponent {
-    HashMap<PageLabel, String> pages; //also contain links
+    ArrayList<PageLabel> pages; //also contain links
     String newestPage;
     
     public NavBarModel(LayoutTemplate template) {
-        pages = new HashMap<>();
+        pages = new ArrayList<>();
         this.template = template;
     }
     
     public void addPage(String pageName, String pageLink) {
         newestPage = pageName;
         PageLabel pageLabel = new PageLabel(pageName, template);
-        pages.put(pageLabel, pageLink);
+        pages.add(pageLabel);
     }
     
     public String getNewestPageName() {
@@ -36,11 +37,11 @@ public class NavBarModel extends LayoutComponent {
     }
     
     public void addPage(PageLabel pageLabel) {
-        pages.put(pageLabel, "bluh.html");
+        pages.add(pageLabel);
         newestPage = ((Label)pageLabel.getComponent()).getText();
     }
     
-    public HashMap<PageLabel, String> getPages() {
+    public ArrayList<PageLabel> getPages() {
         return pages;
     }
 
