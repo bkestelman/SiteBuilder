@@ -25,4 +25,10 @@ public class Header extends LayoutComponent {
         text = s;
         ((Label)component).setText(s);
     }
+    
+    public void revive() {
+        super.revive();
+        component = new Label(text);
+        applyCss();
+    }
 }

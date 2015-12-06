@@ -17,10 +17,6 @@ import javafx.scene.layout.VBox;
  * @author Leora
  */
 public class LeftNavLayout extends LayoutTemplate {
-    BorderPane main;
-    Banner banner;
-    NavBarV nav;
-    Footer footer;
     
     public LeftNavLayout() {
         //components = new ArrayList<>();
@@ -102,4 +98,7 @@ public class LeftNavLayout extends LayoutTemplate {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    public void revive() {
+        
+    }
 }

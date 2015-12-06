@@ -20,8 +20,10 @@ public class Footer extends LayoutComponent {
     public Footer(String footerText, LayoutTemplate template) {
         component = new HBox();
         initComponent(template);
+        text = footerText;
         addHeader(footerText);
         component.getStyleClass().add(CSS_CLASS_AQUA_FOOTER);
+        cssClasses.add(CSS_CLASS_AQUA_FOOTER);
         ((HBox)component).setMinHeight(50);
     }
     
@@ -30,5 +32,13 @@ public class Footer extends LayoutComponent {
         footerHeader.setParent(this);
         ((HBox)component).getChildren().add(footerHeader.getComponent());
         (footerHeader.getComponent()).getStyleClass().add(CSS_CLASS_FOOTER_TEXT);
+    }
+    
+    public void revive() {
+        super.revive();
+        component = new HBox();
+        addHeader(text);
+        ((HBox)component).setMinHeight(50);
+        applyCss();
     }
 }

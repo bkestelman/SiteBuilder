@@ -5,6 +5,7 @@
  */
 package desinfeuilles;
 
+import static desinfeuilles.StartupConstants.OBJECT_DATA_PATH;
 import model.BuilderModel;
 import static desinfeuilles.StartupConstants.PATH_IMAGES;
 import static desinfeuilles.StartupConstants.PATH_TEMPLATES;
@@ -33,6 +34,16 @@ import java.util.Iterator;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
 import file.FileManager;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.stage.FileChooser;
 
 /**
  *
@@ -128,6 +139,34 @@ public class SiteBuilder extends Application {
 
     public ArrayList<MyFont> getFonts() {
         return fonts;
+    }
+
+    public void loadView() {
+        FileChooser filechoo = new FileChooser();
+        filechoo.setTitle("Open Project");
+        File defaultDir = new File(OBJECT_DATA_PATH);
+        filechoo.setInitialDirectory(defaultDir);
+        FileChooser.ExtensionFilter ext = new FileChooser.ExtensionFilter("Java Object (*.ser)", "*.ser");
+        filechoo.getExtensionFilters().add(ext);
+        File open = filechoo.showOpenDialog(view.getStage());
+        try {
+            FileInputStream filein = new FileInputStream(open);
+            ObjectInputStream in = new ObjectInputStream(filein);
+            try {
+                model = (BuilderModel)in.readObject();
+                view.loadModel(model);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(SiteBuilder.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            in.close();
+            filein.close();
+        }
+        catch(FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch(IOException ioe) {
+            ioe.printStackTrace();
+        }
     }
 
 }

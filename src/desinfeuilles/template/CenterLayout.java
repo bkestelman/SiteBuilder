@@ -18,11 +18,7 @@ import javafx.scene.layout.VBox;
  * @author Leora
  */
 public class CenterLayout extends LayoutTemplate {
-    BorderPane main;
-    Banner banner;
-    NavBarH nav;
-    Footer footer;
-    VBox top;
+    transient VBox top;
     
     public CenterLayout() {
         //components = new ArrayList<>();
@@ -104,6 +100,12 @@ public class CenterLayout extends LayoutTemplate {
     @Override
     public void addContentPane(ContentPane cpane) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void revive() {
+        super.revive();
+        top = new VBox();
+        main.setTop(top);
     }
 
 }

@@ -31,6 +31,7 @@ import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.NavBar;
 import desinfeuilles.template.PageLabel;
 import desinfeuilles.template.StyleTemplate;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -57,7 +58,7 @@ import javafx.stage.Window;
  *
  * @author Benito
  */
-public class BuilderView {
+public class BuilderView implements Serializable {
     SiteBuilder siteBuilder;
     FileController fileController;
     StyleController styleController;
@@ -82,7 +83,6 @@ public class BuilderView {
     TilePane fileToolbar;
     HBox toolbars;
     
-    int pageCount;
     ArrayList<String> pages;
     ArrayList<PageLabel> pageLabels;
     
@@ -93,7 +93,6 @@ public class BuilderView {
         this.model = model;
         s.setView(this);
         initView();
-        pageCount = 1;
         pages = new ArrayList<>();
         //pages.add("Home");
         pageLabels = new ArrayList<>();
@@ -182,6 +181,15 @@ public class BuilderView {
         });
         saveAsB.setOnAction(e -> {
             fileController.handleSaveAsRequest();
+        });
+        exportB.setOnAction(e -> {
+            fileController.handleExportRequest();
+        });
+        saveB.setOnAction(e -> {
+            fileController.handleSaveRequest();
+        });
+        openB.setOnAction(e -> {
+            fileController.handleOpenRequest();
         });
     }
     
@@ -341,5 +349,26 @@ public class BuilderView {
 
     public ArrayList<String> getPages() {
         return pages;
+    }
+    
+    public void saveModel() {
+        model.layouts = layouts;
+        model.pageLabels = pageLabels;
+        model.pages = pages;
+    }
+
+    public BuilderModel getModel() {
+        return model;
+    }
+
+    public void loadModel(BuilderModel model) {
+        layouts = model.layouts;
+        pageLabels = model.pageLabels;
+        pages = model.pages;
+        for(LayoutTemplate l : layouts) {
+            l.revive();
+        }
+        openLayout = layouts.get(0);
+        root.setCenter(openLayout.getMainPane());
     }
 }

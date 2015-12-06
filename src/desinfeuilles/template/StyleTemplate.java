@@ -7,6 +7,7 @@ package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_BANNER_HEADER;
 import static desinfeuilles.StartupConstants.PATH_IMAGES;
+import java.io.Serializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
@@ -15,7 +16,7 @@ import javafx.scene.layout.Pane;
  *
  * @author Leora
  */
-public class StyleTemplate {
+public class StyleTemplate implements Serializable {
     //ImageView mainImage, bannerImage;
     //LayoutTemplate layout;
     String styleName, mainImagePath, bannerImagePath;

@@ -7,17 +7,24 @@ package model;
 
 import desinfeuilles.SiteBuilder;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.PageLabel;
 import desinfeuilles.template.StyleTemplate;
+import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  *
  * @author Benito
  */
-public class BuilderModel {
-    SiteBuilder siteBuilder;
+public class BuilderModel implements Serializable {
+    transient SiteBuilder siteBuilder;
     
     StyleTemplate style;
     LayoutTemplate layout;
+    
+    public ArrayList<LayoutTemplate> layouts;
+    public ArrayList<PageLabel> pageLabels;
+    public ArrayList<String> pages;
 
     public BuilderModel(SiteBuilder sb) {
         siteBuilder = sb;
@@ -38,7 +45,5 @@ public class BuilderModel {
     public void setLayout(LayoutTemplate layout) {
         this.layout = layout;
     }
-    
-    
     
 }

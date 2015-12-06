@@ -6,11 +6,13 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
@@ -18,12 +20,12 @@ import javafx.scene.layout.VBox;
  *
  * @author bkestelman
  */
-public abstract class LayoutTemplate {
-    /*Pane mainPane;
+public abstract class LayoutTemplate implements Serializable {
+    transient BorderPane main;
     NavBar nav;
     Banner banner;
     ContentPane content;
-    Footer footer;*/
+    Footer footer;
     StyleTemplate style;
     ContentPane contentPane;
     LayoutComponent selectedComponent; 
@@ -93,5 +95,14 @@ public abstract class LayoutTemplate {
         components.add(list);
         list.setParent(contentPane);
         ((VBox)contentPane.getComponent()).getChildren().add(list.getComponent());
+    }
+
+    public void revive() {
+        main = new BorderPane();
+        /*for(LayoutComponent lc : components) {
+            lc.revive();
+        }*/
+        footer.revive();
+        main.setBottom(footer.getComponent());
     }
 }

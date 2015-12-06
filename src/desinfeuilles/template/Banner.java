@@ -21,7 +21,7 @@ import javafx.scene.layout.HBox;
  */
 public class Banner extends LayoutComponent {
     Header bannerHeader;
-    public ImageView bannerImage;
+    transient public ImageView bannerImage;
     boolean bannerHeaderSelected;
     boolean bannerSelected;
     

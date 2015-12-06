@@ -6,6 +6,8 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import java.io.Serializable;
+import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
@@ -14,14 +16,21 @@ import javafx.scene.Node;
  *
  * @author Benito
  */
-public class LayoutComponent {
+public class LayoutComponent implements Serializable {
     boolean isSelected;
-    Node component; //not all layout components will use this field (for instance, NavBars have their own HBox or VBox component)
+    transient Node component; //not all layout components will use this field (for instance, NavBars have their own HBox or VBox component)
     LayoutComponent parent;
     LayoutTemplate template;
     String text;
     String type; //h=header, p=paragraph, l=list, v=video, s=slideshow, b=banner, f=footer
     String fontStyleClass;
+    ArrayList<String> cssClasses;
+    ArrayList<String> styles;
+    
+    public LayoutComponent() {
+        cssClasses = new ArrayList<>();
+        styles = new ArrayList<>();
+    }
     
     public void initComponent(LayoutTemplate template) {
         isSelected = false;
@@ -106,5 +115,17 @@ public class LayoutComponent {
         this.fontStyleClass = fontStyleClass;
     }
     
+    public void revive() {
+        
+    }
+    
+    public void applyCss() {
+        for(String c : cssClasses) {
+            component.getStyleClass().add(c);
+        }
+        for(String s : styles) {
+            component.setStyle(s);
+        }
+    }
     
 }
