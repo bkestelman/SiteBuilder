@@ -90,11 +90,12 @@ public class ImageDialog extends CustomDialog {
             response = OK;
             if(layout != null) {
                 ImageView iv = new ImageView(new Image(imgFile.toURI().toString()));
-                layout.addImage(iv);
+                imageComponent = layout.addImage(iv);
             }
             else {
-                imageComponent.setImage(imgFile.toURI().toString());
+                if(imgFile != null) imageComponent.setImage(imgFile.toURI().toString());
             }
+            imageComponent.setWH(wi.getText(), he.getText());
             close();
         });
         cancel.setOnAction(e -> {

@@ -26,4 +26,19 @@ public class ImageComponent extends LayoutComponent {
     public void setImage(String path) {
         ((ImageView)component).setImage(new Image(path));
     }
+    
+    public void setWH(String w, String h) {
+        if(w != null && h != null) {
+                    ((ImageView)component).setFitWidth(Integer.parseInt(w));
+                    ((ImageView)component).setFitHeight(Integer.parseInt(h));
+                }
+                else if(w == null && h != null) {
+                    ((ImageView)component).setFitHeight(Integer.parseInt(h));
+                    ((ImageView)component).setPreserveRatio(true);
+                }
+                else if(h == null && w != null) {
+                    ((ImageView)component).setFitWidth(Integer.parseInt(w));
+                    ((ImageView)component).setPreserveRatio(true);
+                }
+    }
 }
