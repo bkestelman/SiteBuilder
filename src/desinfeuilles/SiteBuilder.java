@@ -60,10 +60,7 @@ public class SiteBuilder extends Application {
         fonts.add(new MyFont("Pacifico", "pacifico"));
         //fonts.add(new MyFont("Indie Flower", "indie_flower"));
         layouts = new ArrayList<>();
-        l1 = new LeftNavLayout();
-        l2 = new CenterLayout();
-        layouts.add(l1);
-        layouts.add(l2);
+        reloadLayoutSelection();
         styles = new ArrayList<>();
         styles.add(new StyleTemplate("Aqua"));
         styles.add(new StyleTemplate("Yellow Fantasy"));
@@ -83,6 +80,14 @@ public class SiteBuilder extends Application {
             tutorial.run();
         }
         //view.show();
+    }
+    
+    public void reloadLayoutSelection() {
+        layouts.clear();
+        l1 = new LeftNavLayout();
+        l2 = new CenterLayout();
+        layouts.add(l1);
+        layouts.add(l2);
     }
     
     public void initStyle(StyleTemplate style, String templateName) {

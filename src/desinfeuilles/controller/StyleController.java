@@ -87,7 +87,7 @@ public class StyleController {
         view = v;
     }
     
-    public void openStyleChooser(String newPage) {
+    public void openStyleChooser() {
         ArrayList<StyleTemplate> styles = siteBuilder.getStyles();
         ChoiceDialog<StyleTemplate> chooser = new ChoiceDialog<StyleTemplate>(model.getStyle(), styles);
         chooser.getDialogPane().getStyleClass().add(CSS_CLASS_DIALOG);
@@ -95,7 +95,7 @@ public class StyleController {
         chooser.setHeaderText("Choose a Style Template");
         Optional<StyleTemplate> selection = chooser.showAndWait();
         if(selection.isPresent()) {
-            view.setStyleTemplate(selection.get(), newPage);
+            view.setStyleTemplate(selection.get());
         }
         if(siteBuilder.getTutorial() != null) {
             siteBuilder.getTutorial().stopAnimations();
@@ -104,8 +104,9 @@ public class StyleController {
     }
     
     public void openLayoutChooser(String newPage) {
+        siteBuilder.reloadLayoutSelection();
         ArrayList<LayoutTemplate> layouts = siteBuilder.getLayouts();
-        ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(model.getLayout(), layouts);
+        ChoiceDialog<LayoutTemplate> chooser = new ChoiceDialog<LayoutTemplate>(layouts.get(0), layouts);
         chooser.setTitle("Layout Chooser");
         chooser.setHeaderText("Choose a Layout Template");
         Optional<LayoutTemplate> selection = chooser.showAndWait();
@@ -245,7 +246,7 @@ public class StyleController {
         pageDialog.sizeNice();
         pageDialog.showAndWait();
         String newPage = view.getLayout().getNavBar().getNavBarModel().getNewestPageName();
-        openStyleChooser(newPage);
+        openStyleChooser();
         openLayoutChooser(newPage);
     }
     

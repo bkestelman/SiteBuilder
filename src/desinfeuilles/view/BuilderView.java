@@ -145,7 +145,7 @@ public class BuilderView {
             fileController.handleExitRequest();
         });
         styleTemplateB.setOnAction(e -> {
-            styleController.openStyleChooser("");
+            styleController.openStyleChooser();
         });
         layoutB.setOnAction(e -> {
            styleController.openLayoutChooser(""); 
@@ -243,11 +243,7 @@ public class BuilderView {
         model.setLayout(openLayout);
     }
     
-    public void setStyleTemplate(StyleTemplate style, String newPage) {
-        if(!newPage.equals("")) {
-            openLayout = new EmptyLayout();
-            layouts.add(openLayout);
-        }
+    public void setStyleTemplate(StyleTemplate style) {
         this.openStyle = style;
         openLayout.applyStyle(style);
         model.setStyle(style);
