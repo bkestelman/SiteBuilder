@@ -45,6 +45,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
@@ -245,9 +246,9 @@ public class BuilderView {
             pages.add(newPage);
             layouts.add(openLayout);
             openLayout.applyStyle(openStyle);
-            initLayout();
+            //initLayout();
         }
-        //initLayout();
+        initLayout();
         model.setLayout(openLayout);
         reloadPageLabels();
     }
@@ -262,8 +263,11 @@ public class BuilderView {
     }
     
     public void initLayout() {
+        NavBar openBar = openLayout.getNavBar();
+        ((Pane)openBar.getComponent()).getChildren().clear();
+        openBar.getNavBarModel().getPages().clear();
         for(String p : pages) {
-            openLayout.getNavBar().addPage(p, p.replaceAll("\\s", "") + ".html");
+            openBar.addPage(p, p.replaceAll("\\s", "") + ".html");
         }
         //openLayout.applyStyle(openStyle);
     }
