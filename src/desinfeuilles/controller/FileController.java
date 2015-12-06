@@ -110,8 +110,12 @@ public class FileController {
         dialog.setHeaderText("What would you like to call your site?");
         dialog.setContentText("Your site will be saved in this application's '/sites' directory");
         Optional<String> name = dialog.showAndWait();
-        File export = new File(SITES_PATH);
-        if(!export.exists()) export.mkdir();
+        File sites = new File(SITES_PATH);
+        if(!sites.exists()) sites.mkdir();
+        File exportDir = new File(SITES_PATH + name.get());
+        if(!exportDir.exists()) exportDir.mkdir();
+        
         siteBuilder.getFileManager().saveJSON(name.get());
+        siteBuilder.getFileManager().generateSite(name.get());
     }
 }

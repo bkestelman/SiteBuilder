@@ -39,4 +39,8 @@ public class ContentPane extends LayoutComponent {
     public ArrayList<LayoutComponent> getContent() {
         return content;
     }
+
+    String getHTML() {
+        return "";
+    }
 }

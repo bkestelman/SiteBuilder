@@ -110,4 +110,7 @@ public class CenterLayout extends LayoutTemplate {
         main.getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
     }
 
+    public String getHTML() {
+        return banner.getHTML() + nav.getHTML() + contentPane.getHTML() + footer.getHTML();
+    }
 }

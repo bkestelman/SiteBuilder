@@ -132,4 +132,8 @@ public abstract class LayoutTemplate implements Serializable {
         contentPane.getContent().add(vid);
         return vid;
     }
+    
+    public String getHTML() {
+        return "";
+    }
 }

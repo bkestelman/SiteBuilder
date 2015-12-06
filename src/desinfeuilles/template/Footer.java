@@ -42,4 +42,8 @@ public class Footer extends LayoutComponent {
         ((HBox)component).setMinHeight(50);
         applyCss();
     }
+
+    String getHTML() {
+        return "";
+    }
 }

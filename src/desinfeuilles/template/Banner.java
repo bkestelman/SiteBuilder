@@ -54,4 +54,8 @@ public class Banner extends LayoutComponent {
         component.getStyleClass().add(CSS_CLASS_BANNER);
         ((HBox)component).setPrefHeight(210);
     }
+    
+    public String getHTML() {
+        return "<div id=banner>" + bannerHeader.getHTML() + "</div>";
+    }
 }
