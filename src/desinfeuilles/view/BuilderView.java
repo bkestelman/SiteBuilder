@@ -234,11 +234,12 @@ public class BuilderView {
     }
     
     public void setLayout(LayoutTemplate l, String newPage) {
-        pages.add(newPage);
         openLayout = l;
         root.setCenter(openLayout.getMainPane());
-        if(!newPage.equals("")) 
+        if(!newPage.equals("")) {
+            pages.add(newPage);
             layouts.add(openLayout);
+        }
         initLayout();
         model.setLayout(openLayout);
     }

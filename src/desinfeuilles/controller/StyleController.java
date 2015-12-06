@@ -28,6 +28,7 @@ import desinfeuilles.template.ListComponent;
 import desinfeuilles.template.Paragraph;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.AddPageDialog;
+import desinfeuilles.view.ColorChooserDialog;
 import desinfeuilles.view.CustomDialog;
 import desinfeuilles.view.EditHeaderDialog;
 import desinfeuilles.view.EditListDialog;
@@ -170,12 +171,7 @@ public class StyleController {
     }
 
     public void openColorChooser() {
-        CustomDialog colorD = new CustomDialog();
-        ColorPicker palette = new ColorPicker();
-        colorD.addNode(palette);
-        colorD.prepareToShow();
-        colorD.setTitle("Color Picker");
-        colorD.getIcons().add(new Image("file:" + PATH_ICONS + "Paint.png"));
+        ColorChooserDialog colorD = new ColorChooserDialog(view.getLayout().getSelectedComponent());
         colorD.sizeNice();
         colorD.show();
         /*Alert colorDialog = new Alert(AlertType.CONFIRMATION);

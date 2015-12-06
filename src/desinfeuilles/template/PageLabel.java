@@ -10,6 +10,7 @@ import com.sun.javafx.geom.transform.BaseTransform;
 import com.sun.javafx.jmx.MXNodeAlgorithm;
 import com.sun.javafx.jmx.MXNodeAlgorithmContext;
 import com.sun.javafx.sg.prism.NGNode;
+import static desinfeuilles.StartupConstants.CSS_CLASS_PAGE_LABEL;
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
 import javafx.scene.control.Label;
 
@@ -23,6 +24,7 @@ public class PageLabel extends LayoutComponent {
         isSelected = false;
         component = new Label(label);
         initComponent(template);
+        component.getStyleClass().add(CSS_CLASS_PAGE_LABEL);
     }
     
     public boolean isSelected() {
