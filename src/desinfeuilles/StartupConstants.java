@@ -19,6 +19,7 @@ public class StartupConstants {
     public static String CSS_SHEET = CSS_PATH + "DesinFeuillesStyle.css";
     public static String CSS_FONTS = CSS_PATH + "Fonts.css";
     public static String OBJECT_DATA_PATH = "object_data/";
+    public static String SITES_PATH = "sites/";
     
     public static String CSS_CLASS_ROOT = "root";
     public static String CSS_CLASS_FILE_TOOLBAR = "fileToolbar";

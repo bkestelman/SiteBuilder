@@ -5,8 +5,13 @@
  */
 package file;
 
+import desinfeuilles.SiteBuilder;
+import static desinfeuilles.StartupConstants.SITES_PATH;
+import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.view.BuilderView;
 import java.io.FileWriter;
 import java.io.IOException;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 /**
@@ -14,16 +19,21 @@ import org.json.simple.JSONObject;
  * @author bkestelman
  */
 public class FileManager {
-    public FileManager() {
-        
+    SiteBuilder siteBuilder;
+    
+    public FileManager(SiteBuilder siteBuilder) {
+        this.siteBuilder = siteBuilder;
     }
 
-    public void saveJSON() {
+    public void saveJSON(String name) {
+        BuilderView view = siteBuilder.getView();
         JSONObject json = new JSONObject();
-        json.put("baby", "come on");
-        json.put("hello", "bitch");
-        json.put("wassup", "nigga");
-        try (FileWriter file = new FileWriter("./hello.json")) {
+        JSONArray layouts = new JSONArray();
+        for(LayoutTemplate layout : view.getLayouts()) {
+            layouts.add(layout);
+        }
+        json.put("layouts", layouts);
+        try (FileWriter file = new FileWriter(SITES_PATH + name)) {
             file.write(json.toJSONString());
         }
         catch(IOException e) {

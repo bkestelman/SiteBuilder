@@ -77,7 +77,7 @@ public class SiteBuilder extends Application {
         styles.add(new StyleTemplate("Yellow Fantasy"));
         initStyle(styles.get(0), "Aqua");
         initStyle(styles.get(1), "Yellow");
-        fileManager = new FileManager();
+        fileManager = new FileManager(this);
         fileController = new FileController(this);
         styleController = new StyleController(this);
         view = new BuilderView(this, fileController, styleController, model);
