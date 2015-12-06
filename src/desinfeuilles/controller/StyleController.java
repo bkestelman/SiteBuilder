@@ -399,7 +399,14 @@ public class StyleController {
         Optional<ButtonType> response = removeAlert.showAndWait();
         if(response.get() == ButtonType.OK) {
             LayoutComponent selected = view.getLayout().getSelectedComponent();
-            if(selected.getParent() != null) {
+            if(selected.getType().equals("PageLabel")) {
+                int index = view.getLayouts().indexOf((view.getLayout())); 
+                view.setLayout(view.getLayouts().get(0),"");
+                view.getLayouts().remove(index);
+                view.getPageLabels().remove(index);
+                view.getPages().remove(index);
+            }
+            else if(selected.getParent() != null) {
                 ((Pane)selected.getParent().getComponent()).getChildren().remove(selected.getComponent());
                 view.getLayout().getComponents().remove(selected);
             }

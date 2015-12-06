@@ -239,6 +239,10 @@ public class BuilderView {
         return b;
     }
     
+    public ArrayList<LayoutTemplate> getLayouts() {
+        return layouts;
+    }
+    
     public void setLayout(LayoutTemplate l, String newPage) {
         openLayout = l;
         root.setCenter(openLayout.getMainPane());
@@ -329,5 +333,13 @@ public class BuilderView {
             pageLabels.get(index).select();
             //LayoutTemplate.balls = true;
         });
+    }
+
+    public ArrayList<PageLabel> getPageLabels() {
+        return pageLabels;
+    }
+
+    public ArrayList<String> getPages() {
+        return pages;
     }
 }

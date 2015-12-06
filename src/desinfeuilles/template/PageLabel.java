@@ -25,6 +25,7 @@ public class PageLabel extends LayoutComponent {
         component = new Label(label);
         initComponent(template);
         component.getStyleClass().add(CSS_CLASS_PAGE_LABEL);
+        type = "PageLabel";
     }
     
     public boolean isSelected() {
