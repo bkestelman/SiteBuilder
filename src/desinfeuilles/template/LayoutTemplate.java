@@ -6,6 +6,7 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_SELECTED;
+import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import javafx.collections.ObservableList;
@@ -117,5 +118,13 @@ public abstract class LayoutTemplate implements Serializable {
         img.setParent(contentPane);
         components.add(img);
         return img;
+    }
+
+    public VideoComponent addVideo(File vidFile, String cap) {
+        VideoComponent vid = new VideoComponent(vidFile, cap, this);
+        ((Pane)contentPane.getComponent()).getChildren().add(vid.getComponent());
+        vid.setParent(contentPane);
+        components.add(vid);
+        return vid;
     }
 }

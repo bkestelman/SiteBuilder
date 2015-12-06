@@ -7,8 +7,10 @@ package desinfeuilles.view;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.template.ImageComponent;
-import desinfeuilles.template.LayoutComponent;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.VideoComponent;
+import static desinfeuilles.view.CustomDialog.CANCEL;
+import static desinfeuilles.view.CustomDialog.OK;
 import java.io.File;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +18,6 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
@@ -24,20 +25,21 @@ import javafx.stage.FileChooser;
  *
  * @author Benito
  */
-public class ImageDialog extends CustomDialog {
-    ImageComponent imageComponent;
+public class VideoDialog extends CustomDialog {
+    VideoComponent videoComponent;
     LayoutTemplate layout;
     Button browse;
-    File imgFile;
+    File vidFile;
     TextField wi, he, cap;
+    GridPane g;
     
-    public ImageDialog() {
+    public VideoDialog() {
         super();
-        getIcons().add(new Image("file:" + PATH_ICONS + "Background.png"));
-        GridPane g = new GridPane();
+        getIcons().add(new Image("file:" + PATH_ICONS + "videoplay2.png"));
+        g = new GridPane();
         g.setHgap(10);
         g.setVgap(10);
-        browse = new Button("Browse Image");
+        browse = new Button("Browse Video");
         GridPane.setConstraints(browse, 0, 0);
         Label l = new Label("Caption: ");
         cap = new TextField();
@@ -70,12 +72,12 @@ public class ImageDialog extends CustomDialog {
         addNode(g);
     }
     
-    public ImageDialog(ImageComponent l) {
+    public VideoDialog(VideoComponent l) {
         this();
-        imageComponent = l;
+        videoComponent = l;
     }
     
-    public ImageDialog(LayoutTemplate layout) {
+    public VideoDialog(LayoutTemplate layout) {
         this();
         this.layout = layout;
     }
@@ -83,20 +85,22 @@ public class ImageDialog extends CustomDialog {
     public void initEventHandlers() {
         browse.setOnAction(e -> {
             FileChooser bc = new FileChooser();
-            bc.setTitle("Choose Image");
-            imgFile = bc.showOpenDialog(this);
+            bc.setTitle("Choose Video");
+            vidFile = bc.showOpenDialog(this);
+            Label saved = new Label("Video Saved!");
+            GridPane.setConstraints(saved, 1, 0);
+            g.getChildren().add(saved);
         });
         ok.setOnAction(e -> {
             response = OK;
             if(layout != null) {
-                ImageView iv = new ImageView(new Image(imgFile.toURI().toString()));
-                imageComponent = layout.addImage(iv, cap.getText());
+                videoComponent = layout.addVideo(vidFile, cap.getText());
             }
             else {
-                if(imgFile != null) imageComponent.setImage(imgFile.toURI().toString());
-                imageComponent.setCaption(cap.getText());
+                if(vidFile != null) videoComponent.setVideo(vidFile.toURI().toString());
+                videoComponent.setCaption(cap.getText());
             }
-            imageComponent.setWH(wi.getText(), he.getText());
+            videoComponent.setWH(wi.getText(), he.getText());
             close();
         });
         cancel.setOnAction(e -> {

@@ -26,6 +26,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.ListComponent;
+import desinfeuilles.template.PageLabel;
 import desinfeuilles.template.Paragraph;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.AddPageDialog;
@@ -36,6 +37,7 @@ import desinfeuilles.view.EditListDialog;
 import desinfeuilles.view.EditParagraphDialog;
 import desinfeuilles.view.FontChooserDialog;
 import desinfeuilles.view.ImageDialog;
+import desinfeuilles.view.VideoDialog;
 import java.io.File;
 import java.util.Optional;
 import javafx.geometry.Pos;
@@ -156,6 +158,9 @@ public class StyleController {
         }
         else if(selected.getType().equals("l")) {
             editD = new EditListDialog((ListComponent)selected);
+        }
+        else if(selected.getType().equals("PageLabel")) {
+            editD = new EditHeaderDialog((PageLabel)selected);
         }
         else editD = new CustomDialog();
         editD.prepareToShow();
@@ -325,42 +330,7 @@ public class StyleController {
     }
 
     private void openVideoDialog() {
-        CustomDialog videoDialog = new CustomDialog();
-        videoDialog.getIcons().add(new Image("file:" + PATH_ICONS + "videoplay2.png"));
-        GridPane g = new GridPane();
-        g.setHgap(10);
-        g.setVgap(10);
-        Button browse = new Button("Browse Video");
-        GridPane.setConstraints(browse, 0, 0);
-        Label l = new Label("Caption: ");
-        TextField cap = new TextField();
-        GridPane.setConstraints(cap, 1, 1);
-        GridPane.setConstraints(l, 0, 1);
-        Label w = new Label("Width: ");
-        TextField wi = new TextField();
-        wi.setMaxWidth(50);
-        Label h = new Label("Height: ");
-        TextField he = new TextField();
-        he.setMaxWidth(50);
-        GridPane.setConstraints(w, 0, 2);
-        GridPane.setConstraints(wi, 1, 2);
-        GridPane.setConstraints(h, 2, 2);
-        GridPane.setConstraints(he, 3, 2);
-        /*Label fl = new Label("Float: ");
-        ToggleGroup group = new ToggleGroup();
-        RadioButton left = new RadioButton("Left");
-        left.setToggleGroup(group);
-        left.setSelected(true);
-        RadioButton right = new RadioButton("Right");
-        right.setToggleGroup(group);
-        RadioButton ne = new RadioButton("Neither");
-        ne.setToggleGroup(group);
-        GridPane.setConstraints(fl, 0, 3);
-        GridPane.setConstraints(left, 1, 3);
-        GridPane.setConstraints(right, 2, 3);
-        GridPane.setConstraints(ne, 3, 3);*/
-        g.getChildren().addAll(browse, l, cap, w, wi, h, he);
-        videoDialog.addNode(g);
+        VideoDialog videoDialog = new VideoDialog(view.getLayout());
         videoDialog.prepareToShow();
         videoDialog.show();
     }

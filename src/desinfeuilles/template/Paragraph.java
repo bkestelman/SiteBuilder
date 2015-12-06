@@ -23,4 +23,8 @@ public class Paragraph extends LayoutComponent {
         text = s;
         ((Label)component).setText(s);
     }
+    
+    public String getHTML() {
+        return "<p>" + text + "</p>";
+    }
 }

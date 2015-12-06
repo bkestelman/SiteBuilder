@@ -31,4 +31,8 @@ public class Header extends LayoutComponent {
         component = new Label(text);
         applyCss();
     }
+    
+    public String getHTML() {
+        return "<h>" + text + "</h>";
+    }
 }

@@ -36,4 +36,12 @@ public class ListComponent extends LayoutComponent {
     public ArrayList<ListElement> getElements() {
         return elements;
     }
+    
+    public String getHTML() {
+        String s = "<ul>";
+        for(ListElement el : elements) {
+            s += "<li>" + el + "</li>";
+        }
+        return s + "</ul>";
+    }
 }

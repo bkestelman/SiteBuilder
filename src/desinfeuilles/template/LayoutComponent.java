@@ -26,6 +26,7 @@ public class LayoutComponent implements Serializable {
     String fontStyleClass;
     ArrayList<String> cssClasses;
     ArrayList<String> styles;
+    String html;
     
     public LayoutComponent() {
         cssClasses = new ArrayList<>();

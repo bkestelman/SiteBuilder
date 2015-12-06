@@ -43,4 +43,17 @@ public class PageLabel extends LayoutComponent {
         initComponent(template);
         component.getStyleClass().add(CSS_CLASS_PAGE_LABEL);
     }
+    
+    public String getHTML() {
+        return "<h><a href='" + getLink() + "'>" + text + "</a></h>";
+    }
+    
+    public String getLink() {
+        return text.replaceAll("\\s", "") + ".html";
+    }
+    
+    public void setText(String s) {
+        text = s;
+        ((Label)component).setText(s);
+    }
 }

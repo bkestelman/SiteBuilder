@@ -7,6 +7,7 @@ package desinfeuilles.view;
 
 import static desinfeuilles.StartupConstants.PATH_ICONS;
 import desinfeuilles.template.Header;
+import desinfeuilles.template.LayoutComponent;
 import desinfeuilles.template.LayoutTemplate;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -19,10 +20,10 @@ import javafx.scene.image.Image;
 public class EditHeaderDialog extends CustomDialog {
     
     TextField t;
-    Header h;
+    LayoutComponent h;
     LayoutTemplate layout;
     
-    public EditHeaderDialog(Header h) {
+    public EditHeaderDialog(LayoutComponent h) {
         super();
         this.h = h;
         Label l = new Label("Edit some text here:");

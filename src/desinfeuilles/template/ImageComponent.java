@@ -34,6 +34,10 @@ public class ImageComponent extends LayoutComponent {
         ((ImageView)component).setImage(new Image(path));
     }
     
+    public void setCaption(String cap) {
+        caption.setText(cap);
+    }
+    
     public void setWH(String w, String h) {
         if(w != null && h != null) {
                     ((ImageView)img).setFitWidth(Integer.parseInt(w));
