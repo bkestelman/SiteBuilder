@@ -18,12 +18,42 @@ public class ListElement extends HBox {
     TextField t;
     Label l;
     Button removeB;
+    int number;
+    EditListDialog list;
     
-    public ListElement(int i) {
+    public ListElement(int i, EditListDialog list) {
+        this.list = list;
+        number = i;
         l = new Label("Element " + i);
         t = new TextField();
         removeB = new Button("Remove");
-        getChildren().addAll(l, t, removeB);
+        getChildren().addAll(l, t);
+        if(i != 1) {
+            getChildren().add(removeB);
+        }
+        initRemoveBHandler();
+    }
+    
+    public void initRemoveBHandler() {
+        removeB.setOnAction(e -> {
+            list.getRoot().getChildren().clear();
+            list.getElements().remove(this);
+            list.elementsCount--;
+            for(ListElement el : list.getElements()) {
+                if(el.number >= number) el.decNum();
+                list.addNode(el);
+            }
+            list.readdAddB();
+            list.addConfirm();
+        });
+    }
+    
+    public void setList(EditListDialog list) {
+        this.list = list;
+    }
+    
+    public void decNum() {
+        l.setText("Element " + --number);
     }
     
     public String toString() {

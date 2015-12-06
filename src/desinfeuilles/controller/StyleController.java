@@ -24,6 +24,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import desinfeuilles.template.LayoutTemplate;
+import desinfeuilles.template.ListComponent;
 import desinfeuilles.template.Paragraph;
 import desinfeuilles.template.StyleTemplate;
 import desinfeuilles.view.AddPageDialog;
@@ -149,6 +150,9 @@ public class StyleController {
         else if(selected.getType().equals("p")) {
             editD = new EditParagraphDialog((Paragraph)selected);
         }
+        else if(selected.getType().equals("l")) {
+            editD = new EditListDialog((ListComponent)selected);
+        }
         else editD = new CustomDialog();
         editD.prepareToShow();
         editD.sizeNice();
@@ -192,7 +196,6 @@ public class StyleController {
         fontD.prepareToShow();
         fontD.sizeNice();
         fontD.showAndWait();
-        System.out.println(selected.getComponent().getStyleClass());
     }
 
     public void openAddContentDialog() {
@@ -396,7 +399,7 @@ public class StyleController {
         Optional<ButtonType> response = removeAlert.showAndWait();
         if(response.get() == ButtonType.OK) {
             LayoutComponent selected = view.getLayout().getSelectedComponent();
-            if(selected.getType().equals("h") || selected.getType().equals("p")) {
+            if(selected.getParent() != null) {
                 ((Pane)selected.getParent().getComponent()).getChildren().remove(selected.getComponent());
                 view.getLayout().getComponents().remove(selected);
             }

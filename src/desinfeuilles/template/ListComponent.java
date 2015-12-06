@@ -21,7 +21,19 @@ public class ListComponent extends LayoutComponent {
         component = new Label();
         initComponent(template);
         for(ListElement el : elements) {
-            ((Label)component).setText(((Label)component).getText() + el + "\n");
+            ((Label)component).setText(((Label)component).getText() + "\u2022" + el + "\n");
         }
+        type = "l";
+    }
+    
+    public void reload() {
+        ((Label)component).setText("");
+        for(ListElement el : elements) {
+            ((Label)component).setText(((Label)component).getText() + "\u2022" + el + "\n");
+        }
+    }
+    
+    public ArrayList<ListElement> getElements() {
+        return elements;
     }
 }
