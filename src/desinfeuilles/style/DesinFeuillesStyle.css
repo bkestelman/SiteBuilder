@@ -108,3 +108,8 @@ and open the template in the editor.
 
 .dialog {
 }
+
+.page_label {
+    -fx-font-size: 20px;
+    -fx-padding: 10px;
+}

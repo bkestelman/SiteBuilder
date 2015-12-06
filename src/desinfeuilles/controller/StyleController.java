@@ -244,6 +244,8 @@ public class StyleController {
         pageDialog.prepareToShow();
         pageDialog.sizeNice();
         pageDialog.showAndWait();
+        openStyleChooser();
+        openLayoutChooser();
     }
     
     private void openHeaderDialog() {

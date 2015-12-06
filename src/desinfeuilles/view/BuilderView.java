@@ -29,6 +29,7 @@ import desinfeuilles.controller.StyleController;
 import desinfeuilles.template.EmptyLayout;
 import desinfeuilles.template.LayoutTemplate;
 import desinfeuilles.template.StyleTemplate;
+import java.util.ArrayList;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -63,8 +64,10 @@ public class BuilderView {
     Scene scene;
     BorderPane root;
     
-    LayoutTemplate layout;
-    StyleTemplate style;
+    LayoutTemplate openLayout;
+    StyleTemplate openStyle;
+    ArrayList<LayoutTemplate> layouts;
+    ArrayList<StyleTemplate> styles;
     
     Button newB, openB, saveB, saveAsB, exportB, exitB;
     
@@ -75,6 +78,8 @@ public class BuilderView {
     TilePane styleToolbar;
     TilePane fileToolbar;
     HBox toolbars;
+    
+    int pages;
 
     public BuilderView(SiteBuilder sb, FileController f, StyleController s, BuilderModel model) {
         siteBuilder = sb;
@@ -83,6 +88,7 @@ public class BuilderView {
         this.model = model;
         s.setView(this);
         initView();
+        pages = 1;
     }
     
     public void initView() {
@@ -92,9 +98,14 @@ public class BuilderView {
         toolbars = new HBox();
         root.setTop(toolbars);
         
-        layout = new EmptyLayout();
-        root.setCenter(layout.getMainPane());
-        layout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
+        layouts = new ArrayList<>();
+        styles = new ArrayList<>();
+        
+        openLayout = new EmptyLayout();
+        root.setCenter(openLayout.getMainPane());
+        openLayout.getMainPane().getStyleClass().add(CSS_CLASS_EMPTY_LAYOUT);
+        
+        layouts.add(openLayout);
         
         //fileToolbar = new ToolBar();
         //fileToolbar.setPadding(new Insets(10));
@@ -220,25 +231,25 @@ public class BuilderView {
     }
     
     public void setLayout(LayoutTemplate l) {
-        layout = l;
-        root.setCenter(layout.getMainPane());
+        openLayout = l;
+        root.setCenter(openLayout.getMainPane());
         initLayout();
-        model.setLayout(layout);
+        model.setLayout(openLayout);
     }
     
     public void setStyleTemplate(StyleTemplate style) {
-        this.style = style;
-        layout.applyStyle(style);
+        this.openStyle = style;
+        openLayout.applyStyle(style);
         model.setStyle(style);
     }
     
     public void initLayout() {
-        layout.getNavBar().addPage("Home", "home.html");
-        layout.applyStyle(style);
+        openLayout.getNavBar().addPage("Home", "home.html");
+        openLayout.applyStyle(openStyle);
     }
     
     public LayoutTemplate getLayout() {
-        return layout;
+        return openLayout;
     }
     
     public BorderPane getBorderPane() {
