@@ -25,13 +25,6 @@ public class NavBarV extends NavBar{
         navM = new NavBarModel(template);
     }
 
-    @Override
-    public void addPage(String pageName, String pageLink) {
-        PageLabel pageLabel = new PageLabel(pageName, template);
-        pageLabel.setParent(this);
-        ((VBox)component).getChildren().add(pageLabel.getComponent());
-        getNavBarModel().addPage(pageLabel);
-    }
 
     @Override
     public VBox getNavBarPane() {

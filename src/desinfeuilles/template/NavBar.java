@@ -7,6 +7,7 @@ package desinfeuilles.template;
 
 import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -19,7 +20,12 @@ public abstract class NavBar extends LayoutComponent {
         return navM;
     }
     
-    public abstract void addPage(String pageName, String pageLink);
+    public void addPage(String pageName, String pageLink) {
+        PageLabel pageLabel = new PageLabel(pageName, template);
+        pageLabel.setParent(this);
+        ((Pane)component).getChildren().add(pageLabel.getComponent());
+        getNavBarModel().addPage(pageLabel);
+    }
     //public abstract void initPageClickHandler(Label pageLabel); //must be called by addToNavBar()
     public abstract Pane getNavBarPane();
 

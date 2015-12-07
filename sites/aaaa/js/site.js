@@ -6,9 +6,9 @@
 
 
 $(document).ready(function() {
-    var jsonPath = (location.pathname).slice(0,-5);
-    $.getJSON(jsonPath + ".json", function(json) {
+    var jsonPath = (location.pathname).slice(0,-5) + ".json";
+    $.getJSON(jsonPath, function(json) {
         $("body").append(json.layoutHTML);
-        $(".banner").css("background-image", "url(" + "img/" + jsonPath.split('/').pop() + "/" + json.bannerImg + ")");
+        $("banner").css("background-image: url(" + json.bannerImg + ")");
     });
 });

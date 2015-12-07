@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -24,14 +25,6 @@ public class NavBarH extends NavBar {
         navM = new NavBarModel(template);
     }
     
-    @Override
-    public void addPage(String pageName, String pageLink) {
-        PageLabel pageLabel = new PageLabel(pageName, template);
-        pageLabel.setParent(this);
-        ((HBox)component).getChildren().add(pageLabel.getComponent());
-        getNavBarModel().addPage(pageLabel);
-    }
-
     @Override
     public HBox getNavBarPane() {
         return (HBox)component;

@@ -45,7 +45,7 @@ public class FileManager {
             json.put("layoutHTML", layout.getHTML());
             
             Path path = Paths.get(layout.getStyleTemplate().getBannerImagePath());
-            json.put("bannerImg", "img/" + path.getFileName().toString());
+            json.put("bannerImg", path.getFileName().toString());
             
             try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + p.getText() + ".json")) {
                 file.write(json.toJSONString());
@@ -67,10 +67,12 @@ public class FileManager {
             //copy base javascript
             Files.copy(Paths.get(SITES_PATH + "site.js"), Paths.get(SITES_PATH + name + "/js/site.js"), REPLACE_EXISTING);
             
-            //copy base html for each page
+            //copy base html for each page + create img subdirectory for each page
             BuilderView view = siteBuilder.getView();
             for(PageLabel p : view.getPageLabels()) {
                 Files.copy(Paths.get(SITES_PATH + "index.html"), Paths.get(SITES_PATH + name + "/" + p.getLink()), REPLACE_EXISTING);
+                File imgDir = new File(SITES_PATH + name + "/img/" + p.getText());
+                imgDir.mkdir();
             }
             
             //copy base css
@@ -80,7 +82,8 @@ public class FileManager {
             
             //copy images used
             for(LayoutTemplate l : view.getLayouts()) {
-                Files.copy(Paths.get(l.getStyleTemplate().getBannerImagePath()), Paths.get(SITES_PATH + name + "/img/banner.jpg"), REPLACE_EXISTING);
+                PageLabel p = view.getPageLabels().get(view.getLayouts().indexOf(l));
+                Files.copy(Paths.get(l.getStyleTemplate().getBannerImagePath()), Paths.get(SITES_PATH + name + "/img/" + p.getText() + "/banner.jpg"), REPLACE_EXISTING);
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
