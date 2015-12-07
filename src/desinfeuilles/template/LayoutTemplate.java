@@ -33,6 +33,7 @@ public abstract class LayoutTemplate implements Serializable {
     ArrayList<LayoutComponent> components = new ArrayList<>();
     public static boolean balls = false;
     String newestPage;
+    ArrayList<String> imgPaths = new ArrayList<>();
     
     public void deselect() {
         if(selectedComponent != null) selectedComponent.invertSelected();
@@ -125,6 +126,7 @@ public abstract class LayoutTemplate implements Serializable {
         img.setParent(contentPane);
         components.add(img);
         contentPane.getContent().add(img);
+        imgPaths.add(iv);
         return img;
     }
 
@@ -138,6 +140,10 @@ public abstract class LayoutTemplate implements Serializable {
     }
     
     public String getHTML() {
-        return "";
+        return banner.getHTML() + nav.getHTML() + contentPane.getHTML() + footer.getHTML();
+    }
+
+    public ArrayList<String> getImagePaths() {
+        return imgPaths;
     }
 }

@@ -6,6 +6,8 @@
 package desinfeuilles.template;
 
 import static desinfeuilles.StartupConstants.CSS_CLASS_IMG_COMPONENT;
+import java.io.File;
+import java.nio.file.Paths;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -62,7 +64,12 @@ public class ImageComponent extends LayoutComponent {
         setWH(w, h);
     }
     
+    public String siteImagePath() {
+        File imgFile = new File(imgPath);
+        return "img/" + imgFile.getName();
+    }
+    
     public String getHTML() {
-        return "<img src=>";
+        return "<img src='" + siteImagePath() + "'>";
     }
 }

@@ -13,6 +13,7 @@ import desinfeuilles.view.BuilderView;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,6 +47,9 @@ public class FileManager {
             
             Path path = Paths.get(layout.getStyleTemplate().getBannerImagePath());
             json.put("bannerImg", path.getFileName().toString());
+            
+            path = Paths.get(layout.getStyleTemplate().getMainImagePath());
+            json.put("mainImg", path.getFileName().toString());
             
             try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + p.getText() + ".json")) {
                 file.write(json.toJSONString());
@@ -83,7 +87,13 @@ public class FileManager {
             //copy images used
             for(LayoutTemplate l : view.getLayouts()) {
                 PageLabel p = view.getPageLabels().get(view.getLayouts().indexOf(l));
+                Files.copy(Paths.get(l.getStyleTemplate().getMainImagePath()), Paths.get(SITES_PATH + name + "/img/" + p.getText() + "/main.jpg"), REPLACE_EXISTING);
                 Files.copy(Paths.get(l.getStyleTemplate().getBannerImagePath()), Paths.get(SITES_PATH + name + "/img/" + p.getText() + "/banner.jpg"), REPLACE_EXISTING);
+                for(String imgp : l.getImagePaths()) {
+                    File img = new File(imgp);
+                    String imgName = img.getName().toString();
+                    Files.copy(Paths.get(URI.create(imgp)), Paths.get(SITES_PATH + "/img/" + p.getText() + "/" + imgName), REPLACE_EXISTING);
+                }
             }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
