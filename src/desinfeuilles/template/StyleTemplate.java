@@ -35,7 +35,9 @@ public class StyleTemplate implements Serializable {
     }
     
     public void applyBannerStyle(LayoutTemplate layout) {
-        layout.getBanner().getComponent().setStyle("-fx-background-image: url(file:" + bannerImagePath + ");");
+        String newStyle = "-background-image: url(file:" + bannerImagePath + ");";
+        layout.getBanner().getComponent().setStyle("-fx" + newStyle);
+        layout.getBanner().getStyles().add(newStyle);
         layout.getBanner().getHeader().getComponent().getStyleClass().add(CSS_CLASS_BANNER_HEADER);
     }
     
@@ -47,6 +49,10 @@ public class StyleTemplate implements Serializable {
     
     public void setBannerImagePath(String imagePath) {
         bannerImagePath = imagePath;
+    }
+    
+    public String getBannerImagePath() {
+        return bannerImagePath;
     }
     
     public String getMainImagePath() {

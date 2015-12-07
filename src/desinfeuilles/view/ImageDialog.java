@@ -30,11 +30,12 @@ public class ImageDialog extends CustomDialog {
     Button browse;
     File imgFile;
     TextField wi, he, cap;
+    GridPane g;
     
     public ImageDialog() {
         super();
         getIcons().add(new Image("file:" + PATH_ICONS + "Background.png"));
-        GridPane g = new GridPane();
+        g = new GridPane();
         g.setHgap(10);
         g.setVgap(10);
         browse = new Button("Browse Image");
@@ -85,18 +86,22 @@ public class ImageDialog extends CustomDialog {
             FileChooser bc = new FileChooser();
             bc.setTitle("Choose Image");
             imgFile = bc.showOpenDialog(this);
+            Label saved = new Label("Image Saved!");
+            GridPane.setConstraints(saved, 1, 0);
+            g.getChildren().add(saved);
         });
         ok.setOnAction(e -> {
             response = OK;
             if(layout != null) {
-                ImageView iv = new ImageView(new Image(imgFile.toURI().toString()));
-                imageComponent = layout.addImage(iv, cap.getText());
+                imageComponent = layout.addImage(imgFile.toURI().toString(), cap.getText());
             }
             else {
                 if(imgFile != null) imageComponent.setImage(imgFile.toURI().toString());
                 imageComponent.setCaption(cap.getText());
             }
-            imageComponent.setWH(wi.getText(), he.getText());
+            if(wi.getText().equals("")) wi.setText("0");
+            if(he.getText().equals("")) he.setText("0");
+            imageComponent.setWH(Integer.parseInt(wi.getText()), Integer.parseInt(he.getText()));
             close();
         });
         cancel.setOnAction(e -> {

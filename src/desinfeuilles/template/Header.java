@@ -34,6 +34,6 @@ public class Header extends LayoutComponent {
     }
     
     public String getHTML() {
-        return "<h>" + text + "</h>";
+        return "<h1>" + text + "</h1>";
     }
 }

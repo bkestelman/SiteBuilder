@@ -24,7 +24,11 @@ public abstract class NavBar extends LayoutComponent {
     public abstract Pane getNavBarPane();
 
     public String getHTML() {
-        return "";
+        String s = "<nav><ul>";
+        for(PageLabel p : navM.getPages()) {
+            s += "<li><a href='" + p.getLink() + "'>" + p.getText() + "</a></li>";
+        }
+        return s + "</ul></nav>";
     }
     
 }

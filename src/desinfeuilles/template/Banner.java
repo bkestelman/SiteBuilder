@@ -56,6 +56,11 @@ public class Banner extends LayoutComponent {
     }
     
     public String getHTML() {
-        return "<div id=banner>" + bannerHeader.getHTML() + "</div>";
+        String style = "";
+        /*for(String s : styles) {
+            style += s;
+        }*/
+        return "<div class='banner' style='" + style + "'>" + bannerHeader.getHTML() + "</div>";
     }
+    
 }

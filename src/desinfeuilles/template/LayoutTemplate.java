@@ -77,6 +77,10 @@ public abstract class LayoutTemplate implements Serializable {
             }
         }
     }
+    
+    public StyleTemplate getStyleTemplate() {
+        return style;
+    }
 
     public void addParagraph(String pText) {
         Paragraph p = new Paragraph(pText, this);
@@ -115,7 +119,7 @@ public abstract class LayoutTemplate implements Serializable {
         style.applyFullStyle(this);
     }
 
-    public ImageComponent addImage(ImageView iv, String cap) {
+    public ImageComponent addImage(String iv, String cap) {
         ImageComponent img = new ImageComponent(iv, cap, this);
         ((Pane)contentPane.getComponent()).getChildren().add(img.getComponent());
         img.setParent(contentPane);

@@ -37,6 +37,7 @@ import desinfeuilles.view.EditListDialog;
 import desinfeuilles.view.EditParagraphDialog;
 import desinfeuilles.view.FontChooserDialog;
 import desinfeuilles.view.ImageDialog;
+import desinfeuilles.view.SlideShowDialog;
 import desinfeuilles.view.VideoDialog;
 import java.io.File;
 import java.util.Optional;
@@ -297,40 +298,8 @@ public class StyleController {
     private void openSlideShowDialog() {
         listElements = 1; 
         
-        CustomDialog ssDialog = new CustomDialog();
-        ssDialog.getIcons().add(new Image("file:" + PATH_ICONS + "Slides.png"));
+        SlideShowDialog ssDialog = new SlideShowDialog();
         
-        HBox element1 = new HBox();
-        Label l1 = new Label("Slide 1 Caption: ");
-        TextField t1 = new TextField();
-        Button b1 = new Button("Browse Image");
-        ImageView im1 = new ImageView(new Image("file:" + PATH_SLIDESHOW_IMAGES + "DefaultStartSlide.png"));
-        element1.getChildren().addAll(l1, t1, b1, im1);
-        ssDialog.addNode(element1);
-        
-        Button add = new Button("Add Slide");
-        ssDialog.addNode(add);
-        
-        ArrayList<HBox> elements = new ArrayList<>();
-        elements.add(element1);
-        
-        add.setOnAction(e -> {
-           Label l = new Label("Slide " + (++listElements) + " Caption: ");
-           TextField t = new TextField();
-           Button b = new Button("Browse Image");
-           ImageView im = new ImageView(new Image("file:" + PATH_SLIDESHOW_IMAGES + "DefaultStartSlide.png"));
-           HBox el = new HBox();
-           el.getChildren().addAll(l, t, b, im);
-           elements.add(el);
-           ssDialog.getRoot().getChildren().clear();
-           for(HBox h : elements) {
-               ssDialog.addNode(h);
-           }
-           ssDialog.addNode(add);
-           ssDialog.addConfirm();
-           element1.impl_processCSS(true);
-           ssDialog.addHeight(element1.getHeight());
-        });
         ssDialog.prepareToShow();
         ssDialog.show();
     }

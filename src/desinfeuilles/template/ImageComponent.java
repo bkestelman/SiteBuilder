@@ -16,40 +16,53 @@ import javafx.scene.layout.VBox;
  * @author Benito
  */
 public class ImageComponent extends LayoutComponent {
-    Label caption;
-    ImageView img;
+    transient Label caption;
+    transient ImageView img;
+    int w, h;
+    String cap, imgPath;
     
-    public ImageComponent(ImageView img, String cap, LayoutTemplate template) {
+    public ImageComponent(String imgPath, String cap, LayoutTemplate template) {
         super();
-        this.img = img;
+        this.imgPath = imgPath;
+        img = new ImageView(new Image(imgPath));
+        this.cap = cap;
         this.caption = new Label(cap);
         component = new VBox();
         ((VBox)component).getChildren().addAll(img, caption);
         initComponent(template);
         img.getStyleClass().add(CSS_CLASS_IMG_COMPONENT);
         type = "img";
+        w = h = 0;
     }
     
     public void setImage(String path) {
-        ((ImageView)component).setImage(new Image(path));
+        imgPath = path;
+        img.setImage(new Image(path));
     }
     
     public void setCaption(String cap) {
         caption.setText(cap);
+        this.cap = cap;
     }
     
-    public void setWH(String w, String h) {
-        if(w != null && h != null) {
-                    ((ImageView)img).setFitWidth(Integer.parseInt(w));
-                    ((ImageView)img).setFitHeight(Integer.parseInt(h));
-                }
-                else if(w == null && h != null) {
-                    ((ImageView)img).setFitHeight(Integer.parseInt(h));
-                    ((ImageView)img).setPreserveRatio(true);
-                }
-                else if(h == null && w != null) {
-                    ((ImageView)img).setFitWidth(Integer.parseInt(w));
-                    ((ImageView)img).setPreserveRatio(true);
-                }
+    public void setWH(int w, int h) {
+        this.w = w;
+        this.h = h;
+        if(w != 0) img.setFitWidth(w);
+        if(h != 0) img.setFitHeight(h);
+        if(w == 0 || h == 0) img.setPreserveRatio(true);
+    }
+    
+    public void revive() {
+        super.revive();
+        component = new VBox();
+        initComponent(template);
+        caption = new Label(cap);
+        img = new ImageView(imgPath);
+        setWH(w, h);
+    }
+    
+    public String getHTML() {
+        return "<img src=>";
     }
 }

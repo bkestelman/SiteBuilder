@@ -8,15 +8,11 @@ and open the template in the editor.
     Author     : Benito
 */
 
-.chewy {
-    -fx-font-family: 'Chewy', cursive;
-}
-
-.banner_header {
-    -fx-font-size: 25px;
-}
-
-.page_label {
-    -fx-font-size: 20px;
-    -fx-padding: 10px;
+.banner {
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border-color: black;
+    border-width: 0 10 10 10;
+    height: 210px;
+    background-image: url("../img/banner.jpg");
 }

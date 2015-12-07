@@ -34,15 +34,21 @@ public class FileManager {
 
     public void saveJSON(String name) {
         BuilderView view = siteBuilder.getView();
+        
         for (LayoutTemplate layout : view.getLayouts()) {
+            
             JSONObject json = new JSONObject();
+            
             int index = view.getLayouts().indexOf(layout);
             PageLabel p = view.getPageLabels().get(index);
-            json.put(layout, layout.getHTML());
+            json.put("layoutHTML", layout.getHTML());
+            json.put("bannerImg",layout.getStyleTemplate().getBannerImagePath());
+            
             try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + p.getText() + ".json")) {
                 file.write(json.toJSONString());
             } catch (IOException e) {
             }
+            
         }
     }
     
@@ -55,16 +61,24 @@ public class FileManager {
         if(!jsDir.exists()) jsDir.mkdir();
         
         try {
+            //copy base javascript
             Files.copy(Paths.get(SITES_PATH + "site.js"), Paths.get(SITES_PATH + name + "/js/site.js"), REPLACE_EXISTING);
             
+            //copy base html for each page
             BuilderView view = siteBuilder.getView();
             for(PageLabel p : view.getPageLabels()) {
                 Files.copy(Paths.get(SITES_PATH + "index.html"), Paths.get(SITES_PATH + name + "/" + p.getLink()), REPLACE_EXISTING);
             }
             
+            //copy base css
             Files.copy(Paths.get(SITES_PATH + "fonts.css"), Paths.get(SITES_PATH + name + "/css/fonts.css"), REPLACE_EXISTING);
             Files.copy(Paths.get(SITES_PATH + "styles.css"), Paths.get(SITES_PATH + name + "/css/styles.css"), REPLACE_EXISTING);
             Files.copy(Paths.get(SITES_PATH + "layouts.css"), Paths.get(SITES_PATH + name + "/css/layouts.css"), REPLACE_EXISTING);
+            
+            //copy images used
+            for(LayoutTemplate l : view.getLayouts()) {
+                Files.copy(Paths.get(l.getStyleTemplate().getBannerImagePath()), Paths.get(SITES_PATH + name + "/img/banner.jpg"), REPLACE_EXISTING);
+            }
         } catch (IOException ex) {
             Logger.getLogger(FileManager.class.getName()).log(Level.SEVERE, null, ex);
         }

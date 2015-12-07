@@ -48,4 +48,12 @@ public class NavBarH extends NavBar {
         }
         applyCss();
     }
+    
+    public String getHTML() {
+        String s = "<nav><ul>";
+        for(PageLabel p : navM.getPages()) {
+            s += "<li><a href='" + p.getLink() + "'>" + p.getText() + "</a></li>";
+        }
+        return s + "</ul></nav>";
+    }
 }

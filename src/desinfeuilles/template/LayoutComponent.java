@@ -27,6 +27,7 @@ public class LayoutComponent implements Serializable {
     ArrayList<String> cssClasses;
     ArrayList<String> styles;
     String html;
+    String backgroundImagePath;
     
     public LayoutComponent() {
         cssClasses = new ArrayList<>();
@@ -109,6 +110,10 @@ public class LayoutComponent implements Serializable {
         return type;
     }
 
+    public ArrayList<String> getStyles() {
+        return styles;
+    }
+    
     public String getFontStyleClass() {
         return fontStyleClass;
     }
@@ -127,7 +132,7 @@ public class LayoutComponent implements Serializable {
             component.getStyleClass().add(c);
         }
         for(String s : styles) {
-            component.setStyle(s);
+            component.setStyle("-fx" + s);
         }
     }
     
