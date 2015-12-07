@@ -15,7 +15,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.scene.Scene;
 import javafx.scene.control.TextInputDialog;
 import javafx.scene.web.WebEngine;
@@ -41,12 +45,29 @@ public class FileController {
     }
 
     public void viewSite() {
+        File sites = new File(SITES_PATH);
+        if(!sites.exists()) sites.mkdir();
+        File exportDir = new File(SITES_PATH + "temp/");
+        if(!exportDir.exists()) exportDir.mkdir();
+        
+        siteBuilder.getFileManager().saveJSON("temp");
+        siteBuilder.getFileManager().generateSite("temp");
         Stage viewStage = new Stage();
         WebView browser = new WebView();
         WebEngine engine = browser.getEngine();
-        engine.load("https://google.com");
+        String s = "./sites/temp/" + siteBuilder.getView().getPageLabels().get(0).getLink();
+        File file = new File(s); 
+        URL fileURL;
+        try {
+            fileURL = file.toURI().toURL();
+            engine.load(fileURL.toExternalForm());
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(FileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Scene scene = new Scene(browser);
         viewStage.setScene(scene);
+        viewStage.setMaximized(true);
         viewStage.show();
     }
     
