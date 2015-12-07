@@ -1,0 +1,123 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 14, 2015, 6:22:11 PM
+    Author     : Benito
+*/
+
+.root {
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+}
+
+.button_fileToolbar {
+    -fx-background-color: linear-gradient(#660000, #ff1a1a);
+}
+
+.button_fileToolbar_first {
+    -fx-background-color: linear-gradient(#660000, #ff1a1a);
+}
+
+.button_styleToolbar {
+    -fx-background-color: #ff4da6;
+}
+
+.styleToolbar {
+    -fx-background-color: linear-gradient(#4d0033, #ff99bb);
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.fileToolbar {
+    -fx-background-color: linear-gradient(#4d0000, #ffcccc);
+    -fx-padding: 10px;
+    -fx-alignment: center;
+}
+
+.anim_hbox {
+}
+
+.style_controller {
+    -fx-background-color: white;
+}
+
+.hbanner {
+    -fx-background-color: red;
+}
+
+.center_layout {
+    -fx-background-color: white;
+}
+
+.nav_simple {
+    -fx-background-color: #ffd480;
+    -fx-alignment: center;
+}
+
+.banner {
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-border-color: black;
+    -fx-border-width: 0 10 10 10;
+}
+
+.tutorial_tip {
+    -fx-font-family: 'Chewy', cursive;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+.empty_layout {
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 100%;
+    -fx-background-color: linear-gradient(to bottom right, #4d0033, #ff99bb);
+}
+
+.selected {
+    -fx-border-color: #ff4da6;
+}
+
+.footer_text {
+    -fx-text-fill: yellow;
+}
+
+.confirm_button {
+    -fx-padding: 10px;
+}
+
+.aqua_footer {
+    -fx-background-color: #000099;
+}
+
+.special_button {
+    -fx-background-color: linear-gradient(#b34800, #ff99bb);
+}
+
+.banner_header {
+    -fx-font-size: 25px;
+}
+
+.selected_image {
+}
+
+.color_picker {
+}
+
+.dialog {
+}
+
+.page_label {
+    -fx-font-size: 20px;
+    -fx-padding: 10px;
+}
+
+.img_component {
+    -fx-border-width: 20;
+}
+
+.component {
+    -fx-padding: 5px;
+}

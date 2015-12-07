@@ -29,6 +29,7 @@ public class Header extends LayoutComponent {
     public void revive() {
         super.revive();
         component = new Label(text);
+        initComponent(template);
         applyCss();
     }
     

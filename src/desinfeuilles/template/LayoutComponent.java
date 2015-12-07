@@ -131,4 +131,8 @@ public class LayoutComponent implements Serializable {
         }
     }
     
+    //override
+    public String getHTML() {
+        return "";
+    }
 }

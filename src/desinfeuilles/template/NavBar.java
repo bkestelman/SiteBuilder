@@ -23,7 +23,7 @@ public abstract class NavBar extends LayoutComponent {
     //public abstract void initPageClickHandler(Label pageLabel); //must be called by addToNavBar()
     public abstract Pane getNavBarPane();
 
-    String getHTML() {
+    public String getHTML() {
         return "";
     }
     

@@ -22,16 +22,27 @@ public class ListComponent extends LayoutComponent {
         component = new Label();
         initComponent(template);
         for(ListElement el : elements) {
+            text += ((Label)component).getText() + "\u2022" + el + "\n";
             ((Label)component).setText(((Label)component).getText() + "\u2022" + el + "\n");
         }
         type = "l";
     }
     
     public void reload() {
+        text = "";
         ((Label)component).setText("");
         for(ListElement el : elements) {
+            text += ((Label)component).getText() + "\u2022" + el + "\n";
             ((Label)component).setText(((Label)component).getText() + "\u2022" + el + "\n");
         }
+    }
+    
+    public void revive() {
+        super.revive();
+        elements = new ArrayList<>();
+        component = new Label(text);
+        initComponent(template);
+        applyCss();
     }
     
     public ArrayList<ListElement> getElements() {

@@ -31,6 +31,7 @@ public class Paragraph extends LayoutComponent {
     public void revive() {
         super.revive();
         component = new Label(text);
+        initComponent(template);
         applyCss();
     }
 }

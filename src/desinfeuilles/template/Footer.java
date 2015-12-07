@@ -43,7 +43,7 @@ public class Footer extends LayoutComponent {
         applyCss();
     }
 
-    String getHTML() {
-        return "";
+    public String getHTML() {
+        return "<footer>" + footerHeader.getHTML() + "</footer>";
     }
 }

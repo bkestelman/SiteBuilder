@@ -40,7 +40,11 @@ public class ContentPane extends LayoutComponent {
         return content;
     }
 
-    String getHTML() {
-        return "";
+    public String getHTML() {
+        String s = "<div id='content_pane'>";
+        for(LayoutComponent c : content) {
+            s += c.getHTML();
+        }
+        return s + "</div>";
     }
 }
