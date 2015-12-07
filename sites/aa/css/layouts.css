@@ -8,11 +8,28 @@ and open the template in the editor.
     Author     : Benito
 */
 
-.banner {
-    background-repeat: no-repeat;
-    background-size: 100%;
-    border-color: black;
-    border-width: 0 10 10 10;
+.banner { 
     height: 210px;
-    background-image: url("../img/banner.jpg");
+}
+
+nav {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    border: none;
+    height: 75px;
+}
+
+nav ul {
+    display: table-row;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
 }

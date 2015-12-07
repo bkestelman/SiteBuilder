@@ -14,6 +14,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.logging.Level;
@@ -42,7 +43,9 @@ public class FileManager {
             int index = view.getLayouts().indexOf(layout);
             PageLabel p = view.getPageLabels().get(index);
             json.put("layoutHTML", layout.getHTML());
-            json.put("bannerImg",layout.getStyleTemplate().getBannerImagePath());
+            
+            Path path = Paths.get(layout.getStyleTemplate().getBannerImagePath());
+            json.put("bannerImg", "img/" + path.getFileName().toString());
             
             try (FileWriter file = new FileWriter(SITES_PATH + name + "/" + p.getText() + ".json")) {
                 file.write(json.toJSONString());
